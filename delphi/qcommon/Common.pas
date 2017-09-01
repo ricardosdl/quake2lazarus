@@ -468,9 +468,9 @@ const
 var
   bytedirs: array[0..NUMVERTEXNORMALS - 1] of vec3_t = (
   {$IFDEF WIN32}
-  {$INCLUDE '.pas..\client\anorms.inc'}
+  {$INCLUDE '..\client\anorms.inc'}
   {$ELSE}
-  {$INCLUDE '.pas../client/anorms.inc'}
+  {$INCLUDE '../client/anorms.inc'}
   {$ENDIF}
     );
 
