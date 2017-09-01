@@ -528,7 +528,7 @@ type
     contents: Integer;
   end;
   dbrush_at = array[0..0] of dbrush_t;
-  dbrush_a = ^dbrush_a;
+  dbrush_a = ^dbrush_at;
 
 const
   ANGLE_UP = -1;
