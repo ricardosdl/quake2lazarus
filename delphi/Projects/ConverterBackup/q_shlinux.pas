@@ -1,7 +1,5 @@
 unit q_shlinux;
 
-{$MODE Delphi}
-
 //Initial conversion by : Fabrizio Rossini ( FAB )
 //
 { This File contains part of convertion of Quake2 source to ObjectPascal.    }
@@ -36,7 +34,7 @@ interface
 {.$include "../qcommon/qcommon.h"}
 
 (*===============================================================================*)
-{uses libc;}
+uses libc;
 
 var
 membase: pbyte;
@@ -54,7 +52,7 @@ procedure Sys_FindClose ;
 
 implementation
 
-uses SysUtils, q_shared_add, q_shared, Common, CPas, sys_linux , glob;
+uses SysUtils, q_shared_add, q_shared, Common, Cpas, sys_linux , glob;
 
 
 function Hunk_Begin(maxsize: integer):integer;

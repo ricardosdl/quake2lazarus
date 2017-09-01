@@ -1,7 +1,5 @@
 unit sys_linux;
 
-{$MODE Delphi}
-
 //Initial conversion by : Fabrizio Rossini ( FAB )
 //
 { This File contains part of convertion of Quake2 source to ObjectPascal.    }
@@ -30,7 +28,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 interface
 
-uses q_shared_add , {libc ,} Common;
+uses q_shared_add , libc , Common;
 
 {.$include <unistd.h>}
 {.$include <signal.h>}
@@ -90,7 +88,7 @@ function Sys_GetGameAPI(parms: Pointer): Pointer ;
 
 implementation
 
-uses q_shlinux,q_shared,CPas,cl_main,CVar,Classes ,
+uses q_shlinux,q_shared,cpas,cl_main,Cvar,Classes ,
       Files,SysUtils , vid_so ;
 
 procedure Sys_ConsoleOutput(_string: pchar);

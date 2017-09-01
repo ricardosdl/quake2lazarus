@@ -1,7 +1,5 @@
 unit net_udp;
 
-{$MODE Delphi}
-
 //Initial conversion by : Fabrizio Rossini ( FAB )
 //
 { This File contains part of convertion of Quake2 source to ObjectPascal.    }
@@ -45,7 +43,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 {.$include <libc.h>}
 {.$endif}
 interface
-uses q_shared_add , Common{, libc} ;
+uses q_shared_add , Common, libc ;
 
 var
 net_local_adr: netadr_t;
@@ -93,8 +91,8 @@ procedure NET_Sleep(msec: integer);
 implementation
 
 uses q_shared ,
-     CVar , SysUtils, sys_linux{,
-     Kernelioctl};
+     Cvar , SysUtils, sys_linux,
+     Kernelioctl;
 
 procedure NetadrToSockadr(a: netadr_p;  s: PSockAddrIn);
 begin

@@ -1,7 +1,5 @@
 unit glob;
 
-{$MODE Delphi}
-
 //Initial conversion by : Fabrizio Rossini ( FAB )
 //
 { This File contains part of convertion of Quake2 source to ObjectPascal.    }

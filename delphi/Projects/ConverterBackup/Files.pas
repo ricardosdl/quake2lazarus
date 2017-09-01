@@ -58,8 +58,6 @@
 
 unit Files;
 
-{$MODE Delphi}
-
 // define this to dissalow any data but the demo pak file
 //{$DEFINE NO_ADDONS}
 

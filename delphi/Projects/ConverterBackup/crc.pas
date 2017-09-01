@@ -40,8 +40,6 @@
 
 unit crc;
 
-{$MODE Delphi}
-
 interface
 
 {$IFNDEF COMPILER6_UP}

@@ -42,8 +42,6 @@
 
 unit m_flash;
 
-{$MODE Delphi}
-
 interface
 
 uses q_shared;

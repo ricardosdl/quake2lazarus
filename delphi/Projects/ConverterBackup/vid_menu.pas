@@ -1,7 +1,5 @@
 unit vid_menu;
 
-{$MODE Delphi}
-
 //Initial conversion by : Fabrizio Rossini ( FAB )
 //
 { This File contains part of convertion of Quake2 source to ObjectPascal.    }
@@ -30,7 +28,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 *)
 
 interface
-uses CVar,Qmenu ;
+uses Cvar,Qmenu ;
 {.$include "../client/client.h"}
 {.$include "../client/qmenu.h"}
 
@@ -108,7 +106,7 @@ s_defaults_action: array [0..Pred(2)] of menuaction_s;
 
 implementation
 
-uses SysUtils ,vid_so ,q_shared , cl_scrn , menu{, libc}; //Cpas ;
+uses SysUtils ,vid_so ,q_shared , cl_scrn , menu, libc; //Cpas ;
 
 procedure DriverCallback(unused: Pointer {pinteger}); 
 begin

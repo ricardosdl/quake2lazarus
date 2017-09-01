@@ -32,8 +32,6 @@
 
 unit MD4;
 
-{$MODE Delphi}
-
 interface
 
 type

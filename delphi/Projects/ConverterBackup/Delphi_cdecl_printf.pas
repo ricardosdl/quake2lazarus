@@ -11,8 +11,6 @@
 *)
 unit Delphi_cdecl_printf;
 
-{$MODE Delphi}
-
 interface
 
 uses

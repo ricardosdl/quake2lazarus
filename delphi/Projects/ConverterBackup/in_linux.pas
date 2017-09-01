@@ -1,7 +1,5 @@
 unit in_linux;
 
-{$MODE Delphi}
-
 //Initial conversion by : Fabrizio Rossini ( FAB )
 //
 { This File contains part of convertion of Quake2 source to ObjectPascal.    }
@@ -31,7 +29,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 (* in_null.c -- for systems without a mouse*)
 {.include "../client/client.h"}
 interface
-uses CVar,q_shared_add;
+uses Cvar,q_shared_add;
 
 var
 in_mouse: cvar_p; 

@@ -32,14 +32,12 @@
 {                                                                            }
 {----------------------------------------------------------------------------}
 {$IFDEF WIN32}
-{$INCLUDE ..\Jedi.inc}
+{$INCLUDE ..\JEDI.inc}
 {$ELSE}
 {$INCLUDE ../Jedi.inc}
 {$ENDIF}
 
 unit net_chan;
-
-{$MODE Delphi}
 
 interface
 

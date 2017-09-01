@@ -1,5 +1,7 @@
 unit rw_linux_h;
 
+{$MODE Delphi}
+
 //Initial conversion by : Fabrizio Rossini ( FAB )
 //
 { This File contains part of convertion of Quake2 source to ObjectPascal.    }

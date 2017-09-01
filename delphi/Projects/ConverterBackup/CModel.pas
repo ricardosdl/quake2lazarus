@@ -39,8 +39,6 @@
 
 unit CModel;
 
-{$MODE Delphi}
-
 interface
 
 uses

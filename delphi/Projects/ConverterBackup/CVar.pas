@@ -42,8 +42,6 @@
 
 unit CVar;
 
-{$MODE Delphi}
-
 interface
 
 uses

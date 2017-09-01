@@ -1,7 +1,5 @@
 unit vid_so;
 
-{$MODE Delphi}
-
 //Initial conversion by : Fabrizio Rossini ( FAB )
 //
 { This File contains part of convertion of Quake2 source to ObjectPascal.    }
@@ -34,7 +32,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 interface
 uses q_shared_add, ref, vid_h ,q_shared,
-        {libc ,}
+        libc ,
         keys,
         rw_linux_h;
 
@@ -162,8 +160,8 @@ MAXPRINTMSG = 4096;
 
 implementation
 
- uses Common, SysUtils, sys_linux, cmd, Files, CVar,
-      vid_menu ,cl_input, Client , Console ,q_shlinux ,
+ uses Common, SysUtils, sys_linux, cmd, files, Cvar,
+      vid_menu ,cl_input, client , Console ,q_shlinux ,
       cl_main ,snd_dma;
 
 var {was static}

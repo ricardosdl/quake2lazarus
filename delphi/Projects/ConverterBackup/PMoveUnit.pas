@@ -36,8 +36,6 @@
 
 unit PMoveUnit;
 
-{$MODE Delphi}
-
 interface
 
 uses

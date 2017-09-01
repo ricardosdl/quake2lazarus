@@ -1,7 +1,5 @@
 unit snd_sdl;
 
-{$MODE Delphi}
-
 //Initial conversion by : Fabrizio Rossini ( FAB )
 //
 { This File contains part of convertion of Quake2 source to ObjectPascal.    }
@@ -30,7 +28,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 *)
 
 interface
-uses CVar,q_shared_add ,snd_loc;
+uses Cvar,q_shared_add ,snd_loc;
 
 {.$include <unistd.h>}
 {.$include <fcntl.h>}
@@ -64,9 +62,9 @@ procedure SNDDMA_BeginPainting();
 //tryrates: array [0..3] of integer = (11025,22051,44100,8000);
 
 implementation
-uses     SDL,snd_mix,CPas,
+uses     SDL,snd_mix,Cpas,
          q_shared ,sys_linux,
-     Common ,Client , q_shlinux;
+     common ,client , q_shlinux;
 
 
 procedure paint_audio (unused :pointer ;stream :PUINT8 ;len :integer);

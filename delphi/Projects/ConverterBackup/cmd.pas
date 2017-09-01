@@ -38,13 +38,11 @@
 
 unit cmd;
 
-{$MODE Delphi}
-
 interface
 
 uses
   q_shared,
-  Common,
+  common,
   cl_main,
   SysUtils,
   CPas;
@@ -161,8 +159,8 @@ procedure Cmd_ExecuteString(text_: PChar); cdecl;
 implementation
 
 uses
-  CVar,
-  Files;
+  cvar,
+  files;
 
 // cmd.c -- Quake script command processing module
 

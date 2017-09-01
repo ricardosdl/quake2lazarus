@@ -1,7 +1,5 @@
 unit cd_sdl;
 
-{$MODE Delphi}
-
 
 //Initial conversion by : Fabrizio Rossini ( FAB )
 //
@@ -82,8 +80,8 @@ procedure CDAudio_Update();
 
 implementation
 uses //libc ,
-     CPas,
-     Common ,Client , cmd, q_shared, CVar;
+     Cpas,
+     Common ,client , cmd, q_shared, cvar;
 
 procedure CDAudio_Eject(); 
 begin

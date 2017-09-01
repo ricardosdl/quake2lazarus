@@ -1,6 +1,4 @@
-unit in_linux;
-
-{$MODE Delphi}
+unit rw_linux_h;
 
 //Initial conversion by : Fabrizio Rossini ( FAB )
 //
@@ -28,45 +26,36 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 *)
-(* in_null.c -- for systems without a mouse*)
-{.include "../client/client.h"}
 interface
-uses CVar,q_shared_add;
+uses q_shared_add;
 
-var
-in_mouse: cvar_p; 
-in_joystick: cvar_p;
+type
+Key_Event_fp_t = procedure(key: integer;  down: qboolean); 
 
-procedure IN_Move(cmd: usercmd_p);
+//extern void (*KBD_Update_fp)(void);
+//extern void (*KBD_Init_fp)(Key_Event_fp_t fp);
+//extern void (*KBD_Close_fp)(void);
+//external ????
+
+//procedure KBD_Update_fp();
+
+//procedure KBD_Init_fp(fp: Key_Event_fp_t);
+
+//procedure KBD_Close_fp();
+
+type
+in_state = record
+        IN_CenterView_fp: procedure(); 
+        (* Pointers to functions back in client, set by vid_so*)
+        Key_Event_fp: Key_Event_fp_t;
+        viewangles: vec_p ; //pvec_t;
+        in_strafe_state: Pointer; //pointer
+        end;
+in_state_t = in_state;
+Pin_state_t = ^in_state_t ;
+
 
 implementation
-uses q_shared ;
-
-procedure IN_Init(); 
-begin
-  in_mouse:= Cvar_Get('in_mouse', '1', CVAR_ARCHIVE);
-  in_joystick:= Cvar_Get('in_joystick', '0', CVAR_ARCHIVE); 
-end;
-
-
-procedure IN_Shutdown(); 
-begin
-end;
-
-
-procedure IN_Commands(); 
-begin
-end;
-
-
-procedure IN_Move(cmd: usercmd_p);
-begin
-end;
-
-
-procedure IN_Activate(active: qboolean); 
-begin
-end;
 
 
 end.
