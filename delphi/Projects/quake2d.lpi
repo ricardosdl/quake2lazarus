@@ -161,8 +161,9 @@
         <IsPartOfProject Value="True"/>
       </Unit29>
       <Unit30>
-        <Filename Value="..\client\Sound_h.pas"/>
+        <Filename Value="..\client\sound_h.pas"/>
         <IsPartOfProject Value="True"/>
+        <UnitName Value="Sound_h"/>
       </Unit30>
       <Unit31>
         <Filename Value="..\client\Console.pas"/>
@@ -213,8 +214,9 @@
         <IsPartOfProject Value="True"/>
       </Unit42>
       <Unit43>
-        <Filename Value="..\client\Qmenu.pas"/>
+        <Filename Value="..\client\qmenu.pas"/>
         <IsPartOfProject Value="True"/>
+        <UnitName Value="Qmenu"/>
       </Unit43>
       <Unit44>
         <Filename Value="..\client\cl_tent.pas"/>
@@ -294,15 +296,15 @@
     <Version Value="11"/>
     <PathDelim Value="\"/>
     <SearchPaths>
-      <IncludeFiles Value="..\jedi;..\linux;..\qcommon;..\game;..\client;..\server"/>
+      <IncludeFiles Value="..\jedi;..\qcommon;..\game;..\client;..\server;$(ProjOutDir)"/>
       <Libraries Value="..\jedi"/>
-      <OtherUnitFiles Value="..\jedi;..\linux;..\qcommon;..\game;..\client;..\server"/>
+      <OtherUnitFiles Value="..\jedi;..\qcommon;..\game;..\client;..\server"/>
       <UnitOutputDirectory Value="build"/>
       <ObjectPath Value="..\jedi"/>
     </SearchPaths>
     <Parsing>
       <SyntaxOptions>
-        <SyntaxMode Value="delphi"/>
+        <SyntaxMode Value="Delphi"/>
       </SyntaxOptions>
     </Parsing>
     <Linking>
@@ -313,7 +315,20 @@
       </Options>
     </Linking>
     <Other>
-      <CustomOptions Value="-dBorland -dVer150 -dDelphi7 -dCompiler6_Up -dPUREPASCAL"/>
+      <CustomOptions Value="-dBorland
+-dVer150
+-dDelphi7
+-dCompiler6_Up
+-dPUREPASCAL
+-dWIN32"/>
+      <OtherDefines Count="6">
+        <Define0 Value="Borland"/>
+        <Define1 Value="Ver150"/>
+        <Define2 Value="Delphi7"/>
+        <Define3 Value="Compiler6_Up"/>
+        <Define4 Value="PUREPASCAL"/>
+        <Define5 Value="WIN32"/>
+      </OtherDefines>
     </Other>
   </CompilerOptions>
   <Debugging>

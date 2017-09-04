@@ -7,7 +7,7 @@ uses
   {$IFDEF WIN32}
   sys_win   in '..\win32\sys_win.pas',
   vid_dll   in '..\win32\vid_dll.pas',
-  snd_win   in '..\win32\snd_win.pas',
+  //snd_win   in '..\win32\snd_win.pas',
   in_win    in '..\win32\in_win.pas',
   q_shwin   in '..\win32\q_shwin.pas',
   net_wins  in '..\win32\net_wins.pas',

@@ -77,6 +77,7 @@ begin
   while (i < snd_linear_count) do
   begin
     // val = snd_p[i]>>8;
+    {$ASMMODE intel}
     asm
       mov eax, snd_p
       mov edx, i

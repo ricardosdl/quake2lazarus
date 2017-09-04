@@ -132,7 +132,7 @@ uses
   Cmd,
   Files,
   {$IFDEF WIN32}
-  snd_win,
+  //snd_win,
   {$ELSE}
   //snd_linux, // i switched to SDL library due to difficult on translate this unit.. by FAB
   snd_sdl,
@@ -194,8 +194,8 @@ begin
     Cmd_AddCommand('soundlist', S_SoundList);
     Cmd_AddCommand('soundinfo', S_SoundInfo_f);
 
-    if (not SNDDMA_Init) then
-      exit;
+    //if (not SNDDMA_Init) then
+    //  exit;
 
     S_InitScaletable;
 
@@ -224,7 +224,7 @@ begin
   if (sound_started = 0) then
     exit;
 
-  SNDDMA_Shutdown;
+  //SNDDMA_Shutdown;
 
   sound_started := 0;
 
@@ -855,10 +855,10 @@ begin
   else
     clear := 0;
 
-  SNDDMA_BeginPainting();
+  //SNDDMA_BeginPainting();
   if (dma.buffer <> nil) then
     FillChar(dma.buffer^, dma.samples * dma.samplebits div 8, clear);
-  SNDDMA_Submit();
+  //SNDDMA_Submit();
 end;
 
 (*
@@ -1193,7 +1193,7 @@ begin
 
   // it is possible to miscount buffers if it has wrapped twice between
   // calls to S_Update.  Oh well.
-  samplepos := SNDDMA_GetDMAPos();
+  //samplepos := SNDDMA_GetDMAPos();
 
   if (samplepos < oldsamplepos) then
   begin
@@ -1219,13 +1219,13 @@ begin
   if (sound_started = 0) then
     exit;
 
-  SNDDMA_BeginPainting;
+  //SNDDMA_BeginPainting;
 
   if (dma.buffer = nil) then
     exit;
 
   // Updates DMA time
-  GetSoundtime();
+  //GetSoundtime();
 
   // check to make sure that we haven't overshot
   if (paintedtime < soundtime) then
@@ -1247,7 +1247,7 @@ begin
 
   S_PaintChannels(endtime);
 
-  SNDDMA_Submit();
+  //SNDDMA_Submit();
 end;
 
 (*

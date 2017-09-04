@@ -45,7 +45,7 @@ uses
   keys,
   cvar,
   vid_h,
-  snd_win,
+  //snd_win,
   in_win,
   cl_scrn,
   Common,
@@ -332,7 +332,7 @@ begin
   begin
     IN_Activate(False);
     CDAudio_Activate(False);
-    S_Activate(False);
+    //S_Activate(False);
 
     if win_noalttab.value <> 0 then
       WIN_EnableAltTab;
@@ -341,7 +341,7 @@ begin
   begin
     IN_Activate(True);
     CDAudio_Activate(True);
-    S_Activate(True);
+    //S_Activate(True);
 
     if win_noalttab.value <> 0 then
       WIN_DisableAltTab;
@@ -387,7 +387,7 @@ begin
       begin
         (*** this chunk of code theoretically only works under NT4 and Win98
              since this message doesn't exist under Win95 ***)
-        if (SmallInt(LongRec(wParam).Hi) > 0) then
+        if (SmallInt(LongRec(Integer(wParam)).Hi) > 0) then
         begin
           Key_Event(K_MWHEELUP, True, sys_msg_time);
           Key_Event(K_MWHEELUP, False, sys_msg_time);
@@ -431,8 +431,8 @@ begin
     WM_ACTIVATE:
       begin
         { KJB: Watch this for problems in fullscreen modes with Alt-tabbing }
-        fActive := LongRec(wParam).Lo;
-        fMinimized := LongRec(wParam).Hi;
+        fActive := LongRec(Integer(wParam)).Lo;
+        fMinimized := LongRec(Integer(wParam)).Hi;
 
         AppActivate((fActive <> WA_INACTIVE), (fMinimized <> 0));
 
@@ -447,9 +447,9 @@ begin
         if (vid_fullscreen.value = 0) then
         begin
           { horizontal position }
-          xPos := LongRec(lParam).Lo;
+          xPos := LongRec(Integer(lParam)).Lo;
           { vertical position }
-          yPos := LongRec(lParam).Hi;
+          yPos := LongRec(Integer(lParam)).Hi;
 
           r.left := 0;
           r.top := 0;
