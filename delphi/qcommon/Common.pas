@@ -2003,7 +2003,7 @@ begin
     NET_Init;
     Netchan_Init;
 
-    SV_Init;
+    SV_Init_;
     CL_Init;
 
     // add + commands from command line

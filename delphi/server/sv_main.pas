@@ -335,7 +335,7 @@ Only called at quake2.exe startup, not for each game
 ===============
 *)
 
-procedure SV_Init;
+procedure SV_Init_;
 
 (*
 ==================
@@ -1299,7 +1299,7 @@ Only called at quake2.exe startup, not for each game
 ===============
 *)
 
-procedure SV_Init();
+procedure SV_Init_();
 begin
   SV_InitOperatorCommands();
 
