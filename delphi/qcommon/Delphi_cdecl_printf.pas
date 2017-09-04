@@ -209,177 +209,183 @@ begin
 end;
 
 procedure PF_dprintf_cdecl(fmt: PChar); cdecl;
-asm
-// ASM statement produces push ebp
-// Stack now: ebp
-//        +4: return adr.
-//        +8: AFormat
-//       +12: First param.
-  PUSH    EAX                 // Store register
-  PUSH    EBX                 // Store register
-  PUSH    ECX                 // Store register
-  PUSH    EDI                 // Store register
-
-  MOV     EAX,EBP             // Get stack pointer
-  ADD     EAX,$0C             // Point to first variable parameter
-
-  PUSH    EAX                 // Store pointer to parameters
-  PUSH    DWORD PTR [EBP+$08]           // store format string
-  PUSH    $00000001           // Indicate SV_BroadCastPrintf
-  CALL    Proc_ZeroParamAndString       // use the VarArgs in delphi routine
-  ADD     ESP,$0C             // pop params off the stack
-
-  POP     EDI                 // restore register
-  POP     ECX                 // restore register
-  POP     EBX                 // restore register
-  POP     EAX                 // restore register
+begin
+//asm
+//// ASM statement produces push ebp
+//// Stack now: ebp
+////        +4: return adr.
+////        +8: AFormat
+////       +12: First param.
+//  PUSH    EAX                 // Store register
+//  PUSH    EBX                 // Store register
+//  PUSH    ECX                 // Store register
+//  PUSH    EDI                 // Store register
+//
+//  MOV     EAX,EBP             // Get stack pointer
+//  ADD     EAX,$0C             // Point to first variable parameter
+//
+//  PUSH    EAX                 // Store pointer to parameters
+//  PUSH    DWORD PTR [EBP+$08]           // store format string
+//  PUSH    $00000001           // Indicate SV_BroadCastPrintf
+//  CALL    Proc_ZeroParamAndString       // use the VarArgs in delphi routine
+//  ADD     ESP,$0C             // pop params off the stack
+//
+//  POP     EDI                 // restore register
+//  POP     ECX                 // restore register
+//  POP     EBX                 // restore register
+//  POP     EAX                 // restore register
 end;
 
 procedure PF_cprintf_cdecl(ent: edict_p; level: integer; fmt: PChar); cdecl;
-asm
-// ASM statement produces push ebp
-// Stack now: ebp
-//        +4: return adr.
-//        +8: ent
-//       +12: level
-//       +16: AFormat
-//       +20: First param.
-  PUSH    EAX                 // Store register
-  PUSH    EBX                 // Store register
-  PUSH    ECX                 // Store register
-  PUSH    EDI                 // Store register
-
-  MOV     EAX,EBP             // Get stack pointer
-  ADD     EAX,$14             // Point to first variable parameter
-
-  PUSH    EAX                 // Store pointer to parameters
-  PUSH    DWORD PTR [EBP+$10]           // store format string
-  PUSH    DWORD PTR [EBP+$0C]           // store level
-  PUSH    DWORD PTR [EBP+$08]           // store ent
-  PUSH    $00000001           // Indicate PF_cprintf
-  CALL    Proc_TwoParamAndString       // use the VarArgs in delphi routine
-  ADD     ESP,$14             // pop params off the stack
-
-  POP     EDI                 // restore register
-  POP     ECX                 // restore register
-  POP     EBX                 // restore register
-  POP     EAX                 // restore register
+begin
+//asm
+//// ASM statement produces push ebp
+//// Stack now: ebp
+////        +4: return adr.
+////        +8: ent
+////       +12: level
+////       +16: AFormat
+////       +20: First param.
+//  PUSH    EAX                 // Store register
+//  PUSH    EBX                 // Store register
+//  PUSH    ECX                 // Store register
+//  PUSH    EDI                 // Store register
+//
+//  MOV     EAX,EBP             // Get stack pointer
+//  ADD     EAX,$14             // Point to first variable parameter
+//
+//  PUSH    EAX                 // Store pointer to parameters
+//  PUSH    DWORD PTR [EBP+$10]           // store format string
+//  PUSH    DWORD PTR [EBP+$0C]           // store level
+//  PUSH    DWORD PTR [EBP+$08]           // store ent
+//  PUSH    $00000001           // Indicate PF_cprintf
+//  CALL    Proc_TwoParamAndString       // use the VarArgs in delphi routine
+//  ADD     ESP,$14             // pop params off the stack
+//
+//  POP     EDI                 // restore register
+//  POP     ECX                 // restore register
+//  POP     EBX                 // restore register
+//  POP     EAX                 // restore register
 end;
 
 procedure PF_centerprintf_cdecl(ent: edict_p; fmt: PChar); cdecl;
-asm
-// ASM statement produces push ebp
-// Stack now: ebp
-//        +4: return adr.
-//        +8: ent
-//       +12: AFormat
-//       +16: First param.
-  PUSH    EAX                 // Store register
-  PUSH    EBX                 // Store register
-  PUSH    ECX                 // Store register
-  PUSH    EDI                 // Store register
-
-  MOV     EAX,EBP             // Get stack pointer
-  ADD     EAX,$10             // Point to first variable parameter
-
-  PUSH    EAX                 // Store pointer to parameters
-  PUSH    DWORD PTR [EBP+$0C]           // store format string
-  PUSH    DWORD PTR [EBP+$08]           // store ent
-  PUSH    $00000004           // Indicate SV_BroadCastPrintf
-  CALL    Proc_OneParamAndString       // use the VarArgs in delphi routine
-  ADD     ESP,$10             // pop params off the stack
-
-  POP     EDI                 // restore register
-  POP     ECX                 // restore register
-  POP     EBX                 // restore register
-  POP     EAX                 // restore register
+begin
+//asm
+//// ASM statement produces push ebp
+//// Stack now: ebp
+////        +4: return adr.
+////        +8: ent
+////       +12: AFormat
+////       +16: First param.
+//  PUSH    EAX                 // Store register
+//  PUSH    EBX                 // Store register
+//  PUSH    ECX                 // Store register
+//  PUSH    EDI                 // Store register
+//
+//  MOV     EAX,EBP             // Get stack pointer
+//  ADD     EAX,$10             // Point to first variable parameter
+//
+//  PUSH    EAX                 // Store pointer to parameters
+//  PUSH    DWORD PTR [EBP+$0C]           // store format string
+//  PUSH    DWORD PTR [EBP+$08]           // store ent
+//  PUSH    $00000004           // Indicate SV_BroadCastPrintf
+//  CALL    Proc_OneParamAndString       // use the VarArgs in delphi routine
+//  ADD     ESP,$10             // pop params off the stack
+//
+//  POP     EDI                 // restore register
+//  POP     ECX                 // restore register
+//  POP     EBX                 // restore register
+//  POP     EAX                 // restore register
 end;
 
 procedure SV_BroadcastPrintf_cdecl(Level: Integer; AFormat: PChar); cdecl;
-asm
-// ASM statement produces push ebp
-// Stack now: ebp
-//        +4: return adr.
-//        +8: APrint_Level
-//       +12: AFormat
-//       +16: First param.
-  PUSH    EAX                 // Store register
-  PUSH    EBX                 // Store register
-  PUSH    ECX                 // Store register
-  PUSH    EDI                 // Store register
-
-  MOV     EAX,EBP             // Get stack pointer
-  ADD     EAX,$10             // Point to first variable parameter
-
-  PUSH    EAX                 // Store pointer to parameters
-  PUSH    DWORD PTR [EBP+$0C]           // store format string
-  PUSH    DWORD PTR [EBP+$08]           // store print_level
-  PUSH    $00000003           // Indicate SV_BroadCastPrintf
-  CALL    Proc_OneParamAndString       // use the VarArgs in delphi routine
-  ADD     ESP,$10             // pop params off the stack
-
-  POP     EDI                 // restore register
-  POP     ECX                 // restore register
-  POP     EBX                 // restore register
-  POP     EAX                 // restore register
+begin
+//asm
+//// ASM statement produces push ebp
+//// Stack now: ebp
+////        +4: return adr.
+////        +8: APrint_Level
+////       +12: AFormat
+////       +16: First param.
+//  PUSH    EAX                 // Store register
+//  PUSH    EBX                 // Store register
+//  PUSH    ECX                 // Store register
+//  PUSH    EDI                 // Store register
+//
+//  MOV     EAX,EBP             // Get stack pointer
+//  ADD     EAX,$10             // Point to first variable parameter
+//
+//  PUSH    EAX                 // Store pointer to parameters
+//  PUSH    DWORD PTR [EBP+$0C]           // store format string
+//  PUSH    DWORD PTR [EBP+$08]           // store print_level
+//  PUSH    $00000003           // Indicate SV_BroadCastPrintf
+//  CALL    Proc_OneParamAndString       // use the VarArgs in delphi routine
+//  ADD     ESP,$10             // pop params off the stack
+//
+//  POP     EDI                 // restore register
+//  POP     ECX                 // restore register
+//  POP     EBX                 // restore register
+//  POP     EAX                 // restore register
 end;
 
 procedure VID_Printf_cdecl(APrint_Level: Integer; AFormat: PChar); cdecl;
-asm
-// ASM statement produces push ebp
-// Stack now: ebp
-//        +4: return adr.
-//        +8: APrint_Level
-//       +12: AFormat
-//       +16: First param.
-  PUSH    EAX                 // Store register
-  PUSH    EBX                 // Store register
-  PUSH    ECX                 // Store register
-  PUSH    EDI                 // Store register
-
-  MOV     EAX,EBP             // Get stack pointer
-  ADD     EAX,$10             // Point to first variable parameter
-
-  PUSH    EAX                 // Store pointer to parameters
-  PUSH    DWORD PTR [EBP+$0C]           // store format string
-  PUSH    DWORD PTR [EBP+$08]           // store print_level
-  PUSH    $00000001           // Indicate VID_Printf
-  CALL    Proc_OneParamAndString       // use the VarArgs in delphi routine
-  ADD     ESP,$10             // pop params off the stack
-
-  POP     EDI                 // restore register
-  POP     ECX                 // restore register
-  POP     EBX                 // restore register
-  POP     EAX                 // restore register
+begin
+//asm
+//// ASM statement produces push ebp
+//// Stack now: ebp
+////        +4: return adr.
+////        +8: APrint_Level
+////       +12: AFormat
+////       +16: First param.
+//  PUSH    EAX                 // Store register
+//  PUSH    EBX                 // Store register
+//  PUSH    ECX                 // Store register
+//  PUSH    EDI                 // Store register
+//
+//  MOV     EAX,EBP             // Get stack pointer
+//  ADD     EAX,$10             // Point to first variable parameter
+//
+//  PUSH    EAX                 // Store pointer to parameters
+//  PUSH    DWORD PTR [EBP+$0C]           // store format string
+//  PUSH    DWORD PTR [EBP+$08]           // store print_level
+//  PUSH    $00000001           // Indicate VID_Printf
+//  CALL    Proc_OneParamAndString       // use the VarArgs in delphi routine
+//  ADD     ESP,$10             // pop params off the stack
+//
+//  POP     EDI                 // restore register
+//  POP     ECX                 // restore register
+//  POP     EBX                 // restore register
+//  POP     EAX                 // restore register
 end;
 
 procedure VID_Error_cdecl(AError_Level: Integer; AFormat: PChar); cdecl;
-asm
-// ASM statement produces push ebp
-// Stack now: ebp
-//        +4: return adr.
-//        +8: APrint_Level
-//       +12: AFormat
-//       +16: First param.
-  PUSH    EAX                 // Store register
-  PUSH    EBX                 // Store register
-  PUSH    ECX                 // Store register
-  PUSH    EDI                 // Store register
-
-  MOV     EAX,EBP             // Get stack pointer
-  ADD     EAX,$10             // Point to first variable parameter
-
-  PUSH    EAX                 // Store pointer to parameters
-  PUSH    DWORD PTR [EBP+$0C]           // store format string
-  PUSH    DWORD PTR [EBP+$08]           // store print_level
-  PUSH    $00000002           // Indicate VID_Error
-  CALL    Proc_OneParamAndString       // use the VarArgs in delphi routine
-  ADD     ESP,$10             // pop params off the stack
-
-  POP     EDI                 // restore register
-  POP     ECX                 // restore register
-  POP     EBX                 // restore register
-  POP     EAX                 // restore register
+begin
+//asm
+//// ASM statement produces push ebp
+//// Stack now: ebp
+////        +4: return adr.
+////        +8: APrint_Level
+////       +12: AFormat
+////       +16: First param.
+//  PUSH    EAX                 // Store register
+//  PUSH    EBX                 // Store register
+//  PUSH    ECX                 // Store register
+//  PUSH    EDI                 // Store register
+//
+//  MOV     EAX,EBP             // Get stack pointer
+//  ADD     EAX,$10             // Point to first variable parameter
+//
+//  PUSH    EAX                 // Store pointer to parameters
+//  PUSH    DWORD PTR [EBP+$0C]           // store format string
+//  PUSH    DWORD PTR [EBP+$08]           // store print_level
+//  PUSH    $00000002           // Indicate VID_Error
+//  CALL    Proc_OneParamAndString       // use the VarArgs in delphi routine
+//  ADD     ESP,$10             // pop params off the stack
+//
+//  POP     EDI                 // restore register
+//  POP     ECX                 // restore register
+//  POP     EBX                 // restore register
+//  POP     EAX                 // restore register
 end;
 
 end.
