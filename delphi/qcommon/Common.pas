@@ -1405,7 +1405,7 @@ begin
     buf.overflowed := True;
   end;
 
-  Result := Pointer(Integer(buf.data) + buf.cursize);
+  Result := Pointer(buf.data + buf.cursize);
   buf.cursize := buf.cursize + length;
 end;
 
