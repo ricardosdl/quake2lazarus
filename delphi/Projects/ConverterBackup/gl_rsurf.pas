@@ -29,8 +29,6 @@
 
 unit gl_rsurf;
 
-{$MODE Delphi}
-
 interface
 
 uses
@@ -38,7 +36,7 @@ uses
   ref,
   qfiles,
   gl_local,
-  dglOpenGL,
+  OpenGL,
   qgl_win,
   gl_model_h,
   gl_rmain;
@@ -63,7 +61,7 @@ implementation
 uses
   q_shwin,
   SysUtils,
-  Cpas,
+  CPas,
   DelphiTypes,
   qgl_h,
   gl_light,

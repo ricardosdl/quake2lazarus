@@ -32,8 +32,6 @@
 { 28.06.2003 Juha: Proofreaded}
 unit gl_mesh;
 
-{$MODE Delphi}
-
 interface
 
 uses
@@ -49,13 +47,13 @@ procedure R_DrawAliasModel(e: entity_p);
 const
   NUMVERTEXNORMALS = 162;
   r_avertexnormals: array[0..NUMVERTEXNORMALS - 1, 0..2] of Single = (
-{$I '.pasanorms.inc'}
+{$I 'anorms.inc'}
     );
 
   // Precalculated dot products for quantized angles.
   SHADEDOT_QUANT = 16;
   r_avertexnormal_dots: array[0..SHADEDOT_QUANT - 1, 0..255] of Single = (
-{$I '.pasanormtab.inc'}
+{$I 'anormtab.inc'}
     );
 
 var
@@ -69,10 +67,11 @@ var
   shadevector: vec3_t;
   shadelight: array[0..2] of Single;
 
-implCpastation
+implementation
 
 uses
-  CdglOpenGL sysutils,
+  CPas,
+  sysutils,
   OpenGL,
   gl_local,
   gl_light,

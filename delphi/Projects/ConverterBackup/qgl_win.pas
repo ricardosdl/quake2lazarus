@@ -41,18 +41,14 @@
 *}
 
 
-unit qgl_win;
-
-{$MODE Delphi}
-
-  //336 glProc
+unit qgl_win;  //336 glProc
 
 interface
 
 uses
-  LCLIntf, LCLType, LMessages,
+  Windows,
   SysUtils,
-  dglOpenGL,
+  OpenGL,
   q_shared,
   glw_win;
 

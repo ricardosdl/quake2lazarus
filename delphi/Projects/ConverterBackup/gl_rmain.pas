@@ -32,14 +32,12 @@
 {$I ..\Jedi.inc}
 unit gl_rmain;
 
-{$MODE Delphi}
-
 interface
 
 uses
   SysUtils,
   DelphiTypes,
-  dglOpenGL,
+  OpenGL,
   gl_model_h,
   gl_local,
   q_shared,
@@ -193,7 +191,7 @@ uses
   gl_draw,
   gl_mesh,
   Math,
-  Cpas;
+  CPas;
 
 procedure R_DrawBeam(e: entity_p); forward;
 

@@ -36,8 +36,6 @@
 
 unit qgl_h;
 
-{$MODE Delphi}
-
 interface
 
 uses
@@ -45,7 +43,7 @@ uses
   windows,
   {$endif}
   sysutils,
-  dglOpenGL,
+  OpenGL,
   q_shared;
 
 

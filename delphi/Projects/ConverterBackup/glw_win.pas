@@ -38,12 +38,10 @@
 { 28.06.2003 Juha: Proofreaded }
 unit glw_win;
 
-{$MODE Delphi}
-
 interface
 
 uses
-  LCLIntf, LCLType, LMessages;
+  Windows;
 
 
 type

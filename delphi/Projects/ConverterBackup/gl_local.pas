@@ -27,14 +27,12 @@
 
 unit gl_local;
 
-{$MODE Delphi}
-
 interface
 
 uses
   SysUtils,
   DelphiTypes,
-  dglOpenGL,
+  OpenGL,
   ref,
   q_shared,
   gl_local_add,

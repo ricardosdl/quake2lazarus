@@ -44,8 +44,6 @@
 
 unit glw_imp;
 
-{$MODE Delphi}
-
 interface
 
 uses
@@ -71,11 +69,11 @@ var
 implementation
 
 uses
-  Cpas,
-  LCLIntf, LCLType, LMessages,
+  CPas,
+  Windows,
   ref,
   gl_rmain,
-  dglOpenGL;
+  OpenGL;
 
 function GLimp_InitGL: qboolean; forward;
 

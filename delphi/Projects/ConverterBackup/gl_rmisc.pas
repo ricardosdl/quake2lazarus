@@ -38,8 +38,6 @@
 
 unit gl_rmisc;
 
-{$MODE Delphi}
-
 // r_misc.c
 
 interface
@@ -76,8 +74,8 @@ const
 implementation
 
 uses
-  dglOpenGL,
-  Cpas,
+  OpenGL,
+  CPas,
   SysUtils,
   q_shared,
   qgl_win,

@@ -51,6 +51,8 @@
 ==============================================================================*)
 unit CPas;
 
+{$MODE Delphi}
+
 interface
 
 //==============================================================================
@@ -525,7 +527,7 @@ begin
   begin
     if PChar(Result)[0] = l then
       Exit;
-    Inc(Integer(Result));
+    Inc(Result);
     Dec(len);
   end;
   Result := NULL;

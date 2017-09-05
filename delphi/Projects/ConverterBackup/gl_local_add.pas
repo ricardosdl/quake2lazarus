@@ -1,8 +1,6 @@
 {$ALIGN ON}{$MINENUMSIZE 4}
 unit gl_local_add;
 
-{$MODE Delphi}
-
 interface
 
 uses

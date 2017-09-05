@@ -57,8 +57,6 @@ BRUSH MODELS
 
 unit gl_model_h;
 
-{$MODE Delphi}
-
 interface
 
 uses

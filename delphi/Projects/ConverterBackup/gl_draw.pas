@@ -31,8 +31,6 @@
 { 28.06.2003 Juha: Proofreaded}
 unit gl_draw;
 
-{$MODE Delphi}
-
 interface
 
 uses
@@ -60,7 +58,7 @@ var
 implementation
 
 uses
-  dglOpenGL,
+  OpenGL,
   q_shared,
   qgl_win,
   gl_rmain,

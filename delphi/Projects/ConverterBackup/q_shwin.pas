@@ -44,12 +44,10 @@
 
 unit q_shwin;
 
-{$MODE Delphi}
-
 interface
 
 uses
-  LCLIntf, LCLType, LMessages,
+  Windows,
   q_shared;
 
 var
@@ -207,10 +205,10 @@ begin
   if not initialized then
   begin
     // Let base retain 16 bits of effectively random data.
-    base := GetTickCount { *Converted from TimeGetTime* }and $FFFF0000;
+    base := timeGetTime and $FFFF0000;
     initialized := True;
   end;
-  curtime := Integer(GetTickCount { *Converted from TimeGetTime* }) - base;
+  curtime := Integer(timeGetTime) - base;
   Result := curtime;
 end;
 

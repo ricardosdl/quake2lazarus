@@ -28,19 +28,17 @@
 { PROOFREADED: 28.06.2003 Juha }
 unit gl_image;
 
-{$MODE Delphi}
-
 interface
 
 {$I ..\Jedi.inc}
 
 uses
   DelphiTypes,
-  Cpas,
+  CPas,
   gl_local,
   gl_local_add,
   q_shared,
-  dglOpenGL;
+  OpenGL;
 
 procedure GL_EnableMultitexture(enable: qboolean);
 procedure GL_TexEnv(mode: TGLenum);

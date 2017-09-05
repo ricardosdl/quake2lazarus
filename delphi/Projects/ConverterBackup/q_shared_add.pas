@@ -43,8 +43,6 @@
 
 unit q_shared_add;
 
-{$MODE Delphi}
-
 interface
 
 const

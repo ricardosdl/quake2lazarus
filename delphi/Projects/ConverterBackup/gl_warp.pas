@@ -41,8 +41,6 @@
 
 unit gl_warp;
 
-{$MODE Delphi}
-
 interface
 
 uses
@@ -68,12 +66,12 @@ implementation
 
 uses
   DelphiTypes,
-  Cpas,
+  CPas,
   q_shwin,
   Ref,
   gl_local_add,
   gl_local,
-  dglOpenGL,
+  OpenGL,
   qgl_win,
   gl_model,
   gl_rmain,

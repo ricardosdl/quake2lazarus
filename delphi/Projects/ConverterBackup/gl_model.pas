@@ -26,8 +26,6 @@
 { 28.06.2003 Juha: Proofreaded }
 unit gl_model;
 
-{$MODE Delphi}
-
 interface
 
 uses
@@ -61,7 +59,7 @@ uses
   DelphiTypes,
   SysUtils,
   q_shwin,
-  Cpas,
+  CPas,
   qfiles,
   gl_rmain,
   gl_image,

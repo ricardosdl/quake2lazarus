@@ -36,16 +36,14 @@
 { 28.06.2003 Juha: Proofreaded }
 unit gl_light;
 
-{$MODE Delphi}
-
 interface
 
 uses
   DelphiTypes,
   SysUtils,
-  dglOpenGL,
+  OpenGL,
   q_shared,
-  Cpas,
+  CPas,
   ref,
   qgl_h,
   gl_model_h,
