@@ -116,7 +116,7 @@ end;
 
 procedure InitConProc(argc: Integer; argv: PPChar);
 var
-  threadAddr: Cardinal;
+  threadAddr: TThreadID;
   hFile: THandle;
   heventParent: THandle;
   heventChild: THandle;
@@ -175,7 +175,7 @@ begin
 
   //todo: Clootie: Watch do we need to adopt C way of thread sync
   // if (!_beginthreadex (NULL, 0, RequestProc, NULL, 0, &threadAddr))
-  if (BeginThread(nil, 0, RequestProc, nil, 0, threadAddr) <> 0) then
+  if (BeginThread(nil, 0, @RequestProc, nil, 0, threadAddr) <> 0) then
   begin
     CloseHandle(heventDone);
     Write('Couldn''t create QHOST thread'#10); // printf(...)
