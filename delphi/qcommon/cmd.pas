@@ -242,13 +242,13 @@ procedure Cbuf_AddText(text_: PChar);
 var
   l: Integer;
 begin
-  l := StrLen(text_);
+  l := SysUtils.strlen(text_);
   if (cmd_text.cursize + l) >= cmd_text.maxsize then
   begin
     Com_Printf('Cbuf_AddText: overflow'#10, []);
     Exit;
   end;
-  SZ_Write(cmd_text, text_, strlen(text_));
+  SZ_Write(cmd_text, text_, l);
 end;
 
 (*
