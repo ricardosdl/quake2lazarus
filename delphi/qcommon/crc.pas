@@ -118,7 +118,7 @@ begin
   while count <> 0 do
   begin
     Result := (Result shl 8) xor crctable[(Result shr 8) xor PByte(start)^];
-    Inc(Integer(start));
+    Inc(start);
     Dec(count);
   end;
 end;
