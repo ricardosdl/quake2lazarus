@@ -89,6 +89,7 @@
       <Unit12>
         <Filename Value="..\qcommon\qfiles.pas"/>
         <IsPartOfProject Value="True"/>
+        <UnitName Value="QFiles"/>
       </Unit12>
       <Unit13>
         <Filename Value="..\client\ref.pas"/>
@@ -140,26 +141,37 @@
     <Version Value="11"/>
     <PathDelim Value="\"/>
     <SearchPaths>
-      <IncludeFiles Value="..\jedi;..\qcommon;..\game;..\ref_gl;..\win32;..\client"/>
+      <IncludeFiles Value="..\jedi;..\qcommon;..\game;..\ref_gl;..\win32;..\client;..\server;$(ProjOutDir)"/>
       <Libraries Value="..\jedi"/>
-      <OtherUnitFiles Value="..\jedi;..\qcommon;..\game;..\ref_gl;..\win32;..\client"/>
+      <OtherUnitFiles Value="..\jedi;..\qcommon;..\game;..\ref_gl;..\win32;..\client;..\server"/>
       <UnitOutputDirectory Value="build"/>
       <ObjectPath Value="..\jedi"/>
     </SearchPaths>
     <Parsing>
       <SyntaxOptions>
-        <SyntaxMode Value="delphi"/>
+        <SyntaxMode Value="Delphi"/>
       </SyntaxOptions>
     </Parsing>
     <Linking>
       <Options>
-        <Win32>
-          <GraphicApplication Value="True"/>
-        </Win32>
+        <ExecutableType Value="Library"/>
       </Options>
     </Linking>
     <Other>
-      <CustomOptions Value="-dBorland -dVer150 -dDelphi7 -dCompiler6_Up -dPUREPASCAL"/>
+      <CustomOptions Value="-dBorland
+-dVer150
+-dDelphi7
+-dCompiler6_Up
+-dPUREPASCAL
+-dWIN32"/>
+      <OtherDefines Count="6">
+        <Define0 Value="Borland"/>
+        <Define1 Value="Ver150"/>
+        <Define2 Value="Delphi7"/>
+        <Define3 Value="Compiler6_Up"/>
+        <Define4 Value="PUREPASCAL"/>
+        <Define5 Value="WIN32"/>
+      </OtherDefines>
     </Other>
   </CompilerOptions>
   <Debugging>
