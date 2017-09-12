@@ -54,7 +54,8 @@ uses
   SysUtils,
   dglOpenGL,
   q_shared,
-  glw_win;
+  glw_win,
+  windows;
 
 procedure QGL_Shutdown;
 function QGL_Init (dllname : PChar) : qboolean;

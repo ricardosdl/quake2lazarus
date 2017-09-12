@@ -143,7 +143,7 @@
     <SearchPaths>
       <IncludeFiles Value="..\jedi;..\qcommon;..\game;..\ref_gl;..\win32;..\client;..\server;$(ProjOutDir)"/>
       <Libraries Value="..\jedi"/>
-      <OtherUnitFiles Value="..\jedi;..\qcommon;..\game;..\ref_gl;..\win32;..\client;..\server"/>
+      <OtherUnitFiles Value="..\jedi;..\qcommon;..\game;..\ref_gl;..\win32;..\client;..\server;..\..\..\dglOpenGL-master"/>
       <UnitOutputDirectory Value="build"/>
       <ObjectPath Value="..\jedi"/>
     </SearchPaths>

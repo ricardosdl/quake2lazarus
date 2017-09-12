@@ -52,7 +52,8 @@ uses
   q_shared,
   glw_win,
   qgl_win,
-  gl_local;
+  gl_local,
+  windows;
 
 //NB! none cdecl
 function GLimp_SetMode(var pwidth, pheight: integer;

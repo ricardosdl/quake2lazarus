@@ -43,7 +43,7 @@ unit glw_win;
 interface
 
 uses
-  LCLIntf, LCLType, LMessages;
+  LCLIntf, LCLType, LMessages, windows;
 
 
 type
