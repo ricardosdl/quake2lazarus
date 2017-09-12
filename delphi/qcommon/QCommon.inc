@@ -38,7 +38,7 @@
 {    Updated, included CModel.pas.                                           }
 {----------------------------------------------------------------------------}
 
-Cmd, CModel, Common, CRC, CVar, Files, md4, net_chan, PMoveUnit, QFiles
+Cmd, CModel, Common, CRC2, CVar, Files, md4, net_chan, PMoveUnit, QFiles
 {$IFDEF WIN32}
 , net_wins{, sys_win} //Clootie: sys_win still uncompilable
 {$ENDIF}

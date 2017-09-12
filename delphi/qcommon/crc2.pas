@@ -38,7 +38,7 @@
 {$I ../Jedi.inc}
 
 
-unit crc;
+unit crc2;
 
 {$MODE Delphi}
 
