@@ -487,7 +487,7 @@ implementation
 
 uses
   Files,
-  crc,
+  crc2,
   cmd,
   net_chan,
   cl_main,

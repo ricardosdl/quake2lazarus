@@ -50,7 +50,7 @@ interface
 
 uses
   LCLIntf, LCLType, LMessages,
-  q_shared;
+  q_shared, windows;
 
 var
   hunkcount: Integer;
@@ -97,6 +97,7 @@ end;
 {$ENDIF}
 
 {$DEFINE VIRTUAL_ALLOC}
+{$UNDEF VIRTUAL_ALLOC}
 
 {$IFDEF DEF_FALSE}
 {$UNDEF DEF_FALSE}
