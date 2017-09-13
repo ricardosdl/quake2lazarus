@@ -284,7 +284,7 @@ begin
 
   if (i = NUM_GL_MODES) then
   begin
-    ri.Con_Printf(PRINT_ALL, 'bad filter name'#10, []);
+    ri.Con_Printf(PRINT_ALL, 'bad filter name'#10);
     Exit;
   end;
 
@@ -326,7 +326,7 @@ begin
 
   if (i = NUM_GL_ALPHA_MODES) then
   begin
-    ri.Con_Printf(PRINT_ALL, 'bad alpha texture mode name'#10, []);
+    ri.Con_Printf(PRINT_ALL, 'bad alpha texture mode name'#10);
     Exit;
   end;
 
@@ -352,7 +352,7 @@ begin
 
   if (i = NUM_GL_SOLID_MODES) then
   begin
-    ri.Con_Printf(PRINT_ALL, 'bad solid texture mode name'#10, []);
+    ri.Con_Printf(PRINT_ALL, 'bad solid texture mode name'#10);
     Exit;
   end;
 
@@ -376,7 +376,7 @@ const // Changed to Boolean since integer(true) = -1
 label
   Continue_;
 begin
-  ri.Con_Printf(PRINT_ALL, '------------------'#10, []);
+  ri.Con_Printf(PRINT_ALL, '------------------'#10);
   texels := 0;
 
   i := 0;
@@ -387,12 +387,12 @@ begin
       goto Continue_;
     Inc(texels, image.upload_width * image.upload_height);
     case (image.type_) of
-      it_skin: ri.Con_Printf(PRINT_ALL, 'M', []);
-      it_sprite: ri.Con_Printf(PRINT_ALL, 'S', []);
-      it_wall: ri.Con_Printf(PRINT_ALL, 'W', []);
-      it_pic: ri.Con_Printf(PRINT_ALL, 'P', []);
+      it_skin: ri.Con_Printf(PRINT_ALL, 'M');
+      it_sprite: ri.Con_Printf(PRINT_ALL, 'S');
+      it_wall: ri.Con_Printf(PRINT_ALL, 'W');
+      it_pic: ri.Con_Printf(PRINT_ALL, 'P');
     else
-      ri.Con_Printf(PRINT_ALL, ' ', []);
+      ri.Con_Printf(PRINT_ALL, ' ');
     end;
 
     ri.Con_Printf(PRINT_ALL, ' %3i %3i %s: %s'#10,
@@ -401,7 +401,8 @@ begin
     Inc(i);
     Inc(image);
   end;
-  ri.Con_Printf(PRINT_ALL, 'Total texel count (not counting mipmaps): %i'#10, [texels]);
+  //ri.Con_Printf(PRINT_ALL, 'Total texel count (not counting mipmaps): %i'#10, [texels]);
+  ri.Con_Printf(PRINT_ALL, 'Total texel count (not counting mipmaps): %i'#10);
 end;
 
 {*
@@ -1657,7 +1658,7 @@ begin
 
   LoadPCX('pics/colormap.pcx', @pic, @pal, @width, @height);
   if (pal = nil) then
-    ri.Sys_Error(ERR_FATAL, 'Couldn''t load pics/colormap.pcx', []);
+    ri.Sys_Error(ERR_FATAL, 'Couldn''t load pics/colormap.pcx');
 
   for i := 0 to 255 do
   begin
@@ -1705,7 +1706,7 @@ begin
   begin
     ri.FS_LoadFile('pics/16to8.dat', @gl_state.d_16to8table);
     if (gl_state.d_16to8table = nil) then
-      ri.Sys_Error(ERR_FATAL, 'Couldn''t load pics/16to8.pcx', []);
+      ri.Sys_Error(ERR_FATAL, 'Couldn''t load pics/16to8.pcx');
   end;
 
   if (gl_config.renderer and (GL_RENDERER_VOODOO or GL_RENDERER_VOODOO2)) <> 0 then

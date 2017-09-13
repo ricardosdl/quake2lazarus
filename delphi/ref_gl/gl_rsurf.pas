@@ -497,7 +497,8 @@ begin
 
              // try uploading the block now
         if (not LM_AllocBlock(smax, tmax, surf.dlight_s, surf.dlight_t)) then
-          ri.Sys_Error(ERR_FATAL, 'Consecutive calls to LM_AllocBlock(%d,%d) failed (dynamic)'#10, [smax, tmax]);
+          //ri.Sys_Error(ERR_FATAL, 'Consecutive calls to LM_AllocBlock(%d,%d) failed (dynamic)'#10, [smax, tmax]);
+          ri.Sys_Error(ERR_FATAL, 'Consecutive calls to LM_AllocBlock(%d,%d) failed (dynamic)'#10);
 
         base := @gl_lms.lightmap_buffer;
         Inc(base, (surf.dlight_t * BLOCK_WIDTH + surf.dlight_s) * LIGHTMAP_BYTES);
@@ -1526,7 +1527,7 @@ begin
       @gl_lms.lightmap_buffer);
     Inc(gl_lms.current_lightmap_texture);
     if (gl_lms.current_lightmap_texture = MAX_LIGHTMAPS) then
-      ri.Sys_Error(ERR_DROP, 'LM_UploadBlock() - MAX_LIGHTMAPS exceeded'#10, []);
+      ri.Sys_Error(ERR_DROP, 'LM_UploadBlock() - MAX_LIGHTMAPS exceeded'#10);
   end;
 end; //procedure
 
@@ -1674,7 +1675,8 @@ begin
     LM_UploadBlock(false);
     LM_InitBlock();
     if (not LM_AllocBlock(smax, tmax, surf^.light_s, surf^.light_t)) then
-      ri.Sys_Error(ERR_FATAL, 'Consecutive calls to LM_AllocBlock(%d,%d) failed'#10, [smax, tmax]);
+      //ri.Sys_Error(ERR_FATAL, 'Consecutive calls to LM_AllocBlock(%d,%d) failed'#10, [smax, tmax]);
+      ri.Sys_Error(ERR_FATAL, 'Consecutive calls to LM_AllocBlock(%d,%d) failed'#10);
   end;
 
   surf^.lightmaptexturenum := gl_lms.current_lightmap_texture;

@@ -205,7 +205,7 @@ label
   continue_;
 begin
   total := 0;
-  ri.Con_Printf(PRINT_ALL, 'Loaded models:'#10, []);
+  ri.Con_Printf(PRINT_ALL, 'Loaded models:'#10);
   i := 0;
   _mod := @mod_known;
   while (i < mod_numknown) do
@@ -217,7 +217,8 @@ begin
     continue_:
     Inc(_mod);
   end;
-  ri.Con_Printf(PRINT_ALL, 'Total resident: %i'#10, [total]);
+  //ri.Con_Printf(PRINT_ALL, 'Total resident: %i'#10, [total]);
+  ri.Con_Printf(PRINT_ALL, 'Total resident: %i'#10);
 end;
 
 {*
@@ -248,7 +249,7 @@ label
   continue_;
 begin
   if (name[0] = #0) then
-    ri.Sys_Error(ERR_DROP, 'Mod_ForName: NULL name', []);
+    ri.Sys_Error(ERR_DROP, 'Mod_ForName: NULL name');
 
   //
   // inline models are grabbed only from worldmodel
@@ -257,7 +258,7 @@ begin
   begin
     i := atoi(name + 1);
     if (i < 1) or (r_worldmodel = nil) or (i >= r_worldmodel^.numsubmodels) then
-      ri.Sys_Error(ERR_DROP, 'bad inline model number', []);
+      ri.Sys_Error(ERR_DROP, 'bad inline model number');
     Result := @mod_inline[i];
     exit;
   end;
@@ -694,7 +695,7 @@ begin
 
     ti := LittleShort(_in.texinfo);
     if (ti < 0) or (ti >= loadmodel.numtexinfo) then
-      ri.Sys_Error(ERR_DROP, 'MOD_LoadBmodel: bad texinfo number', []);
+      ri.Sys_Error(ERR_DROP, 'MOD_LoadBmodel: bad texinfo number');
     _out.texinfo := Pointer(Cardinal(loadmodel.texinfo) + ti * sizeof(mTexinfo_t));
 
     CalcSurfaceExtents(_out);
@@ -882,8 +883,8 @@ begin
     if j >= loadmodel^.numsurfaces then
       ri.Sys_Error(ERR_DROP, 'Mod_ParseMarksurfaces: bad surface number');
     out_^ := @(msurface_arrp(loadmodel^.surfaces)^[j]);
-    inc(Integer(in_), SizeOf(in_^));
-    inc(Integer(out_), SizeOf(out_^));
+    inc(in_, SizeOf(in_^));
+    inc(out_, SizeOf(out_^));
   end;
 end;
 
@@ -971,7 +972,7 @@ var
 begin
   loadmodel._type := mod_brush;
   if (loadmodel <> @mod_known) then
-    ri.Sys_Error(ERR_DROP, 'Loaded a brush model after the world', []);
+    ri.Sys_Error(ERR_DROP, 'Loaded a brush model after the world');
 
   header := buffer;
 
@@ -1014,7 +1015,8 @@ begin
     starmod.nummodelsurfaces := bm.numfaces;
     starmod.firstnode := bm.headnode;
     if (starmod.firstnode >= loadmodel.numnodes) then
-      ri.Sys_Error(ERR_DROP, 'Inline model %i has bad firstnode', [i]);
+      //ri.Sys_Error(ERR_DROP, 'Inline model %i has bad firstnode', [i]);
+      ri.Sys_Error(ERR_DROP, 'Inline model %i has bad firstnode');
 
     VectorCopy(bm.maxs, starmod.maxs);
     VectorCopy(bm.mins, starmod.mins);

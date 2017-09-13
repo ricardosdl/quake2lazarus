@@ -50,7 +50,7 @@ uses
   gl_model_h;
 
 procedure GL_SubdivideSurface(fa: msurface_p);
-procedure R_SetSky(name: PChar; rotate: Single; axis: vec3_p); cdecl
+procedure R_SetSky(name: PChar; rotate: Single; axis: vec3_p); cdecl;
 procedure R_DrawSkyBox;
 procedure R_ClearSkyBox;
 procedure R_AddSkySurface(fa: msurface_p);
@@ -141,7 +141,8 @@ label
   continue_;
 begin
   if (numverts > 60) then
-    ri.Sys_Error(ERR_DROP, 'numverts = %i', [numverts]);
+    //ri.Sys_Error(ERR_DROP, 'numverts = %i', [numverts]);
+    ri.Sys_Error(ERR_DROP, 'numverts = %i');
 
   BoundPoly(numverts, verts, mins, maxs);
 
@@ -502,7 +503,7 @@ label
   continue_;
 begin
   if (nump > MAX_CLIP_VERTS - 2) then
-    ri.Sys_Error(ERR_DROP, 'ClipSkyPolygon: MAX_CLIP_VERTS', []);
+    ri.Sys_Error(ERR_DROP, 'ClipSkyPolygon: MAX_CLIP_VERTS');
   if (stage = 6) then
   begin
     // fully clipped, so draw it
