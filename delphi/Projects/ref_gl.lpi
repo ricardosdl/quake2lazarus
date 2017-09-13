@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CONFIG>
   <ProjectOptions>
-    <Version Value="9"/>
+    <Version Value="10"/>
     <PathDelim Value="\"/>
     <General>
       <Flags>
@@ -143,7 +143,7 @@
     <SearchPaths>
       <IncludeFiles Value="..\jedi;..\qcommon;..\game;..\ref_gl;..\win32;..\client;..\server;$(ProjOutDir)"/>
       <Libraries Value="..\jedi"/>
-      <OtherUnitFiles Value="..\jedi;..\qcommon;..\game;..\ref_gl;..\win32;..\client;..\server;..\..\..\dglOpenGL-master"/>
+      <OtherUnitFiles Value="..\jedi;..\qcommon;..\game;..\ref_gl;..\win32;..\client;..\server;..\..\..\dglOpenGL"/>
       <UnitOutputDirectory Value="build"/>
       <ObjectPath Value="..\jedi"/>
     </SearchPaths>
@@ -164,14 +164,6 @@
 -dCompiler6_Up
 -dPUREPASCAL
 -dWIN32"/>
-      <OtherDefines Count="6">
-        <Define0 Value="Borland"/>
-        <Define1 Value="Ver150"/>
-        <Define2 Value="Delphi7"/>
-        <Define3 Value="Compiler6_Up"/>
-        <Define4 Value="PUREPASCAL"/>
-        <Define5 Value="WIN32"/>
-      </OtherDefines>
     </Other>
   </CompilerOptions>
   <Debugging>
