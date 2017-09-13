@@ -1168,7 +1168,7 @@ end;
 R_Init
 ===============
 *}
-function R_Init(hinstance: HINST; hWnd: pointer): integer; cdecl;
+function R_Init(hinstance: Cardinal; hWnd: pointer): integer; cdecl;
 var
   renderer_buffer,
   vendor_buffer: array[0..1000 - 1] of Char;

@@ -76,7 +76,8 @@ uses
   LCLIntf, LCLType, LMessages,
   ref,
   gl_rmain,
-  dglOpenGL;
+  dglOpenGL,
+  sysutils;
 
 function GLimp_InitGL: qboolean; forward;
 
@@ -129,7 +130,7 @@ begin
   wc.lpszMenuName := nil;
   wc.lpszClassName := WINDOW_CLASS_NAME;
 
-  if (RegisterClass(wc) = 0) then
+  if (RegisterClass(@wc) = 0) then
     ri.Sys_Error(ERR_FATAL, 'Couldn''t register window class');
 
   if (fullscreen) then
@@ -215,7 +216,8 @@ const
 begin
   ri.Con_Printf(PRINT_ALL, 'Initializing OpenGL display'#10);
 
-  ri.Con_Printf(PRINT_ALL, '...setting mode %d:', [mode]);
+  //ri.Con_Printf(PRINT_ALL, '...setting mode %d:', [mode]);
+  ri.Con_Printf(PRINT_ALL, '...setting mode %d:');
 
   if (not ri.Vid_GetModeInfo(@width, @height, mode)) then
   begin
@@ -378,7 +380,7 @@ begin
   if (glw_state. {h} DC <> 0) then
   begin
     if (ReleaseDC(glw_state. {h} Wnd, glw_state. {h} DC) = 0) then
-      ri.Con_Printf(PRINT_ALL, 'ref_gl::R_Shutdown() - ReleaseDC failed'#10, []); //Y:
+      ri.Con_Printf(PRINT_ALL, 'ref_gl::R_Shutdown() - ReleaseDC failed'#10); //Y:
     glw_state. {h} DC := 0;
   end;
   if (glw_state. {h} Wnd <> 0) then
@@ -440,7 +442,7 @@ begin
   end
   else
   begin
-    ri.Con_Printf(PRINT_ALL, 'GLimp_Init() - GetVersionEx failed'#10, []); //Y:
+    ri.Con_Printf(PRINT_ALL, 'GLimp_Init() - GetVersionEx failed'#10); //Y:
     Result := false;
     Exit;
   end;
@@ -550,7 +552,7 @@ begin
   glw_state. {h} DC := GetDC(glw_state. {h} Wnd);
   if (glw_state. {h} DC = 0) then
   begin
-    ri.Con_Printf(PRINT_ALL, 'GLimp_Init() - GetDC failed'#10, []); //Y:
+    ri.Con_Printf(PRINT_ALL, 'GLimp_Init() - GetDC failed'#10); //Y:
     Result := false;
     Exit;
   end;
@@ -560,13 +562,13 @@ begin
     pixelformat := qwglChoosePixelFormat(glw_state. {h} DC, {&}@pfd);
     if (pixelformat = 0) then
     begin
-      ri.Con_Printf(PRINT_ALL, 'GLimp_Init() - qwglChoosePixelFormat failed'#10, []); //Y:
+      ri.Con_Printf(PRINT_ALL, 'GLimp_Init() - qwglChoosePixelFormat failed'#10); //Y:
       Result := false;
       Exit;
     end;
     if (qwglSetPixelFormat(glw_state. {h} DC, pixelformat, {&}@pfd) = FALSE) then
     begin
-      ri.Con_Printf(PRINT_ALL, 'GLimp_Init() - qwglSetPixelFormat failed'#10, []); //Y
+      ri.Con_Printf(PRINT_ALL, 'GLimp_Init() - qwglSetPixelFormat failed'#10); //Y
       Result := false;
       Exit;
     end;
@@ -577,13 +579,13 @@ begin
     pixelformat := ChoosePixelFormat(glw_state. {h} DC, {&}@pfd);
     if (pixelformat = 0) then
     begin
-      ri.Con_Printf(PRINT_ALL, 'GLimp_Init() - ChoosePixelFormat failed'#10, []); //Y:
+      ri.Con_Printf(PRINT_ALL, 'GLimp_Init() - ChoosePixelFormat failed'#10); //Y:
       Result := false;
       Exit;
     end;
     if (SetPixelFormat(glw_state. {h} DC, pixelformat, {&}@pfd) = FALSE) then
     begin
-      ri.Con_Printf(PRINT_ALL, 'GLimp_Init() - SetPixelFormat failed'#10, []); //Y:
+      ri.Con_Printf(PRINT_ALL, 'GLimp_Init() - SetPixelFormat failed'#10); //Y:
       Result := false;
       Exit;
     end;
@@ -606,7 +608,7 @@ begin
   *}
   if ((pfd.dwFlags and PFD_STEREO) = 0) and (stereo.value <> 0) then
   begin
-    ri.Con_Printf(PRINT_ALL, '...failed to select stereo pixel format'#10, []); //Y:
+    ri.Con_Printf(PRINT_ALL, '...failed to select stereo pixel format'#10); //Y:
     ri.Cvar_SetValue('cl_stereo', 0);
     gl_state.stereo_enabled := false;
   end;
@@ -618,19 +620,19 @@ begin
   glw_state. {h} GLRC := qwglCreateContext(glw_state. {h} DC);
   if (glw_state. {h} GLRC = 0) then
   begin
-    ri.Con_Printf(PRINT_ALL, 'GLimp_Init() - qwglCreateContext failed'#10, []); //Y:
+    ri.Con_Printf(PRINT_ALL, 'GLimp_Init() - qwglCreateContext failed'#10); //Y:
     goto fail;
   end;
 
   if not qwglMakeCurrent(glw_state. {h} DC, glw_state. {h} GLRC) then
   begin
-    ri.Con_Printf(PRINT_ALL, 'GLimp_Init() - qwglMakeCurrent failed'#10, []); //Y:
+    ri.Con_Printf(PRINT_ALL, 'GLimp_Init() - qwglMakeCurrent failed'#10); //Y:
     goto fail;
   end;
 
   if not VerifyDriver() then
   begin
-    ri.Con_Printf(PRINT_ALL, 'GLimp_Init() - no hardware acceleration detected'#10, []); //Y:
+    ri.Con_Printf(PRINT_ALL, 'GLimp_Init() - no hardware acceleration detected'#10); //Y:
     goto fail;
   end;
 
@@ -668,7 +670,7 @@ begin
     if (gl_bitdepth.value <> 0) and (not glw_state.allowdisplaydepthchange) then
     begin
       ri.Cvar_SetValue('gl_bitdepth', 0);
-      ri.Con_Printf(PRINT_ALL, 'gl_bitdepth requires Win95 OSR2.x or WinNT 4.x'#10, []); //Y:
+      ri.Con_Printf(PRINT_ALL, 'gl_bitdepth requires Win95 OSR2.x or WinNT 4.x'#10); //Y:
     end;
     gl_bitdepth.modified := false;
   end;
@@ -699,7 +701,7 @@ begin
 
   if (strcmp(gl_drawbuffer^.string_, 'GL_BACK') = 0) then
     if not qwglSwapBuffers(glw_state. {h} DC) then
-      ri.Sys_Error(ERR_FATAL, 'GLimp_EndFrame() - SwapBuffers() failed!'#10, []);
+      ri.Sys_Error(ERR_FATAL, 'GLimp_EndFrame() - SwapBuffers() failed!'#10);
 end;
 
 {*
