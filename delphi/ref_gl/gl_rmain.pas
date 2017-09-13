@@ -193,7 +193,8 @@ uses
   gl_draw,
   gl_mesh,
   Math,
-  Cpas;
+  Cpas,
+  windows;
 
 procedure R_DrawBeam(e: entity_p); forward;
 
@@ -420,7 +421,7 @@ begin
         mod_brush: R_DrawBrushModel(currententity);
         mod_sprite: R_DrawSpriteModel(currententity);
       else
-        ri.Sys_Error(ERR_DROP, 'Bad modeltype', []);
+        ri.Sys_Error(ERR_DROP, 'Bad modeltype');
       end;
     end;
   end;
@@ -450,7 +451,7 @@ begin
         mod_brush: R_DrawBrushModel(currententity);
         mod_sprite: R_DrawSpriteModel(currententity);
       else
-        ri.Sys_Error(ERR_DROP, 'Bad modeltype', []);
+        ri.Sys_Error(ERR_DROP, 'Bad modeltype');
       end;
     end;
   end;
@@ -878,7 +879,7 @@ begin
   r_newrefdef := fd^;
 
   if (r_worldmodel = nil) and ((r_newrefdef.rdflags and RDF_NOWORLDMODEL) = 0) then
-    ri.Sys_Error(ERR_DROP, 'R_RenderView: NULL worldmodel', []);
+    ri.Sys_Error(ERR_DROP, 'R_RenderView: NULL worldmodel');
 
   if (r_speeds.value <> 0) then
   begin
@@ -1115,7 +1116,7 @@ var
 begin
   if (vid_fullscreen.modified) and (not gl_config.allow_cds) then
   begin
-    ri.Con_Printf(PRINT_ALL, 'R_SetMode() - CDS not allowed with this driver'#10, []);
+    ri.Con_Printf(PRINT_ALL, 'R_SetMode() - CDS not allowed with this driver'#10);
     ri.Cvar_SetValue('vid_fullscreen', Integer(not Boolean(Trunc(vid_fullscreen.value))));
     vid_fullscreen.modified := false;
   end;
@@ -1134,7 +1135,7 @@ begin
     begin
       ri.Cvar_SetValue('vid_fullscreen', 0);
       vid_fullscreen.modified := false;
-      ri.Con_Printf(PRINT_ALL, 'ref_gl::R_SetMode() - fullscreen unavailable in this mode'#10, []);
+      ri.Con_Printf(PRINT_ALL, 'ref_gl::R_SetMode() - fullscreen unavailable in this mode'#10);
       err := GLimp_SetMode(vid.width, vid.height, Trunc(gl_mode.value), false); 
       if (err = rserr_ok) then
       begin
@@ -1147,14 +1148,14 @@ begin
       begin
         ri.Cvar_SetValue('gl_mode', gl_state.prev_mode);
         gl_mode.modified := false;
-        ri.Con_Printf(PRINT_ALL, 'ref_gl::R_SetMode() - invalid mode'#10, []);
+        ri.Con_Printf(PRINT_ALL, 'ref_gl::R_SetMode() - invalid mode'#10);
       end;
 
     // try setting it back to something safe
     err := GLimp_SetMode(vid.width, vid.height, gl_state.prev_mode, false);
     if (err <> rserr_ok) then
     begin
-      ri.Con_Printf(PRINT_ALL, 'ref_gl::R_SetMode() - could not revert to safe mode'#10, []);
+      ri.Con_Printf(PRINT_ALL, 'ref_gl::R_SetMode() - could not revert to safe mode'#10);
       Result := false;
       Exit;
     end;
@@ -1178,7 +1179,7 @@ begin
   for j := 0 to 255 do
     r_turbsin[j] := r_turbsin[j] * 0.5;
 
-  ri.Con_Printf(PRINT_ALL, 'ref_gl version: ' + REF_VERSION + #10, []);
+  ri.Con_Printf(PRINT_ALL, 'ref_gl version: ' + REF_VERSION + #10);
 
   Draw_GetPalette();
 
@@ -1208,7 +1209,7 @@ begin
   if not R_SetMode() then
   begin
     QGL_Shutdown();
-    ri.Con_Printf(PRINT_ALL, 'ref_gl::R_Init() - could not R_SetMode()'#10, []);
+    ri.Con_Printf(PRINT_ALL, 'ref_gl::R_Init() - could not R_SetMode()'#10);
     Result := -1;
     Exit;
   end;
@@ -1273,7 +1274,7 @@ begin
     if (gl_config.renderer = GL_RENDERER_PERMEDIA2) then
     begin
       ri.Cvar_Set('gl_monolightmap', 'A');
-      ri.Con_Printf(PRINT_ALL, '...using gl_monolightmap ''a'''#10, []);
+      ri.Con_Printf(PRINT_ALL, '...using gl_monolightmap ''a'''#10);
     end
     else
       if (gl_config.renderer and GL_RENDERER_POWERVR) <> 0 then
@@ -1304,9 +1305,9 @@ begin
     gl_config.allow_cds := true;
 
   if (gl_config.allow_cds) then
-    ri.Con_Printf(PRINT_ALL, '...allowing CDS'#10, [])
+    ri.Con_Printf(PRINT_ALL, '...allowing CDS'#10)
   else
-    ri.Con_Printf(PRINT_ALL, '...disabling CDS'#10, []);
+    ri.Con_Printf(PRINT_ALL, '...disabling CDS'#10);
 
   {*
    ** grab extensions
@@ -1314,21 +1315,21 @@ begin
   if (CPas.strstr(gl_config.extensions_string, 'GL_EXT_compiled_vertex_array') <> nil) or
     (CPas.strstr(gl_config.extensions_string, 'GL_SGI_compiled_vertex_array') <> nil) then
   begin
-    ri.Con_Printf(PRINT_ALL, '...enabling GL_EXT_compiled_vertex_array'#10, []);
+    ri.Con_Printf(PRINT_ALL, '...enabling GL_EXT_compiled_vertex_array'#10);
     qglLockArraysEXT := qwglGetProcAddress('glLockArraysEXT');
     qglUnlockArraysEXT := qwglGetProcAddress('glUnlockArraysEXT');
   end
   else
-    ri.Con_Printf(PRINT_ALL, '...GL_EXT_compiled_vertex_array not found'#10, []);
+    ri.Con_Printf(PRINT_ALL, '...GL_EXT_compiled_vertex_array not found'#10);
 
 {$IFDEF WIN32}
   if (CPas.strstr(gl_config.extensions_string, 'WGL_EXT_swap_control') <> nil) then
   begin
     qwglSwapIntervalEXT := qwglGetProcAddress('wglSwapIntervalEXT');
-    ri.Con_Printf(PRINT_ALL, '...enabling WGL_EXT_swap_control'#10, []);
+    ri.Con_Printf(PRINT_ALL, '...enabling WGL_EXT_swap_control'#10);
   end
   else
-    ri.Con_Printf(PRINT_ALL, '...WGL_EXT_swap_control not found'#10, []);
+    ri.Con_Printf(PRINT_ALL, '...WGL_EXT_swap_control not found'#10);
 {$ENDIF}
 
   if (CPas.strstr(gl_config.extensions_string, 'GL_EXT_point_parameters') <> nil) then
@@ -1337,13 +1338,13 @@ begin
     begin
       qglPointParameterfEXT := qwglGetProcAddress('glPointParameterfEXT');
       qglPointParameterfvEXT := qwglGetProcAddress('glPointParameterfvEXT');
-      ri.Con_Printf(PRINT_ALL, '...using GL_EXT_point_parameters'#10, []);
+      ri.Con_Printf(PRINT_ALL, '...using GL_EXT_point_parameters'#10);
     end
     else
-      ri.Con_Printf(PRINT_ALL, '...ignoring GL_EXT_point_parameters'#10, []);
+      ri.Con_Printf(PRINT_ALL, '...ignoring GL_EXT_point_parameters'#10);
   end
   else
-    ri.Con_Printf(PRINT_ALL, '...GL_EXT_point_parameters not found'#10, []);
+    ri.Con_Printf(PRINT_ALL, '...GL_EXT_point_parameters not found'#10);
 
   if (not assigned(qglColorTableEXT)) and
     (CPas.strstr(gl_config.extensions_string, 'GL_EXT_paletted_texture') <> nil) and
@@ -1351,14 +1352,14 @@ begin
   begin
     if (gl_ext_palettedtexture.value <> 0) then
     begin
-      ri.Con_Printf(PRINT_ALL, '...using GL_EXT_shared_texture_palette'#10, []);
+      ri.Con_Printf(PRINT_ALL, '...using GL_EXT_shared_texture_palette'#10);
       qglColorTableEXT := qwglGetProcAddress('glColorTableEXT');
     end
     else
-      ri.Con_Printf(PRINT_ALL, '...ignoring GL_EXT_shared_texture_palette'#10, []);
+      ri.Con_Printf(PRINT_ALL, '...ignoring GL_EXT_shared_texture_palette'#10);
   end
   else
-    ri.Con_Printf(PRINT_ALL, '...GL_EXT_shared_texture_palette not found'#10, []);
+    ri.Con_Printf(PRINT_ALL, '...GL_EXT_shared_texture_palette not found'#10);
 
   if (strstr(gl_config.extensions_string, 'GL_ARB_multitexture') <> nil) then
   begin
@@ -1390,17 +1391,17 @@ begin
     else
       if (gl_ext_multitexture.value <> 0) then
       begin
-        ri.Con_Printf(PRINT_ALL, '...using GL_SGIS_multitexture'#10, []);
+        ri.Con_Printf(PRINT_ALL, '...using GL_SGIS_multitexture'#10);
         qglMTexCoord2fSGIS := qwglGetProcAddress('glMTexCoord2fSGIS');
         qglSelectTextureSGIS := qwglGetProcAddress('glSelectTextureSGIS');
         GL_TEXTURE0 := GL_TEXTURE0_SGIS;
         GL_TEXTURE1 := GL_TEXTURE1_SGIS;
       end
       else
-        ri.Con_Printf(PRINT_ALL, '...ignoring GL_SGIS_multitexture'#10, []);
+        ri.Con_Printf(PRINT_ALL, '...ignoring GL_SGIS_multitexture'#10);
   end
   else
-    ri.Con_Printf(PRINT_ALL, '...GL_SGIS_multitexture not found'#10, []);
+    ri.Con_Printf(PRINT_ALL, '...GL_SGIS_multitexture not found'#10);
 
   GL_SetDefaultState();
 
@@ -1419,7 +1420,8 @@ begin
 
   err := qglGetError();
   if (err <> GL_NO_ERROR) then
-    ri.Con_Printf(PRINT_ALL, 'glGetError() = 0x%x'#10, [err]);
+    //ri.Con_Printf(PRINT_ALL, 'glGetError() = 0x%x'#10, [err]);
+    ri.Con_Printf(PRINT_ALL, 'glGetError() = 0x%x'#10);
 end; //function
 
 {*
