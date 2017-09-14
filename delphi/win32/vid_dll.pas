@@ -150,7 +150,7 @@ var
   { Static Variables  ?? }
   MSH_MOUSEWHEEL: Cardinal;
   s_alttab_disabled: qboolean;
-  reflib_library: LongWord;             { Handle to refresh DLL }
+  reflib_library: HINST;             { Handle to refresh DLL }
   reflib_active: qboolean = False;
 
   { Static Function Translations }
@@ -753,7 +753,7 @@ VID_Init
 procedure VID_Init;
 begin
   { Create the video variables so we know how to start the graphics drivers }
-  vid_ref := Cvar_Get('vid_ref', 'soft', CVAR_ARCHIVE);
+  vid_ref := Cvar_Get('vid_ref', 'gl', CVAR_ARCHIVE);
   vid_xpos := Cvar_Get('vid_xpos', '3', CVAR_ARCHIVE);
   vid_ypos := Cvar_Get('vid_ypos', '22', CVAR_ARCHIVE);
   vid_fullscreen := Cvar_Get('vid_fullscreen', '0', CVAR_ARCHIVE);
