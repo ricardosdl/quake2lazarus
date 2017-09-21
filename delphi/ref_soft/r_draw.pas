@@ -98,7 +98,7 @@ begin
   end
   else
   begin
-    inc(Integer(name), SizeOf(name[0])); // CAK - much shorter code!
+    inc((name), SizeOf(name[0])); // CAK - much shorter code!
     image := R_FindImage(name, it_pic);
   end;
 
@@ -224,7 +224,7 @@ begin
   if (y < 0) then // CAK - missing then
   begin // clipped
     drawline := 8 + y;
-    Integer(source) := Integer(source) - (128 * y);
+    source := source - (128 * y);
     y := 0;
   end
   else
@@ -333,7 +333,7 @@ begin
         Inc(u, 4);
       end;
     end;
-    Inc(Integer(dest), vid.rowbytes);
+    Inc((dest), vid.rowbytes);
   end;
 end;
 

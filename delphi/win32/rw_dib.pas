@@ -84,26 +84,26 @@ type
 const
   NUM_SYS_COLORS = (20{SizeOf(s_syspalindices) div sizeof(integer)});
   s_syspalindices : array[0..19] of Integer= (
-    Windows.COLOR_ACTIVEBORDER,
-    Windows.COLOR_ACTIVECAPTION,
-    Windows.COLOR_APPWORKSPACE,
-    Windows.COLOR_BACKGROUND,
-    Windows.COLOR_BTNFACE,
-    Windows.COLOR_BTNSHADOW,
-    Windows.COLOR_BTNTEXT,
-    Windows.COLOR_CAPTIONTEXT,
-    Windows.COLOR_GRAYTEXT,
-    Windows.COLOR_HIGHLIGHT,
-    Windows.COLOR_HIGHLIGHTTEXT,
-    Windows.COLOR_INACTIVEBORDER,
-    Windows.COLOR_INACTIVECAPTION,
-    Windows.COLOR_INACTIVECAPTIONTEXT,
-    Windows.COLOR_MENU,
-    Windows.COLOR_MENUTEXT,
-    Windows.COLOR_SCROLLBAR,
-    Windows.COLOR_WINDOW,
-    Windows.COLOR_WINDOWFRAME,
-    Windows.COLOR_WINDOWTEXT
+    Longint(COLOR_ACTIVEBORDER),
+    Longint(COLOR_ACTIVECAPTION),
+    Longint(COLOR_APPWORKSPACE),
+    Longint(COLOR_BACKGROUND),
+    Longint(COLOR_BTNFACE),
+    Longint(COLOR_BTNSHADOW),
+    Longint(COLOR_BTNTEXT),
+    Longint(COLOR_CAPTIONTEXT),
+    Longint(COLOR_GRAYTEXT),
+    Longint(COLOR_HIGHLIGHT),
+    Longint(COLOR_HIGHLIGHTTEXT),
+    Longint(COLOR_INACTIVEBORDER),
+    Longint(COLOR_INACTIVECAPTION),
+    Longint(COLOR_INACTIVECAPTIONTEXT),
+    Longint(COLOR_MENU),
+    Longint(COLOR_MENUTEXT),
+    Longint(COLOR_SCROLLBAR),
+    Longint(COLOR_WINDOW),
+    Longint(COLOR_WINDOWFRAME),
+    Longint(COLOR_WINDOWTEXT)
     );
 
 var

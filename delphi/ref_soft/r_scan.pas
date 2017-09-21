@@ -131,7 +131,7 @@ begin
   turb := @intsintable[Trunc(r_newrefdef.time * SPEED) and (CYCLE - 1)];
   //dest = vid.buffer + r_newrefdef.y * vid.rowbytes + r_newrefdef.x;
   dest := vid.buffer;
-  Inc(Integer(dest), r_newrefdef.y * vid.rowbytes + r_newrefdef.x);
+  Inc(dest, r_newrefdef.y * vid.rowbytes + r_newrefdef.x);
 
   //for (v=0 ; v<h ; v++, dest += vid.rowbytes)
   for v := 0 to h - 1 do
@@ -722,7 +722,7 @@ begin
         ts := _SAR(s, 16);
         tt := _SAR(t, 16);
         pdest^ := PByte(Integer(pbase) + ts + tt * cachewidth)^;
-        Inc(Integer(pdest));
+        Inc(pdest);
         s := s + sstep;
         t := t + tstep;
         Dec(spancount);
@@ -788,7 +788,7 @@ begin
     begin
       //*pdest++ = (short)(izi >> 16);
       pdest^ := _SAR(izi, 16); //(izi shr 16);
-      Inc(Integer(pdest), SizeOf(pdest^));
+      Inc(pdest, SizeOf(pdest^));
       izi := izi + izistep;
       Dec(count);
     end;
@@ -806,7 +806,7 @@ begin
       //*(int *)pdest = ltemp;
         PCardinal(pdest)^ := ltemp;
       //pdest += 2;
-        Inc(Integer(pdest), SizeOf(Cardinal));
+        Inc(pdest, SizeOf(Cardinal));
         Dec(doublecount);
       until (doublecount = 0);
     //while (--doublecount > 0);

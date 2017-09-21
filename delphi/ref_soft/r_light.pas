@@ -150,7 +150,7 @@ begin
     end;
     surf^.dlightbits := (surf^.dlightbits or bit);
     inc(i);
-    inc(Integer(surf), SizeOf(msurface_t));
+    inc(surf, SizeOf(msurface_t));
   end;
   R_MarkLights(light, bit, node^.children[0]);
   R_MarkLights(light, bit, node^.children[1]);
@@ -174,7 +174,7 @@ begin
   begin
     R_MarkLights(l, 1 shl i, @mnode_arrp(model^.nodes)^[model.firstnode]);
     Inc(i);
-    Inc(integer(l), SizeOf(dlight_t));
+    Inc(l, SizeOf(dlight_t));
   end;
 end;
 
@@ -247,7 +247,7 @@ begin
   begin
     if (surf^.flags and (SURF_DRAWTURB or SURF_DRAWSKY)) <> 0 then
     begin
-      Inc(Integer(Surf), SizeOf(msurface_t));
+      Inc(Surf, SizeOf(msurface_t));
       continue; // no lightmaps
     end;
     tex := surf^.texinfo;
@@ -255,7 +255,7 @@ begin
     t := trunc(DotProduct(mid, vec3_p(@tex^.vecs[1])^) + tex^.vecs[1][3]);
     if ((s < surf^.texturemins[0]) or (t < surf^.texturemins[1])) then
     begin
-      Inc(Integer(Surf), SizeOf(msurface_t));
+      Inc(Surf, SizeOf(msurface_t));
       continue;
     end;
 
@@ -264,7 +264,7 @@ begin
 
     if ((ds > surf^.extents[0]) or (dt > surf^.extents[1])) then
     begin
-      Inc(Integer(Surf), SizeOf(msurface_t));
+      Inc(Surf, SizeOf(msurface_t));
       continue;
     end;
 
@@ -281,7 +281,7 @@ begin
     VectorCopy(vec3_origin, pointcolor);
     if (lightmap <> nil) then
     begin
-      Inc(Integer(lightmap), (dt * (_SAR(surf^.extents[0], 4) + 1) + ds));
+      Inc(lightmap, (dt * (_SAR(surf^.extents[0], 4) + 1) + ds));
       maps := 0;
       while ((maps < MAXLIGHTMAPS) and (surf^.styles[maps] <> 255)) do
       begin
@@ -289,7 +289,7 @@ begin
         samp := samp * (1.0 / 255); // adjust for gl scale
         scales := @lightstyle_arrp(r_newrefdef.lightstyles)^[surf^.styles[maps]].rgb;
         VectorMA(pointcolor, samp, vec3_p(scales)^, pointcolor);
-        Inc(Integer(lightmap), ((_SAR(surf^.extents[0], 4) + 1) * (_SAR(surf^.extents[1], 4) + 1)));
+        Inc(lightmap, ((_SAR(surf^.extents[0], 4) + 1) * (_SAR(surf^.extents[1], 4) + 1)));
         Inc(maps);
       end;
     end;
@@ -504,7 +504,7 @@ begin
       scale := r_drawsurf.lightadj[maps]; // 8.8 fraction
       for i := 0 to size - 1 do
         blocklights[i] := blocklights[i] + (PByteArray(lightmap)^[i] * scale);
-      Inc(Integer(lightmap), size); // skip to next lightmap
+      Inc(lightmap, size); // skip to next lightmap
       Inc(maps);
     end;
   end;

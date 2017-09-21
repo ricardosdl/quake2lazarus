@@ -353,7 +353,7 @@ begin
   // FIXME: do just once at start
     pfrustum_indexes[i] := pindex;
     { 2003-05-21 (SP):  Not sure about this conversions below }
-    Inc(Integer(pindex), 6 * SizeOf(Integer));
+    Inc((pindex), 6 * SizeOf(Integer));
   end;
 end;
 
@@ -623,36 +623,36 @@ begin
       begin
         pack^ := data^;
 
-        Inc(Integer(pack));
+        Inc((pack));
 
-        Inc(Integer(data));
+        Inc((data));
       end
       else
       begin
         pack^ := $C1;
 
-        Inc(Integer(pack));
+        Inc((pack));
         pack^ := data^;
 
-        Inc(Integer(pack));
+        Inc((pack));
 
-        Inc(Integer(data));
+        Inc((data));
       end;
     end;
 
-    Inc(Integer(data), rowbytes - width);
+    Inc((data), rowbytes - width);
   end;
 
   // write the palette
   pack^ := $0C; // palette ID byte
-  Inc(Integer(pack));
+  Inc((pack));
 
   for i := 0 to 768 - 1 do
   begin
     pack^ := palette^;
 
-    Inc(Integer(pack));
-    Inc(Integer(palette));
+    Inc((pack));
+    Inc((palette));
   end;
 
   // write output file

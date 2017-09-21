@@ -431,7 +431,7 @@ begin
       (((psurf^.flags and SURF_PLANEBACK) <> 0) and (dot > BACKFACE_EPSILON)) then
     begin
       //psurf := msurface_p(Integer(psurf)+SizeOf(msurface_t));
-      Inc(Integer(psurf), SizeOf(msurface_t));
+      Inc(psurf, SizeOf(msurface_t));
       continue;
     end;
  // FIXME: use bounding-box-based frustum clipping info?
@@ -472,7 +472,7 @@ begin
     else
       R_RenderBmodelFace(pbedge, psurf);
 
-    Inc(Integer(psurf), SizeOf(msurface_t));
+    Inc(psurf, SizeOf(msurface_t));
   end;
 end;
 
@@ -513,7 +513,7 @@ begin
   // FIXME: use bounding-box-based frustum clipping info?
       R_RenderFace(psurf, clipflags);
     end;
-    Inc(Integer(psurf), SizeOf(msurface_t));
+    Inc(psurf, SizeOf(msurface_t));
   end;
 end;
 
@@ -600,7 +600,7 @@ begin
       while (c <> 0) do
       begin
         (mark^)^.visframe := r_framecount;
-        Inc(Integer(mark), Sizeof(msurface_p));
+        Inc(mark, Sizeof(msurface_p));
         Dec(c);
       end;
     end;
@@ -648,7 +648,7 @@ begin
           begin
             R_RenderFace(surf, clipflags);
           end;
-          Inc(Integer(surf), SizeOf(msurface_t));
+          Inc(surf, SizeOf(msurface_t));
           Dec(c);
         end;
       end
@@ -662,7 +662,7 @@ begin
             begin
               R_RenderFace(surf, clipflags);
             end;
-            Inc(Integer(surf), SizeOf(msurface_t));
+            Inc(surf, SizeOf(msurface_t));
             Dec(c);
           end;
         end;

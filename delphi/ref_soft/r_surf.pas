@@ -222,7 +222,7 @@ R_DrawSurface
       if (soffset >= smax) then
         soffset := 0;
 
-      Inc(Integer(pcolumndest), horzblockstep);
+      Inc(pcolumndest, horzblockstep);
     end;
   end;
 
@@ -255,7 +255,7 @@ R_DrawSurfaceBlock8_mip0
  // FIXME: use delta rather than both right and left, like ASM?
       lightleft := r_lightptr^;
       lightright := PCardinal(Integer(r_lightptr) + SizeOf(Cardinal))^;
-      Inc(Integer(r_lightptr), r_lightwidth * SizeOf(Cardinal));
+      Inc(r_lightptr, r_lightwidth * SizeOf(Cardinal));
       lightleftstep := _SAR(Integer(r_lightptr^) - lightleft, 4);
       lightrightstep := _SAR(Integer(PCardinal(Integer(r_lightptr) + SizeOf(Cardinal))^) - lightright, 4);
 
@@ -273,14 +273,14 @@ R_DrawSurfaceBlock8_mip0
           Inc(light, lightstep);
         end;
 
-        Inc(Integer(psource), sourcetstep);
+        Inc(psource, sourcetstep);
         Inc(lightright, lightrightstep);
         Inc(lightleft, lightleftstep);
-        Inc(Integer(prowdest), surfrowbytes);
+        Inc(prowdest, surfrowbytes);
       end;
 
       if (Integer(psource) >= Integer(r_sourcemax)) then
-        Dec(Integer(psource), r_stepback);
+        Dec(psource, r_stepback);
     end;
   end;
 
@@ -309,7 +309,7 @@ R_DrawSurfaceBlock8_mip1
  // FIXME: use delta rather than both right and left, like ASM?
       lightleft := r_lightptr^;
       lightright := PCardinal(Integer(r_lightptr) + SizeOf(Cardinal))^;
-      Inc(Integer(r_lightptr), r_lightwidth * SizeOf(Cardinal));
+      Inc(r_lightptr, r_lightwidth * SizeOf(Cardinal));
       lightleftstep := _SAR(Integer(r_lightptr^) - lightleft, 3);
       lightrightstep := _SAR(Integer(PCardinal(Integer(r_lightptr) + SizeOf(Cardinal))^) - lightright, 3);
 
@@ -327,14 +327,14 @@ R_DrawSurfaceBlock8_mip1
           Inc(light, lightstep);
         end;
 
-        Inc(Integer(psource), sourcetstep);
+        Inc(psource, sourcetstep);
         Inc(lightright, lightrightstep);
         Inc(lightleft, lightleftstep);
-        Inc(Integer(prowdest), surfrowbytes);
+        Inc(prowdest, surfrowbytes);
       end;
 
       if (Integer(psource) >= Integer(r_sourcemax)) then
-        Dec(Integer(psource), r_stepback);
+        Dec(psource, r_stepback);
     end;
   end;
 
@@ -363,7 +363,7 @@ R_DrawSurfaceBlock8_mip2
  // FIXME: use delta rather than both right and left, like ASM?
       lightleft := r_lightptr^;
       lightright := PCardinal(Integer(r_lightptr) + SizeOf(Cardinal))^;
-      Inc(Integer(r_lightptr), r_lightwidth * SizeOf(Cardinal));
+      Inc(r_lightptr, r_lightwidth * SizeOf(Cardinal));
       lightleftstep := _SAR(Integer(r_lightptr^) - lightleft, 2);
       lightrightstep := _SAR(Integer(PCardinal(Integer(r_lightptr) + SizeOf(Cardinal))^) - lightright, 2);
 
@@ -381,14 +381,14 @@ R_DrawSurfaceBlock8_mip2
           Inc(light, lightstep);
         end;
 
-        Inc(Integer(psource), sourcetstep);
+        Inc(psource, sourcetstep);
         Inc(lightright, lightrightstep);
         Inc(lightleft, lightleftstep);
-        Inc(Integer(prowdest), surfrowbytes);
+        Inc(prowdest, surfrowbytes);
       end;
 
       if (Integer(psource) >= Integer(r_sourcemax)) then
-        Dec(Integer(psource), r_stepback);
+        Dec(psource, r_stepback);
     end;
   end;
 
@@ -417,7 +417,7 @@ R_DrawSurfaceBlock8_mip3
  // FIXME: use delta rather than both right and left, like ASM?
       lightleft := r_lightptr^;
       lightright := PCardinal(Integer(r_lightptr) + SizeOf(Cardinal))^;
-      Inc(Integer(r_lightptr), r_lightwidth * SizeOf(Cardinal));
+      Inc(r_lightptr, r_lightwidth * SizeOf(Cardinal));
       lightleftstep := _SAR(Integer(r_lightptr^) - lightleft, 1);
       lightrightstep := _SAR(Integer(PCardinal(Integer(r_lightptr) + SizeOf(Cardinal))^) - lightright, 1);
 
@@ -435,14 +435,14 @@ R_DrawSurfaceBlock8_mip3
           Inc(light, lightstep);
         end;
 
-        Inc(Integer(psource), sourcetstep);
+        Inc(psource, sourcetstep);
         Inc(lightright, lightrightstep);
         Inc(lightleft, lightleftstep);
-        Inc(Integer(prowdest), surfrowbytes);
+        Inc(prowdest, surfrowbytes);
       end;
 
       if (Integer(psource) >= Integer(r_sourcemax)) then
-        Dec(Integer(psource), r_stepback);
+        Dec(psource, r_stepback);
     end;
   end;
 {$ENDIF}

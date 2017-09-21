@@ -393,7 +393,7 @@ begin
     for I := 0 to MAX_LBM_HEIGHT - 1 do
     begin
       skintable[i] := s;
-      Inc(Integer(s), skinwidth);
+      Inc(s, skinwidth);
     end;
   end;
 end;
@@ -483,17 +483,17 @@ begin
     d_pedgespanpackage^.light := d_light;
     d_pedgespanpackage^.zi := d_zi;
 
-    inc(Integer(d_pedgespanpackage), SizeOf(spanpackage_t));
+    inc(d_pedgespanpackage, SizeOf(spanpackage_t));
 
     inc(errorterm, erroradjustup);
     if (errorterm >= 0) then
     begin
-      inc(Integer(d_pdest), d_pdestextrastep);
-      inc(Integer(d_pz), (d_pzextrastep * SizeOf(SmallInt)));
+      inc(d_pdest, d_pdestextrastep);
+      inc(d_pz, (d_pzextrastep * SizeOf(SmallInt)));
       inc(d_aspancount, d_countextrastep);
-      inc(Integer(d_ptex), d_ptexextrastep);
+      inc(d_ptex, d_ptexextrastep);
       inc(d_sfrac, d_sfracextrastep);
-      inc(Integer(d_ptex), _SAR(d_sfrac, 16));
+      inc(d_ptex, _SAR(d_sfrac, 16));
 //			inc(Integer(d_ptex), d_sfrac shr 16);
 			d_sfrac := d_sfrac and $FFFF;
 			inc(d_tfrac, d_tfracextrastep);
@@ -508,17 +508,17 @@ begin
 		end
 		else
 		begin
-			inc(Integer(d_pdest), d_pdestbasestep);
-			inc(Integer(d_pz), d_pzbasestep*SizeOf(SmallInt));
+			inc(d_pdest, d_pdestbasestep);
+			inc(d_pz, d_pzbasestep*SizeOf(SmallInt));
 			inc(d_aspancount, ubasestep);
-			inc(Integer(d_ptex), d_ptexbasestep);
+			inc(d_ptex, d_ptexbasestep);
 			inc(d_sfrac, d_sfracbasestep);
-			inc(Integer(d_ptex), _SAR(d_sfrac, 16));
+			inc(d_ptex, _SAR(d_sfrac, 16));
 			d_sfrac := d_sfrac and $FFFF;
 			inc(d_tfrac, d_tfracbasestep);
 			if (d_tfrac and $10000) <> 0 then
 			begin
-				inc(Integer(d_ptex), r_affinetridesc.skinwidth);
+				inc(d_ptex, r_affinetridesc.skinwidth);
 				d_tfrac := d_tfrac and $FFFF;
 			end;
 			inc(d_light, d_lightbasestep);
@@ -1000,13 +1000,13 @@ begin
 					end;
 				end;
 
-				inc(Integer(lpdest), 1);
+				inc(lpdest, 1);
 				inc(lzi, r_zistepx);
-				inc(Integer(lpz), SizeOf(SmallInt));
+				inc(lpz, SizeOf(SmallInt));
 				inc(llight, r_lstepx);
-				inc(Integer(lptex), a_ststepxwhole);
+				inc(lptex, a_ststepxwhole);
 				inc(lsfrac, a_sstepxfrac);
-				inc(Integer(lptex), _SAR(lsfrac, 16));
+				inc(lptex, _SAR(lsfrac, 16));
 				lsfrac := lsfrac and $FFFF;
 				inc(ltfrac, a_tstepxfrac);
 				if (ltfrac and $10000) <> 0 then
@@ -1017,7 +1017,7 @@ begin
         dec(lcount);
       until lcount = 0;
     end;
-    inc(Integer(pspanpackage), SizeOf(spanpackage_t));
+    inc(pspanpackage, SizeOf(spanpackage_t));
   until (pspanpackage^.count = -999999);
 end;
 
@@ -1071,11 +1071,11 @@ begin
           temp := PByteArray(vid.colormap)^[lptex^ + (llight and $FF00)];
           lpdest^ := PByteArray(vid.alphamap)^[temp + lpdest^ * 256];
         end;
-        inc(integer(lpdest));
+        inc(lpdest);
         inc(lzi, r_zistepx);
-        inc(Integer(lpz), SizeOf(SmallInt));
+        inc(lpz, SizeOf(SmallInt));
         inc(llight, r_lstepx);
-        inc(Integer(lptex), a_ststepxwhole);
+        inc((lptex), a_ststepxwhole);
         inc(lsfrac, a_sstepxfrac);
         inc(lptex, _SAR(lsfrac, 16));
         lsfrac := lsfrac and $FFFF;
@@ -1088,7 +1088,7 @@ begin
         dec(lcount);
       until lcount = 0;
     end;
-    inc(Integer(pspanpackage), sizeof(spanpackage_t));
+    inc((pspanpackage), sizeof(spanpackage_t));
   until pspanpackage^.count = -999999;
 end;
 
@@ -1124,13 +1124,13 @@ begin
       begin
         if (_SAR(lzi, 16) >= lpz^) then
           lpdest^ := PByte(Integer(vid.alphamap) + (r_aliasblendcolor + lpdest^ * 256))^;
-        Inc(Integer(lpdest));
+        Inc((lpdest));
         Inc(lzi, r_zistepx);
-        Inc(Integer(lpz), SizeOf(SmallInt));
+        Inc((lpz), SizeOf(SmallInt));
         Dec(lcount);
       end;
     end;
-    Inc(Integer(pspanpackage), sizeof(spanpackage_t));
+    Inc((pspanpackage), sizeof(spanpackage_t));
   end;
 end;
 
@@ -1194,7 +1194,7 @@ begin
         dec(lcount);
       until lcount = 0;
     end;
-    inc(Integer(pspanpackage), sizeof(spanpackage_t));
+    inc((pspanpackage), sizeof(spanpackage_t));
   until pspanpackage^.count = -999999;
 end;
 
@@ -1229,13 +1229,13 @@ begin
       begin
         if (_SAR(lzi, 16) >= lpz^) then
           lpdest^ := PByte(Integer(vid.alphamap) + (r_aliasblendcolor * 256 + lpdest^))^;
-        Inc(Integer(lpdest));
+        Inc((lpdest));
         Inc(lzi, r_zistepx);
-        Inc(Integer(lpz), SizeOf(SmallInt));
+        Inc((lpz), SizeOf(SmallInt));
         Dec(lcount);
       end;
     end;
-    Inc(Integer(pspanpackage), sizeof(spanpackage_t));
+    Inc((pspanpackage), sizeof(spanpackage_t));
   until (pspanpackage^.count = -999999);
 end;
 
@@ -1291,24 +1291,24 @@ begin
 //PGM
           lpz^ := _SAR(lzi, 16);
         end;
-        inc(Integer(lpdest));
+        inc((lpdest));
         inc(lzi, r_zistepx);
-        inc(Integer(lpz), SizeOf(SmallInt));
+        inc((lpz), SizeOf(SmallInt));
         inc(llight, r_lstepx);
-        inc(Integer(lptex), a_ststepxwhole);
+        inc((lptex), a_ststepxwhole);
         inc(lsfrac, a_sstepxfrac);
-        inc(Integer(lptex), _SAR(lsfrac, 16));
+        inc((lptex), _SAR(lsfrac, 16));
         lsfrac := lsfrac and $FFFF;
         inc(ltfrac, a_tstepxfrac);
         if (ltfrac and $10000) <> 0 then
         begin
-          inc(Integer(lptex), r_affinetridesc.skinwidth);
+          inc((lptex), r_affinetridesc.skinwidth);
           ltfrac := ltfrac and $FFFF;
         end;
         dec(lcount);
       until lcount = 0;
     end;
-    inc(Integer(pspanpackage), sizeof(spanpackage_t));
+    inc((pspanpackage), sizeof(spanpackage_t));
   until pspanpackage^.count = -999999;
 end;
 {$ELSE}
@@ -1343,11 +1343,11 @@ begin
       lpdest := pspanpackage^.pdest;
       repeat
         lpdest^ := color;
-        inc(integer(lpdest), 1);
+        inc((lpdest), 1);
         dec(lcount);
       until lcount <= 0;
     end;
-    inc(Integer(pspanpackage), sizeof(spanpackage_t));
+    inc((pspanpackage), sizeof(spanpackage_t));
   end;
 end;
 
@@ -1438,7 +1438,7 @@ begin
 		d_pedgespanpackage^.light := d_light;
 		d_pedgespanpackage^.zi := d_zi;
 
-		inc(Integer(d_pedgespanpackage), SizeOf(spanpackage_t));
+		inc((d_pedgespanpackage), SizeOf(spanpackage_t));
 	end
 	else
 	begin
@@ -1572,7 +1572,7 @@ begin
       d_pedgespanpackage^.light := d_light;
       d_pedgespanpackage^.zi := d_zi;
 
-      inc(Integer(d_pedgespanpackage), SizeOf(spanpackage_t));
+      inc((d_pedgespanpackage), SizeOf(spanpackage_t));
     end
     else
     begin

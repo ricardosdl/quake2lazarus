@@ -381,7 +381,7 @@ begin
   side := Integer(ceilv0 > r_ceilv1);
 
   edge := edge_p_;
-  Inc(Integer(edge_p_), SizeOf(edge_p_^));
+  Inc(edge_p_, SizeOf(edge_p_^));
 
   edge^.owner := r_pedge;
 
@@ -778,7 +778,7 @@ begin
   surface_p^.d_zistepu := p_normal[0] * xscaleinv * distinv;
   surface_p^.d_zistepv := -p_normal[1] * yscaleinv * distinv;
   surface_p^.d_ziorigin := p_normal[2] * distinv - xcenter * surface_p^.d_zistepu - ycenter * surface_p^.d_zistepv;
-  inc(Integer(surface_p), SizeOf(surf_t));
+  inc(surface_p, SizeOf(surf_t));
 end;
 
 (*
@@ -903,7 +903,7 @@ begin
   surface_p^.d_zistepv := -p_normal[1] * yscaleinv * distinv;
   surface_p^.d_ziorigin := p_normal[2] * distinv - xcenter * surface_p^.d_zistepu - ycenter * surface_p^.d_zistepv;
 
-  Inc(Integer(surface_p), SizeOf(surf_t));
+  Inc(surface_p, SizeOf(surf_t));
 end;
 
 end.

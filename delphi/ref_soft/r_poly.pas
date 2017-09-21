@@ -146,8 +146,8 @@ begin
     end;
 
     Inc(s_spanletvars.izi, s_spanletvars.izistep);
-    Inc(Integer(s_spanletvars.pdest), 1);
-    Inc(Integer(s_spanletvars.pz), SizeOf(SmallInt));
+    Inc(s_spanletvars.pdest, 1);
+    Inc(s_spanletvars.pz, SizeOf(SmallInt));
     Inc(s_spanletvars.s, s_spanletvars.sstep);
     Inc(s_spanletvars.t, s_spanletvars.tstep);
 
@@ -174,8 +174,8 @@ begin
 
   if (s_spanletvars.v and 1) <> 0 then
   begin
-    Inc(Integer(s_spanletvars.pdest), s_spanletvars.spancount);
-    Inc(Integer(s_spanletvars.pz), s_spanletvars.spancount * SizeOf(SmallInt));
+    Inc(s_spanletvars.pdest, s_spanletvars.spancount);
+    Inc(s_spanletvars.pz, s_spanletvars.spancount * SizeOf(SmallInt));
 
     if s_spanletvars.spancount = AFFINE_SPANLET_SIZE then
       Inc(s_spanletvars.izi, _SAL(s_spanletvars.izistep, AFFINE_SPANLET_SIZE_BITS))
@@ -188,8 +188,8 @@ begin
       Inc(s_spanletvars.s, s_spanletvars.sstep);
       Inc(s_spanletvars.t, s_spanletvars.tstep);
 
-      Inc(Integer(pdest), 1);
-      Inc(Integer(pz), SizeOf(SmallInt));
+      Inc(pdest, 1);
+      Inc(pz, SizeOf(SmallInt));
       Dec(s_spanletvars.spancount);
     end;
 
@@ -211,8 +211,8 @@ begin
       Inc(s_spanletvars.s, s_spanletvars.sstep);
       Inc(s_spanletvars.t, s_spanletvars.tstep);
 
-      Inc(Integer(pdest), 2);
-      Inc(Integer(pz), 2 * SizeOF(SmallInt));
+      Inc(pdest, 2);
+      Inc(pz, 2 * SizeOF(SmallInt));
 
       Dec(s_spanletvars.spancount, 2);
     end;
@@ -238,8 +238,8 @@ begin
 
   if (s_spanletvars.v and 1) = 0 then
   begin
-    Inc(Integer(s_spanletvars.pdest), s_spanletvars.spancount);
-    Inc(Integer(s_spanletvars.pz), s_spanletvars.spancount * SizeOf(SmallInt));
+    Inc(s_spanletvars.pdest, s_spanletvars.spancount);
+    Inc(s_spanletvars.pz, s_spanletvars.spancount * SizeOf(SmallInt));
 
     if s_spanletvars.spancount = AFFINE_SPANLET_SIZE then
       Inc(s_spanletvars.izi, s_spanletvars.izistep shl AFFINE_SPANLET_SIZE_BITS)
@@ -252,8 +252,8 @@ begin
       Inc(s_spanletvars.s, s_spanletvars.sstep);
       Inc(s_spanletvars.t, s_spanletvars.tstep);
 
-      Inc(Integer(pdest));
-      Inc(Integer(pz), SizeOf(SmallInt));
+      Inc(pdest);
+      Inc(pz, SizeOf(SmallInt));
       Dec(s_spanletvars.spancount);
     end;
 
@@ -264,11 +264,11 @@ begin
     begin
       // temporary conversion for pointer arithmetic
       tmp := r_turb_turb;
-      Inc(Integer(tmp), ((s_spanletvars.t shr 16) and (CYCLE - 1)) * SizeOf(Integer));
+      Inc(tmp, ((s_spanletvars.t shr 16) and (CYCLE - 1)) * SizeOf(Integer));
       sturb := ((s_spanletvars.s + tmp^) shr 16) and 63;
       // temporary conversion for pointer arithmetic
       tmp := r_turb_turb;
-      Inc(Integer(tmp), ((s_spanletvars.s shr 16) and (CYCLE - 1)) * SizeOf(Integer));
+      Inc(tmp, ((s_spanletvars.s shr 16) and (CYCLE - 1)) * SizeOf(Integer));
       tturb := ((s_spanletvars.t + tmp^) shr 16) and 63;
 
       btemp := PByte(Integer(s_spanletvars.pbase) + (sturb) + (tturb shl 6))^;
@@ -280,16 +280,16 @@ begin
       Inc(s_spanletvars.s, s_spanletvars.sstep);
       Inc(s_spanletvars.t, s_spanletvars.tstep);
 
-      Inc(Integer(pdest), 2);
-      Inc(Integer(pz), 2 * SizeOf(SmallInt));
+      Inc(pdest, 2);
+      Inc(pz, 2 * SizeOf(SmallInt));
 
       Dec(s_spanletvars.spancount, 2);
     end;
   end
   else
   begin
-    Inc(Integer(s_spanletvars.pdest), s_spanletvars.spancount);
-    Inc(Integer(s_spanletvars.pz), s_spanletvars.spancount * SizeOf(SmallInt));
+    Inc(s_spanletvars.pdest, s_spanletvars.spancount);
+    Inc(s_spanletvars.pz, s_spanletvars.spancount * SizeOf(SmallInt));
 
     if s_spanletvars.spancount = AFFINE_SPANLET_SIZE then
       Inc(s_spanletvars.izi, s_spanletvars.izistep shl AFFINE_SPANLET_SIZE_BITS)
@@ -300,11 +300,11 @@ begin
     begin
       // temporary conversion for pointer arithmetic
       tmp := r_turb_turb;
-      Inc(Integer(tmp), ((s_spanletvars.t shr 16) and (CYCLE - 1)) * SizeOf(Integer));
+      Inc(tmp, ((s_spanletvars.t shr 16) and (CYCLE - 1)) * SizeOf(Integer));
       sturb := ((s_spanletvars.s + tmp^) shr 16) and 63;
       // temporary conversion for pointer arithmetic
       tmp := r_turb_turb;
-      Inc(Integer(tmp), ((s_spanletvars.s shr 16) and (CYCLE - 1)) * SizeOf(Integer));
+      Inc(tmp, ((s_spanletvars.s shr 16) and (CYCLE - 1)) * SizeOf(Integer));
       tturb := ((s_spanletvars.t + tmp^) shr 16) and 63;
 
       btemp := PByte(Integer(s_spanletvars.pbase) + (sturb) + (tturb shl 6))^;
@@ -316,8 +316,8 @@ begin
       Inc(s_spanletvars.s, s_spanletvars.sstep);
       Inc(s_spanletvars.t, s_spanletvars.tstep);
 
-      Inc(Integer(pdest));
-      Inc(Integer(pz), SizeOf(SmallInt));
+      Inc(pdest);
+      Inc(pz, SizeOf(SmallInt));
 
       Dec(s_spanletvars.spancount);
     end;
@@ -338,11 +338,11 @@ begin
   repeat
     // temporary conversion for pointer arithmetic
     tmp := r_turb_turb;
-    Inc(Integer(tmp), ((s_spanletvars.t shr 16) and (CYCLE - 1)) * SizeOf(Integer));
+    Inc(tmp, ((s_spanletvars.t shr 16) and (CYCLE - 1)) * SizeOf(Integer));
     sturb := ((s_spanletvars.s + tmp^) shr 16) and 63;
     // temporary conversion for pointer arithmetic
     tmp := r_turb_turb;
-    Inc(Integer(tmp), ((s_spanletvars.s shr 16) and (CYCLE - 1)) * SizeOf(Integer));
+    Inc(tmp, ((s_spanletvars.s shr 16) and (CYCLE - 1)) * SizeOf(Integer));
     tturb := ((s_spanletvars.t + tmp^) shr 16) and 63;
 
     btemp := PByte(Integer(s_spanletvars.pbase) + (sturb) + (tturb shl 6))^;
@@ -351,13 +351,13 @@ begin
     begin
       // temporary conversion for pointer arithmetic
       tmp_b := vid.alphamap;
-      Inc(Integer(tmp_b), btemp * 256 + s_spanletvars.pdest^);
+      Inc(tmp_b, btemp * 256 + s_spanletvars.pdest^);
       s_spanletvars.pdest^ := tmp_b^;
     end;
 
     Inc(s_spanletvars.izi, s_spanletvars.izistep);
-    Inc(Integer(s_spanletvars.pdest));
-    Inc(Integer(s_spanletvars.pz), SizeOf(SmallInt));
+    Inc(s_spanletvars.pdest);
+    Inc(s_spanletvars.pz, SizeOf(SmallInt));
     Inc(s_spanletvars.s, s_spanletvars.sstep);
     Inc(s_spanletvars.t, s_spanletvars.tstep);
 
@@ -388,13 +388,13 @@ begin
     begin
       // temporary conversion for pointer arithmetic
       tmp_b := vid.alphamap;
-      Inc(Integer(tmp_b), btemp + s_spanletvars.pdest^ * 256);
+      Inc(tmp_b, btemp + s_spanletvars.pdest^ * 256);
       s_spanletvars.pdest^ := tmp_b^;
     end;
 
     Inc(s_spanletvars.izi, s_spanletvars.izistep);
-    Inc(Integer(s_spanletvars.pdest), 1);
-    Inc(Integer(s_spanletvars.pz), SizeOf(SmallInt));
+    Inc(s_spanletvars.pdest, 1);
+    Inc(s_spanletvars.pz, SizeOf(SmallInt));
     Inc(s_spanletvars.s, s_spanletvars.sstep);
     Inc(s_spanletvars.t, s_spanletvars.tstep);
 
@@ -424,14 +424,14 @@ begin
       begin
         // temporary conversion for pointer arithmetic
         tmp_b := vid.alphamap;
-        Inc(Integer(tmp_b), btemp + s_spanletvars.pdest^ * 256);
+        Inc(tmp_b, btemp + s_spanletvars.pdest^ * 256);
         s_spanletvars.pdest^ := tmp_b^;
       end;
     end;
 
     Inc(s_spanletvars.izi, s_spanletvars.izistep);
-    Inc(Integer(s_spanletvars.pdest), 1);
-    Inc(Integer(s_spanletvars.pz), SizeOf(SmallInt));
+    Inc(s_spanletvars.pdest, 1);
+    Inc(s_spanletvars.pz, SizeOf(SmallInt));
     Inc(s_spanletvars.s, s_spanletvars.sstep);
     Inc(s_spanletvars.t, s_spanletvars.tstep);
 
@@ -448,13 +448,13 @@ begin
     begin
       // temporary conversion for pointer arithmetic
       tmp_b := vid.alphamap;
-      Inc(Integer(tmp_b), r_polyblendcolor + s_spanletvars.pdest^ * 256);
+      Inc(tmp_b, r_polyblendcolor + s_spanletvars.pdest^ * 256);
       s_spanletvars.pdest^ := tmp_b^;
     end;
 
     Inc(s_spanletvars.izi, s_spanletvars.izistep);
-    Inc(Integer(s_spanletvars.pdest), 1);
-    Inc(Integer(s_spanletvars.pz), SizeOf(SmallInt));
+    Inc(s_spanletvars.pdest, 1);
+    Inc(s_spanletvars.pz, SizeOf(SmallInt));
 
     Dec(s_spanletvars.spancount);
   until not (s_spanletvars.spancount > 0);
@@ -482,14 +482,14 @@ begin
       begin
         // temporary conversion for pointer arithmetic
         tmp_b := vid.alphamap;
-        Inc(Integer(tmp_b), btemp * 256 + s_spanletvars.pdest^);
+        Inc(tmp_b, btemp * 256 + s_spanletvars.pdest^);
         s_spanletvars.pdest^ := tmp_b^;
       end;
     end;
 
     Inc(s_spanletvars.izi, s_spanletvars.izistep);
-    Inc(Integer(s_spanletvars.pdest), 1);
-    Inc(Integer(s_spanletvars.pz), SizeOf(SmallInt));
+    Inc(s_spanletvars.pdest, 1);
+    Inc(s_spanletvars.pz, SizeOf(SmallInt));
     Inc(s_spanletvars.s, s_spanletvars.sstep);
     Inc(s_spanletvars.t, s_spanletvars.tstep);
 
@@ -515,8 +515,8 @@ begin
   izi := s_spanletvars.izi;
   if IntPower(r_polydesc.stipple_parity, (s_spanletvars.v and 1)) > 0 then
   begin
-    Inc(Integer(s_spanletvars.pdest), s_spanletvars.spancount);
-    Inc(Integer(s_spanletvars.pz), s_spanletvars.spancount * SizeOf(SmallInt));
+    Inc(s_spanletvars.pdest, s_spanletvars.spancount);
+    Inc(s_spanletvars.pz, s_spanletvars.spancount * SizeOf(SmallInt));
 
     if s_spanletvars.spancount = AFFINE_SPANLET_SIZE then
       Inc(s_spanletvars.izi, (s_spanletvars.izistep shl AFFINE_SPANLET_SIZE_BITS))
@@ -529,8 +529,8 @@ begin
       Inc(s_spanletvars.s, s_spanletvars.sstep);
       Inc(s_spanletvars.t, s_spanletvars.tstep);
 
-      Inc(Integer(pdest), 1);
-      Inc(Integer(pz), SizeOf(SmallInt));
+      Inc(pdest, 1);
+      Inc(pz, SizeOf(SmallInt));
       Dec(s_spanletvars.spancount);
     end;
 
@@ -554,8 +554,8 @@ begin
       Inc(s_spanletvars.s, s_spanletvars.sstep);
       Inc(s_spanletvars.t, s_spanletvars.tstep);
 
-      Inc(Integer(pdest), 2);
-      Inc(Integer(pz), 2 * SizeOf(SmallInt));
+      Inc(pdest, 2);
+      Inc(pz, 2 * SizeOf(SmallInt));
 
       Dec(s_spanletvars.spancount, 2);
     end;
@@ -578,8 +578,8 @@ begin
   pz := s_spanletvars.pz;
   izi := s_spanletvars.izi;
 
-  Inc(Integer(s_spanletvars.pdest), s_spanletvars.spancount);
-  Inc(Integer(s_spanletvars.pz), s_spanletvars.spancount * SizeOf(SmallInt));
+  Inc(s_spanletvars.pdest, s_spanletvars.spancount);
+  Inc(s_spanletvars.pz, s_spanletvars.spancount * SizeOf(SmallInt));
 
   if (s_spanletvars.spancount = AFFINE_SPANLET_SIZE) then
     Inc(s_spanletvars.izi, (s_spanletvars.izistep shl AFFINE_SPANLET_SIZE_BITS))
@@ -594,8 +594,8 @@ begin
       Inc(s_spanletvars.s, s_spanletvars.sstep);
       Inc(s_spanletvars.t, s_spanletvars.tstep);
 
-      Inc(Integer(pdest), 1);
-      Inc(Integer(pz), SizeOf(SmallInt));
+      Inc(pdest, 1);
+      Inc(pz, SizeOf(SmallInt));
       Dec(s_spanletvars.spancount);
     end;
 
@@ -619,8 +619,8 @@ begin
       Inc(s_spanletvars.s, s_spanletvars.sstep);
       Inc(s_spanletvars.t, s_spanletvars.tstep);
 
-      Inc(Integer(pdest), 2);
-      Inc(Integer(pz), 2 * SizeOf(SmallInt));
+      Inc(pdest, 2);
+      Inc(pz, 2 * SizeOf(SmallInt));
 
       Dec(s_spanletvars.spancount, 2);
     end;
@@ -644,8 +644,8 @@ begin
       Inc(s_spanletvars.s, s_spanletvars.sstep);
       Inc(s_spanletvars.t, s_spanletvars.tstep);
 
-      Inc(Integer(pdest), 1);
-      Inc(Integer(pz), SizeOf(SmallInt));
+      Inc(pdest, 1);
+      Inc(pz, SizeOf(SmallInt));
 
       Dec(s_spanletvars.spancount);
     end;
@@ -691,7 +691,7 @@ begin
   for i := 0 to nump - 1 do
   begin
     dists[i] := DotProduct(vec3_p(instep)^, vec3_p(pclipnormal)^) - clipdist;
-    Inc(Integer(instep), SizeOf(vec5_t));
+    Inc(instep, SizeOf(vec5_t));
   end;
 
 // handle wraparound case
@@ -707,7 +707,7 @@ begin
     if (dists[i] >= 0) then
     begin
       Move(instep^, outstep^, SizeOf(vec5_t));
-      Inc(Integer(outstep), SizeOf(vec5_t));
+      Inc(outstep, SizeOf(vec5_t));
       Inc(outcount);
     end;
 
@@ -728,11 +728,11 @@ begin
     vec5_p(outstep)^[3] := vec5_p(instep)^[3] + frac * (vec5_p(vert2)^[3] - vec5_p(instep)^[3]);
     vec5_p(outstep)^[4] := vec5_p(instep)^[4] + frac * (vec5_p(vert2)^[4] - vec5_p(instep)^[4]);
 
-    Inc(Integer(outstep), SizeOf(vec5_t)); // "/" operator has been changed to "div"
+    Inc(outstep, SizeOf(vec5_t)); // "/" operator has been changed to "div"
     Inc(outcount);
 
     continue_:
-    Inc(Integer(instep), SizeOf(vec5_t));
+    Inc(instep, SizeOf(vec5_t));
   end;
   result := outcount;
 end;
@@ -912,7 +912,7 @@ begin
     until (count <= 0);
 
     NextSpan:
-    Inc(Integer(pspan), SizeOf(espan_t));
+    Inc(pspan, SizeOf(espan_t));
 
   until (pspan^.count = DS_SPAN_LIST_END);
 end;
@@ -970,7 +970,7 @@ begin
         pspan^.u := _SAR(u, 16);
         pspan^.v := v;
         Inc(u, u_step);
-        Inc(Integer(pspan), SizeOf(espan_t));
+        Inc(pspan, SizeOf(espan_t));
       end;
     end;
 
@@ -1056,7 +1056,7 @@ begin
       begin
         pspan^.count := _SAR(u, 16) - pspan^.u;
         Inc(u, u_step);
-        Inc(Integer(pspan), SizeOf(espan_t));
+        Inc(pspan, SizeOf(espan_t));
       end;
     end;
 
@@ -1177,7 +1177,7 @@ begin
 
     scale := yscale * pout^.zi;
     pout^.v := (ycenter - scale * transformed[1]);
-    Inc(Integer(pv), SizeOf(vec5_t));
+    Inc(pv, SizeOf(vec5_t));
   end;
 
 // draw it
@@ -1350,7 +1350,7 @@ begin
       ymax := pverts^.v;
       s_maxindex := i;
     end;
-    Inc(Integer(pverts), SizeOf(emitpoint_p));
+    Inc(pverts, SizeOf(emitpoint_p));
   end;
 
   ymin := q_shared.ceil(ymin);

@@ -226,12 +226,12 @@ begin
     while (x <= pcx^.xmax) do
     begin
       dataByte := raw^;
-      Inc(Cardinal(raw), 1);
+      Inc((raw), 1);
       if ((dataByte and $C0) = $C0) then
       begin
         runLength := dataByte and $3F;
         dataByte := raw^;
-        Inc(Cardinal(raw), 1);
+        Inc((raw), 1);
       end
       else
         runLength := 1;
@@ -304,30 +304,30 @@ begin
   buf_p := buffer;
 
   targa_header.id_length := buf_p^;
-  inc(Cardinal(buf_p));
+  inc((buf_p));
   targa_header.colormap_type := buf_p^;
-  inc(Cardinal(buf_p));
+  inc((buf_p));
   targa_header.image_type := buf_p^;
-  inc(Cardinal(buf_p));
+  inc((buf_p));
 
   targa_header.colormap_index := LittleShort(buf_p^);
-  inc(Cardinal(buf_p), 2);
+  inc((buf_p), 2);
   targa_header.colormap_length := LittleShort(buf_p^);
-  inc(Cardinal(buf_p), 2);
+  inc((buf_p), 2);
   targa_header.colormap_size := buf_p^;
-  inc(Cardinal(buf_p));
+  inc((buf_p));
   targa_header.x_origin := LittleShort(buf_p^);
-  inc(Cardinal(buf_p), 2);
+  inc((buf_p), 2);
   targa_header.y_origin := LittleShort(buf_p^);
-  inc(Cardinal(buf_p), 2);
+  inc((buf_p), 2);
   targa_header.width := LittleShort(buf_p^);
-  inc(Cardinal(buf_p), 2);
+  inc((buf_p), 2);
   targa_header.height := LittleShort(buf_p^);
-  inc(Cardinal(buf_p), 2);
+  inc((buf_p), 2);
   targa_header.pixel_size := buf_p^;
-  inc(Cardinal(buf_p));
+  inc((buf_p));
   targa_header.attributes := buf_p^;
-  inc(Cardinal(buf_p));
+  inc((buf_p));
 
   if (targa_header.image_type <> 2) and (targa_header.image_type <> 10) then
     ri.Sys_Error(ERR_DROP, PChar('LoadTGA: Only type 2 and 10 targa RGB images supported' + CrLf));
@@ -348,7 +348,7 @@ begin
   pic^ := targa_rgba;
 
   if (targa_header.id_length <> 0) then
-    Inc(Cardinal(buf_p), targa_header.id_length); // skip TARGA image comment
+    Inc((buf_p), targa_header.id_length); // skip TARGA image comment
 
   if (targa_header.image_type = 2) then
   begin // Uncompressed, RGB images
@@ -362,38 +362,38 @@ begin
           24:
             begin
               blue := buf_p^;
-              inc(Cardinal(buf_p));
+              inc((buf_p));
               green := buf_p^;
-              inc(Cardinal(buf_p));
+              inc((buf_p));
               red := buf_p^;
-              inc(Cardinal(buf_p));
+              inc((buf_p));
               pixbuf^ := red;
-              inc(Cardinal(pixbuf));
+              inc((pixbuf));
               pixbuf^ := green;
-              inc(Cardinal(pixbuf));
+              inc((pixbuf));
               pixbuf^ := blue;
-              inc(Cardinal(pixbuf));
+              inc((pixbuf));
               pixbuf^ := 255;
-              inc(Cardinal(pixbuf));
+              inc((pixbuf));
             end;
           32:
             begin
               blue := buf_p^;
-              inc(Cardinal(buf_p));
+              inc((buf_p));
               green := buf_p^;
-              inc(Cardinal(buf_p));
+              inc((buf_p));
               red := buf_p^;
-              inc(Cardinal(buf_p));
+              inc((buf_p));
               alphabyte := buf_p^;
-              inc(Cardinal(buf_p));
+              inc((buf_p));
               pixbuf^ := red;
-              inc(Cardinal(pixbuf));
+              inc((pixbuf));
               pixbuf^ := green;
-              inc(Cardinal(pixbuf));
+              inc((pixbuf));
               pixbuf^ := blue;
-              inc(Cardinal(pixbuf));
+              inc((pixbuf));
               pixbuf^ := alphabyte;
-              inc(Cardinal(pixbuf));
+              inc((pixbuf));
             end;
         end;
         Inc(column);
@@ -411,7 +411,7 @@ begin
         while (column <= columns - 1) do
         begin
           packetHeader := buf_p^;
-          inc(Cardinal(buf_p));
+          inc((buf_p));
           packetSize := 1 + (packetHeader and $7F);
           if (packetHeader and $80) = $80 then
           begin // run-length packet
@@ -419,23 +419,23 @@ begin
               24:
                 begin
                   blue := buf_p^;
-                  inc(Cardinal(buf_p));
+                  inc((buf_p));
                   green := buf_p^;
-                  inc(Cardinal(buf_p));
+                  inc((buf_p));
                   red := buf_p^;
-                  inc(Cardinal(buf_p));
+                  inc((buf_p));
                   alphabyte := 255;
                 end;
               32:
                 begin
                   blue := buf_p^;
-                  inc(Cardinal(buf_p));
+                  inc((buf_p));
                   green := buf_p^;
-                  inc(Cardinal(buf_p));
+                  inc((buf_p));
                   red := buf_p^;
-                  inc(Cardinal(buf_p));
+                  inc((buf_p));
                   alphabyte := buf_p^;
-                  inc(Cardinal(buf_p));
+                  inc((buf_p));
                 end;
             else // hhmmm, actually this should produce an error, but set rgb to default black
               begin
@@ -448,13 +448,13 @@ begin
             for j := 0 to packetSize - 1 do
             begin
               pixbuf^ := red;
-              inc(Cardinal(pixbuf));
+              inc((pixbuf));
               pixbuf^ := green;
-              inc(Cardinal(pixbuf));
+              inc((pixbuf));
               pixbuf^ := blue;
-              inc(Cardinal(pixbuf));
+              inc((pixbuf));
               pixbuf^ := alphabyte;
-              inc(Cardinal(pixbuf));
+              inc((pixbuf));
               Inc(column);
               if (column = columns) then
               begin // run spans across rows
@@ -475,38 +475,38 @@ begin
                 24:
                   begin
                     blue := buf_p^;
-                    inc(Cardinal(buf_p));
+                    inc((buf_p));
                     green := buf_p^;
-                    inc(Cardinal(buf_p));
+                    inc((buf_p));
                     red := buf_p^;
-                    inc(Cardinal(buf_p));
+                    inc((buf_p));
                     pixbuf^ := red;
-                    inc(Cardinal(pixbuf));
+                    inc((pixbuf));
                     pixbuf^ := green;
-                    inc(Cardinal(pixbuf));
+                    inc((pixbuf));
                     pixbuf^ := blue;
-                    inc(Cardinal(pixbuf));
+                    inc((pixbuf));
                     pixbuf^ := 255;
-                    inc(Cardinal(pixbuf));
+                    inc((pixbuf));
                   end;
                 32:
                   begin
                     blue := buf_p^;
-                    inc(Cardinal(buf_p));
+                    inc((buf_p));
                     green := buf_p^;
-                    inc(Cardinal(buf_p));
+                    inc((buf_p));
                     red := buf_p^;
-                    inc(Cardinal(buf_p));
+                    inc((buf_p));
                     alphabyte := buf_p^;
-                    inc(Cardinal(buf_p));
+                    inc((buf_p));
                     pixbuf^ := red;
-                    inc(Cardinal(pixbuf));
+                    inc((pixbuf));
                     pixbuf^ := green;
-                    inc(Cardinal(pixbuf));
+                    inc((pixbuf));
                     pixbuf^ := blue;
-                    inc(Cardinal(pixbuf));
+                    inc((pixbuf));
                     pixbuf^ := alphabyte;
-                    inc(Cardinal(pixbuf));
+                    inc((pixbuf));
                   end;
               end;
               inc(column);
@@ -591,8 +591,8 @@ begin
     if (b = 255) then
       image^.transparent := true;
     pix^ := b;
-    Inc(Integer(pic));
-    Inc(Integer(pix));
+    Inc((pic));
+    Inc((pix));
   end;
   result := image;
 end;

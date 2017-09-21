@@ -345,7 +345,7 @@ begin
   if (iu > surf^.last_u) then
   begin
     span := span_p;
-    Inc(Integer(span_p), SizeOf(espan_t));
+    Inc(span_p, SizeOf(espan_t));
     span^.u := surf^.last_u;
     span^.count := iu - span^.u;
     span^.v := current_iv;
@@ -428,7 +428,7 @@ begin
     if (iu > surf2^.last_u) then
     begin
       span := span_p;
-      Inc(Integer(span_p), SizeOf(espan_t));
+      Inc(span_p, SizeOf(espan_t));
       span^.u := surf2^.last_u;
       span^.count := iu - span^.u;
       span^.v := current_iv;
@@ -472,7 +472,7 @@ begin
       if (iu > surf^.last_u) then
       begin
         span := span_p;
-        Inc(Integer(span_p), SizeOf(espan_t));
+        Inc(span_p, SizeOf(espan_t));
         span^.u := surf^.last_u;
         span^.count := iu - span^.u;
         span^.v := current_iv;
@@ -603,7 +603,7 @@ begin
       if (iu > surf2^.last_u) then
       begin
         span := span_p;
-        Inc(Integer(span_p), SizeOf(espan_t));
+        Inc(span_p, SizeOf(espan_t));
         span^.u := surf2^.last_u;
         span^.count := iu - span^.u;
         span^.v := current_iv;
@@ -785,7 +785,7 @@ begin
       while (Integer(s) < Integer(surface_p)) do
       begin
         s^.spans := nil;
-        Inc(Integer(s), SizeOf(surf_t));
+        Inc(s, SizeOf(surf_t));
       end;
       span_p := basespan_p;
     end;
@@ -1172,7 +1172,7 @@ begin
   begin
     if (s^.spans = nil) then
     begin
-      Inc(Integer(s), SizeOf(surf_t));
+      Inc(s, SizeOf(surf_t));
       continue;
     end;
     d_zistepu := s^.d_zistepu;
@@ -1183,7 +1183,7 @@ begin
   // bits of the msurface pointer
     D_FlatFillSurface(s, Integer(s^.msurf) and $FF);
     D_DrawZSpans(s^.spans);
-    Inc(Integer(s), SizeOf(surf_t));
+    Inc(s, SizeOf(surf_t));
   end;
 end;
 
@@ -1212,7 +1212,7 @@ begin
     begin
       if (s^.spans = nil) then
       begin
-        Inc(Integer(s), SizeOf(surf_t));
+        Inc(s, SizeOf(surf_t));
         continue;
       end;
       r_drawnpolycount := r_drawnpolycount + 1;
@@ -1228,7 +1228,7 @@ begin
           else
             if (s^.flags and SURF_DRAWTURB) <> 0 then
               D_TurbulentSurf(s);
-      Inc(Integer(s), SizeOf(surf_t));
+      Inc(s, SizeOf(surf_t));
     end;
   end
   else

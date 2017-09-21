@@ -426,7 +426,7 @@ begin
 
       if ((pfv[0]^.flags and pfv[1]^.flags and pfv[2].flags) <> 0) then
       begin
-        Inc(Integer(ptri), SizeOf(dtriangle_t));
+        Inc((ptri), SizeOf(dtriangle_t));
         continue; // completely clipped
       end;
    // insert s/t coordinates
@@ -451,7 +451,7 @@ begin
       begin
         R_AliasClipTriangle(pfv[2], pfv[1], pfv[0]);
       end;
-      inc(Integer(ptri), SizeOf(dtriangle_t));
+      inc((ptri), SizeOf(dtriangle_t));
     end;
   end
   else
@@ -464,7 +464,7 @@ begin
 
       if ((pfv[0]^.flags and pfv[1]^.flags and pfv[2]^.flags) <> 0) then
       begin
-        inc(Integer(ptri), SizeOf(dtriangle_t));
+        inc((ptri), SizeOf(dtriangle_t));
         continue; // completely clipped
       end;
    // insert s/t coordinates
@@ -490,7 +490,7 @@ begin
     // partially clipped
         R_AliasClipTriangle(pfv[0], pfv[1], pfv[2]);
       end;
-      inc(Integer(ptri), SizeOf(dtriangle_t));
+      inc((ptri), SizeOf(dtriangle_t));
     end;
   end;
 end;
@@ -968,9 +968,9 @@ begin
     begin
       R_AliasProjectAndClipTestFinalVert(fv);
     end;
-    inc(Integer(fv), SizeOf(finalvert_t));
-    inc(Integer(oldv), SizeOf(dtrivertx_t));
-    inc(Integer(newv), SizeOf(dtrivertx_t));
+    inc((fv), SizeOf(finalvert_t));
+    inc((oldv), SizeOf(dtrivertx_t));
+    inc((newv), SizeOf(dtrivertx_t));
   end;
 end;
 {$ENDIF}

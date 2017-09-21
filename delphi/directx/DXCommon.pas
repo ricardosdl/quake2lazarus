@@ -136,17 +136,21 @@ begin
               (Pos('DELPHI32.EXE', AppName) = Length(AppName) - Length('DELPHI32.EXE') + 1) );
 end;
 
-function Trunc(const x : Single) : Integer; register;
-const cwChop : Word = $1F3F;
-asm
-      SUB     ESP,8
-      FSTCW   [ESP]
-      FLDCW   cwChop
-      FLD     x
-      FISTP   dword ptr [ESP+4]
-      FLDCW   [ESP]
-      POP     ECX
-      POP     EAX
+//function Trunc(const x : Single) : Integer; register;
+//const cwChop : Word = $1F3F;
+//asm
+//      SUB     ESP,8
+//      FSTCW   [ESP]
+//      FLDCW   cwChop
+//      FLD     x
+//      FISTP   dword ptr [ESP+4]
+//      FLDCW   [ESP]
+//      POP     ECX
+//      POP     EAX
+//end;
+function Trunc(const x : Single) : Integer;
+begin
+  Result := Trunc(x);
 end;
 
 function Frac(const x : Single) : Single; register;
@@ -154,13 +158,16 @@ begin
    Result := x - Trunc(x);
 end;
 
-function Round(const x : Single) : Integer; register;
-asm
-      SUB     ESP,4
-      FLD     x
-      FISTP   dword ptr [ESP]
-      POP     EAX
+//function Round(const x : Single) : Integer; register;
+//asm
+//      SUB     ESP,4
+//      FLD     x
+//      FISTP   dword ptr [ESP]
+//      POP     EAX
+//end;
+function Round(const x : Single) : Integer;
+begin
+  Result := Round(x);
 end;
-
 
 end.
