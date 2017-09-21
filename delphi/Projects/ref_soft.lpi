@@ -192,15 +192,15 @@
     <Version Value="11"/>
     <PathDelim Value="\"/>
     <SearchPaths>
-      <IncludeFiles Value="..\directx;..\ref_soft;..\game;..\win32;..\qcommon;..\client"/>
+      <IncludeFiles Value="..\directx;..\ref_soft;..\game;..\win32;..\qcommon;..\client;..\server;$(ProjOutDir)"/>
       <Libraries Value="..\directx"/>
-      <OtherUnitFiles Value="..\directx;..\ref_soft;..\game;..\win32;..\qcommon;..\client"/>
+      <OtherUnitFiles Value="..\directx;..\ref_soft;..\game;..\win32;..\qcommon;..\client;..\server"/>
       <UnitOutputDirectory Value="build"/>
       <ObjectPath Value="..\directx"/>
     </SearchPaths>
     <Parsing>
       <SyntaxOptions>
-        <SyntaxMode Value="delphi"/>
+        <SyntaxMode Value="Delphi"/>
       </SyntaxOptions>
     </Parsing>
     <Linking>
@@ -212,7 +212,20 @@
       </Options>
     </Linking>
     <Other>
-      <CustomOptions Value="-dBorland -dVer150 -dDelphi7 -dCompiler6_Up -dPUREPASCAL"/>
+      <CustomOptions Value="-dBorland
+-dVer150
+-dDelphi7
+-dCompiler6_Up
+-dPUREPASCAL
+-dWIN32"/>
+      <OtherDefines Count="6">
+        <Define0 Value="Borland"/>
+        <Define1 Value="Ver150"/>
+        <Define2 Value="Delphi7"/>
+        <Define3 Value="Compiler6_Up"/>
+        <Define4 Value="PUREPASCAL"/>
+        <Define5 Value="WIN32"/>
+      </OtherDefines>
     </Other>
   </CompilerOptions>
   <Debugging>
