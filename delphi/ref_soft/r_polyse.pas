@@ -61,6 +61,8 @@
 // r_polyse.c
 unit r_polyse;
 
+{$MODE Delphi}
+
 interface
 
 uses

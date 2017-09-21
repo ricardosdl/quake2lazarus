@@ -1,4 +1,7 @@
 unit r_main;
+
+{$MODE Delphi}
+
 {----------------------------------------------------------------------------}
 {                                                                            }
 { File(s): r_main.c                                                          }
@@ -263,7 +266,7 @@ uses
   r_draw,
   r_rast,
   r_light,
-  rw_imp,
+  rw_Imp,
   r_bsp_c,
   r_edge,
   r_edgea,

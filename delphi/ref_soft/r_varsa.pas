@@ -1,4 +1,7 @@
 unit r_varsa;
+
+{$MODE Delphi}
+
 //
 // d_varsa.s
 //
@@ -6,7 +9,7 @@ unit r_varsa;
 interface
 
 uses
-  Windows,
+  LCLIntf, LCLType, LMessages,
   qasm_inc,
   d_if_inc;
 

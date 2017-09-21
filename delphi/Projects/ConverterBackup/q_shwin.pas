@@ -44,11 +44,13 @@
 
 unit q_shwin;
 
+{$MODE Delphi}
+
 interface
 
 uses
-  Windows,
-  q_shared;
+  LCLIntf, LCLType, LMessages,
+  q_shared, windows;
 
 var
   hunkcount: Integer;
@@ -95,6 +97,7 @@ end;
 {$ENDIF}
 
 {$DEFINE VIRTUAL_ALLOC}
+{$UNDEF VIRTUAL_ALLOC}
 
 {$IFDEF DEF_FALSE}
 {$UNDEF DEF_FALSE}
@@ -205,10 +208,10 @@ begin
   if not initialized then
   begin
     // Let base retain 16 bits of effectively random data.
-    base := timeGetTime and $FFFF0000;
+    base := GetTickCount { *Converted from TimeGetTime* }and $FFFF0000;
     initialized := True;
   end;
-  curtime := Integer(timeGetTime) - base;
+  curtime := Integer(GetTickCount { *Converted from TimeGetTime* }) - base;
   Result := curtime;
 end;
 

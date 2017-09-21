@@ -1078,7 +1078,7 @@ procedure DelphiStrFmt(buf: PChar; fmt: PChar; args: array of const);
 implementation
 
 uses
-  CPas,
+  Cpas,
 {$IFDEF GAMEDLL}
   g_main,                               // <- we are compiling gamex86.dll
 {$ELSE}

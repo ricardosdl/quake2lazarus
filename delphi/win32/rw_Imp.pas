@@ -50,10 +50,12 @@
 
 unit rw_Imp;
 
+{$MODE Delphi}
+
 interface
 
 uses
-  Windows,
+  LCLIntf, LCLType, LMessages,
   q_shared,
   rw_Win,
   SysUtils,
@@ -83,7 +85,7 @@ implementation
 uses
   rw_dib,
   rw_ddraw,
-  Directdraw,
+  DirectDraw,
   r_main;
 
 (*

@@ -41,6 +41,8 @@
 
 unit r_draw;
 
+{$MODE Delphi}
+
 {$DEFINE _NODEPEND}
 
 interface
@@ -306,7 +308,7 @@ begin
   else
     skip := 0;
 
-  dest := Ptr(LongInt(vid.buffer) + y * vid.rowbytes + x);
+  dest := Pointer(LongInt(vid.buffer) + y * vid.rowbytes + x); { *Converted from Ptr* }
   for v := 0 to height - 1 do
   begin
     sv := ((skip + v) * pic^.height) div h;

@@ -43,6 +43,8 @@
 
 unit r_surf;
 
+{$MODE Delphi}
+
 interface
 
 uses

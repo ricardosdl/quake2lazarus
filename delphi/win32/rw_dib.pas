@@ -37,10 +37,12 @@
 
 unit rw_dib;
 
+{$MODE Delphi}
+
 interface
 
 uses
-  Windows,
+  LCLIntf, LCLType, LMessages,
   SysUtils,
   r_local,
   r_main,

@@ -55,10 +55,12 @@
 
 unit r_alias_c;
 
+{$MODE Delphi}
+
 interface
 
 uses
-  windows,
+  LCLIntf, LCLType, LMessages,
   qfiles,
   q_shared,
   r_local,

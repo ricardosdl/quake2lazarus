@@ -44,6 +44,8 @@
 
 unit ref;
 
+{$MODE Delphi}
+
 interface
 
 uses

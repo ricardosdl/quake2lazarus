@@ -38,6 +38,8 @@
 
 unit r_local;
 
+{$MODE Delphi}
+
 // There's no C file to go with this header.
 // All "extern" variables and functions have been commented out and are
 // highlighted with my initials.
@@ -53,7 +55,7 @@ unit r_local;
 interface
 
 uses
-  Windows, // CAK - needed for Delphi 3
+  LCLIntf, LCLType, LMessages, // CAK - needed for Delphi 3
   q_shared,
   qfiles, // CHANGED FROM Q_FILES BY CARL KENNER (CAK)
   r_model,

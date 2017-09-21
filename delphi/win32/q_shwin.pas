@@ -50,7 +50,7 @@ interface
 
 uses
   LCLIntf, LCLType, LMessages,
-  q_shared, windows;
+  q_shared;
 
 var
   hunkcount: Integer;

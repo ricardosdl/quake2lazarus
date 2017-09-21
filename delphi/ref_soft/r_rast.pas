@@ -40,6 +40,8 @@
 // r_rast.c
 unit r_rast;
 
+{$MODE Delphi}
+
 {$DEFINE _NODEPEND}
 
 interface

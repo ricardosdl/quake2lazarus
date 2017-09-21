@@ -42,6 +42,8 @@
 {----------------------------------------------------------------------------}
 unit r_scan;
 
+{$MODE Delphi}
+
 interface
 
 uses
@@ -62,7 +64,7 @@ var
 implementation
 
 uses
-  Windows,
+  LCLIntf, LCLType, LMessages,
   SysUtils,
   ref,
   r_rast,

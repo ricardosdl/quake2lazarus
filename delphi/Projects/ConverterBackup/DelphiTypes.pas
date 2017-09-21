@@ -1,5 +1,7 @@
 unit DelphiTypes;
 
+{$MODE Delphi}
+
 interface
 
 {$IFDEF WIN32}

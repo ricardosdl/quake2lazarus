@@ -1,10 +1,9 @@
-{$ALIGN ON}{$MINENUMSIZE 4}
 {----------------------------------------------------------------------------}
 {                                                                            }
-{ File(s): glw_win.c                                                         }
+{ File(s): rw_win.c                                                          }
 {                                                                            }
-{ Initial conversion by : YgriK (Igor Karpov) - glYgriK@hotbox.ru            }
-{ Initial conversion on : 18-Jan-2002                                        }
+{ Initial conversion by : Savage (Dominique@SavageSoftware.com.au)           }
+{ Initial conversion on : 09-Jan-2002                                        }
 {                                                                            }
 { This File contains part of convertion of Quake2 source to ObjectPascal.    }
 { More information about this project can be found at:                       }
@@ -29,42 +28,58 @@
 {                                                                            }
 {----------------------------------------------------------------------------}
 { * Still dependent (to compile correctly) on:                               }
-{                                                                            }
+{ none                                                                       }
 {----------------------------------------------------------------------------}
 { * TODO:                                                                    }
-{ 1) test: glwstate.log_fp                                                   }
-{                                                                            }
+{ none                                                                       }
 {----------------------------------------------------------------------------}
-{ 28.06.2003 Juha: Proofreaded }
-unit glw_win;
+
+unit rw_win;
 
 interface
 
 uses
-  Windows;
-
+  Windows,
+  DirectDraw,
+  q_shared;
 
 type
-  glwstate_t = record
-    hInstance : HINST{ANCE};
-    wndproc : pointer;
+  pswwstate_t = ^swwstate_t;
+  swwstate_t = Record
+    h_Inst: HINST;
 
-    {h}DC   : HDC;    	// handle to device context
-    {h}Wnd  : HWND;   	// handle to window
-    {h}GLRC : HGLRC;  	// handle to GL rendering context
+    wndproc: Pointer;
+    h_DC: HDC;                                // global DC we're using
+    h_Wnd: HWND;                              // HWND of parent window
 
-    hinstOpenGL : HINST{ANCE};  // HINSTANCE for the OpenGL library
+    hdcDIBSection: HDC;                       // DC compatible with DIB section
+    hDIBSection: HBITMAP;                     // DIB section
+    pDIBBase: Pointer;                        // DIB base pointer, NOT used directly for rendering
 
-    minidriver,
-    allowdisplaydepthchange,
-    mcd_accelerated         : boolean;
+    hPal: HPALETTE;                           // palette we're using
+    hpalOld: HPALETTE;                        // original system palette
+    oldsyscolors: array[0..19] of TCOLORREF;  // original system colors
 
-//        FILE *log_fp;
-    log_fp : textfile; //or file
+    hinstDDRAW: HINST;                        // library instance for DDRAW.DLL
+    lpDirectDraw: IDIRECTDRAW;                // pointer to DirectDraw object
+
+    lpddsFrontBuffer: IDIRECTDRAWSURFACE;     // video card display memory front buffer
+    lpddsBackBuffer: IDIRECTDRAWSURFACE;      // system memory backbuffer
+    lpddsOffScreenBuffer: IDIRECTDRAWSURFACE; // system memory backbuffer
+    lpddpPalette: IDIRECTDRAWPALETTE;         // DirectDraw palette
+{$IFDEF DIRECTX_WINDOWMODE}
+    lpddsClipper: IDirectDrawClipper;
+{$ENDIF}
+    palettized: qboolean;                     // true if desktop is paletted
+    modex:  qboolean;
+
+    initializing: qboolean;
   end;
 
+var
+  sww_state  : swwstate_t;
 
 implementation
 
-// End of file
 end.
+

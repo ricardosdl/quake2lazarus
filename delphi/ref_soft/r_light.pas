@@ -52,6 +52,8 @@ DYNAMIC LIGHTS
 }
 unit r_light;
 
+{$MODE Delphi}
+
 interface
 
 uses

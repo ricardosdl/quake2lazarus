@@ -1,89 +1,102 @@
-Hint: * Convertendo arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\Projects\ref_gl.dpr *
+Hint: * Convertendo arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\Projects\ref_soft.dpr *
 Hint: Adicionada definições -dBorland -dVer150 -dDelphi7 -dCompiler6_Up -dPUREPASCAL nas opções customizadas
 Hint: Todos os arquivos de unidade encontrados
-Hint: * Reparando unidades usadas para o arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\Projects\ref_gl.dpr *
+Hint: * Reparando unidades usadas para o arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\Projects\ref_soft.dpr *
 Hint: 
 Hint: *** Arquivos de unidade sendo convertidos pertencentes ao projeto/pacote ***
-Hint: * Convertendo arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\qcommon\Cpas.pas *
-Hint: * Convertendo arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\qcommon\DelphiTypes.pas *
-Hint: Repairing include files : ..\Jedi.inc
+Hint: * Convertendo arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_soft\r_main.pas *
+Hint: Corrigido maiúsculas/minúsculas da unidade "rw_imp" para "rw_Imp".
 Hint: * Convertendo arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\game\q_shared.pas *
-Hint: Corrigido maiúsculas/minúsculas da unidade "CPas" para "Cpas".
 Hint: * Convertendo arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\game\q_shared_add.pas *
-Hint: * Convertendo arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_gl\gl_local.pas *
-Hint: Unidade "OpenGL" substituída com "dglOpenGL" na seção "uses".
-Hint: * Convertendo arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_gl\gl_model_h.pas *
-Hint: * Convertendo arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_gl\qgl_h.pas *
-Hint: Unidade "OpenGL" substituída com "dglOpenGL" na seção "uses".
-Hint: * Convertendo arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_gl\gl_draw.pas *
-Hint: Unidade "OpenGL" substituída com "dglOpenGL" na seção "uses".
-Hint: * Convertendo arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\win32\glw_imp.pas *
-Hint: Corrigido maiúsculas/minúsculas da unidade "CPas" para "Cpas".
-Hint: Unidade "OpenGL" substituída com "dglOpenGL" na seção "uses".
+Hint: * Convertendo arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_soft\r_aclip.pas *
+Hint: * Convertendo arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_soft\r_alias_c.pas *
+Hint: Repairing include files : ..\ref_soft\anorms.inc
+Hint: Unidade "windows" substituída com "LCLIntf, LCLType, LMessages" na seção "uses".
+Hint: * Convertendo arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_soft\r_bsp_c.pas *
+Hint: * Convertendo arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_soft\r_draw.pas *
+Hint: Replaced call Ptr(LongInt(vid.buffer) + y * vid.rowbytes + x); with Pointer(LongInt(vid.buffer) + y * vid.rowbytes + x); { *Converted from Ptr* }
+Hint: * Convertendo arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_soft\r_edge.pas *
+Hint: * Convertendo arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_soft\r_image.pas *
+Hint: * Convertendo arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_soft\r_light.pas *
+Hint: * Convertendo arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_soft\r_model.pas *
+Hint: Unidade "Windows" substituída com "LCLIntf, LCLType, LMessages" na seção "uses".
+Hint: * Convertendo arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_soft\r_part.pas *
+Hint: Corrigido maiúsculas/minúsculas da unidade "rw_imp" para "rw_Imp".
+Hint: * Convertendo arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_soft\r_poly.pas *
+Hint: * Convertendo arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_soft\r_polyse.pas *
+Hint: Repairing include files : ..\ref_soft\rand1k.inc
+Hint: * Convertendo arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_soft\r_rast.pas *
+Hint: * Convertendo arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_soft\r_scan.pas *
+Hint: Unidade "Windows" substituída com "LCLIntf, LCLType, LMessages" na seção "uses".
+Hint: * Convertendo arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_soft\r_sprite.pas *
+Hint: * Convertendo arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_soft\r_surf.pas *
+Hint: * Convertendo arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\win32\rw_ddraw.pas *
+Hint: Corrigido maiúsculas/minúsculas da unidade "Directdraw" para "DirectDraw".
+Hint: Corrigido maiúsculas/minúsculas da unidade "rw_imp" para "rw_Imp".
+Hint: Unidade "Windows" substituída com "LCLIntf, LCLType, LMessages" na seção "uses".
+Hint: * Convertendo arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\win32\rw_dib.pas *
+Hint: Unidade "Windows" substituída com "LCLIntf, LCLType, LMessages" na seção "uses".
+Hint: * Convertendo arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\win32\rw_Imp.pas *
+Hint: Corrigido maiúsculas/minúsculas da unidade "Directdraw" para "DirectDraw".
+Hint: Unidade "Windows" substituída com "LCLIntf, LCLType, LMessages" na seção "uses".
+Hint: * Convertendo arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\qcommon\CPas.pas *
+Hint: Fixed unit name from CPas to Cpas.
+Hint: * Convertendo arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\qcommon\qfiles.pas *
+Hint: * Convertendo arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_soft\r_local.pas *
 Hint: Unidade "Windows" substituída com "LCLIntf, LCLType, LMessages" na seção "uses".
 Hint: * Convertendo arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\win32\q_shwin.pas *
-Hint: Unidade "Windows" substituída com "LCLIntf, LCLType, LMessages" na seção "uses".
-Hint: Replaced call timeGetTime with GetTickCount { *Converted from TimeGetTime* }
-Hint: Replaced call timeGetTime  with GetTickCount { *Converted from TimeGetTime* }
-Hint: * Convertendo arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\win32\glw_win.pas *
-Hint: Unidade "Windows" substituída com "LCLIntf, LCLType, LMessages" na seção "uses".
-Hint: * Convertendo arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\qcommon\qfiles.pas *
+Hint: Unidade "windows" removida na seção "uses".
 Hint: * Convertendo arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\client\ref.pas *
-Hint: * Convertendo arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_gl\gl_image.pas *
+Hint: * Convertendo arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\qcommon\DelphiTypes.pas *
 Hint: Repairing include files : ..\Jedi.inc
-Hint: Corrigido maiúsculas/minúsculas da unidade "CPas" para "Cpas".
-Hint: Unidade "OpenGL" substituída com "dglOpenGL" na seção "uses".
-Hint: * Convertendo arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_gl\gl_model.pas *
-Hint: Corrigido maiúsculas/minúsculas da unidade "CPas" para "Cpas".
-Hint: * Convertendo arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_gl\gl_light.pas *
-Hint: Corrigido maiúsculas/minúsculas da unidade "CPas" para "Cpas".
-Hint: Unidade "OpenGL" substituída com "dglOpenGL" na seção "uses".
-Hint: * Convertendo arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_gl\gl_warp.pas *
-Hint: Repairing include files : ..\ref_gl\warpsin.inc
-Hint: Corrigido maiúsculas/minúsculas da unidade "CPas" para "Cpas".
-Hint: Unidade "OpenGL" substituída com "dglOpenGL" na seção "uses".
-Hint: * Convertendo arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_gl\gl_rmain.pas *
-Hint: Repairing include files : ..\Jedi.inc
-Hint: Corrigido maiúsculas/minúsculas da unidade "CPas" para "Cpas".
-Hint: Unidade "OpenGL" substituída com "dglOpenGL" na seção "uses".
-Hint: * Convertendo arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_gl\gl_rsurf.pas *
-Hint: Corrigido maiúsculas/minúsculas da unidade "CPas" para "Cpas".
-Hint: Unidade "OpenGL" substituída com "dglOpenGL" na seção "uses".
-Hint: * Convertendo arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_gl\gl_rmisc.pas *
-Hint: Corrigido maiúsculas/minúsculas da unidade "CPas" para "Cpas".
-Hint: Unidade "OpenGL" substituída com "dglOpenGL" na seção "uses".
-Hint: * Convertendo arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_gl\gl_mesh.pas *
-Hint: Corrigido maiúsculas/minúsculas da unidade "CPas" para "Cpas".
-Hint: Unidade "OpenGL" substituída com "dglOpenGL" na seção "uses".
-Hint: * Convertendo arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\win32\qgl_win.pas *
-Hint: Repairing include files : ..\win32\qgl_win_GL_int.inc; ..\win32\qgl_win_GL_imp.inc
-Hint: Unidade "OpenGL" substituída com "dglOpenGL" na seção "uses".
+Hint: * Convertendo arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_soft\r_misc.pas *
+Hint: * Convertendo arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\win32\rw_win.pas *
 Hint: Unidade "Windows" substituída com "LCLIntf, LCLType, LMessages" na seção "uses".
-Hint: * Convertendo arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_gl\gl_local_add.pas *
+Hint: * Convertendo arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_soft\r_edgea.pas *
+Hint: * Convertendo arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_soft\qasm_inc.pas *
+Hint: * Convertendo arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_soft\r_varsa.pas *
+Hint: Unidade "Windows" substituída com "LCLIntf, LCLType, LMessages" na seção "uses".
+Hint: * Convertendo arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_soft\d_if_inc.pas *
+Hint: * Convertendo arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_soft\r_scana.pas *
+Hint: * Convertendo arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_soft\adivtab_inc.pas *
+Hint: * Convertendo arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_soft\r_polysa.pas *
 Hint: 
 Hint: *** Corriginfo unidades usadas e reparando arquivos de formulários ***
-Hint: * Reparando unidades usadas para o arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\qcommon\Cpas.pas *
-Hint: * Reparando unidades usadas para o arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\qcommon\DelphiTypes.pas *
+Hint: * Reparando unidades usadas para o arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_soft\r_main.pas *
 Hint: * Reparando unidades usadas para o arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\game\q_shared.pas *
 Hint: * Reparando unidades usadas para o arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\game\q_shared_add.pas *
-Hint: * Reparando unidades usadas para o arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_gl\gl_local.pas *
-Hint: * Reparando unidades usadas para o arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_gl\gl_model_h.pas *
-Hint: * Reparando unidades usadas para o arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_gl\qgl_h.pas *
-Hint: * Reparando unidades usadas para o arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_gl\gl_draw.pas *
-Hint: * Reparando unidades usadas para o arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\win32\glw_imp.pas *
-Hint: * Reparando unidades usadas para o arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\win32\q_shwin.pas *
-Hint: * Reparando unidades usadas para o arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\win32\glw_win.pas *
+Hint: * Reparando unidades usadas para o arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_soft\r_aclip.pas *
+Hint: * Reparando unidades usadas para o arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_soft\r_alias_c.pas *
+Hint: * Reparando unidades usadas para o arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_soft\r_bsp_c.pas *
+Hint: * Reparando unidades usadas para o arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_soft\r_draw.pas *
+Hint: * Reparando unidades usadas para o arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_soft\r_edge.pas *
+Hint: * Reparando unidades usadas para o arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_soft\r_image.pas *
+Hint: * Reparando unidades usadas para o arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_soft\r_light.pas *
+Hint: * Reparando unidades usadas para o arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_soft\r_model.pas *
+Hint: * Reparando unidades usadas para o arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_soft\r_part.pas *
+Hint: * Reparando unidades usadas para o arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_soft\r_poly.pas *
+Hint: * Reparando unidades usadas para o arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_soft\r_polyse.pas *
+Hint: * Reparando unidades usadas para o arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_soft\r_rast.pas *
+Hint: * Reparando unidades usadas para o arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_soft\r_scan.pas *
+Hint: * Reparando unidades usadas para o arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_soft\r_sprite.pas *
+Hint: * Reparando unidades usadas para o arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_soft\r_surf.pas *
+Hint: * Reparando unidades usadas para o arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\win32\rw_ddraw.pas *
+Hint: * Reparando unidades usadas para o arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\win32\rw_dib.pas *
+Hint: * Reparando unidades usadas para o arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\win32\rw_Imp.pas *
+Hint: * Reparando unidades usadas para o arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\qcommon\CPas.pas *
 Hint: * Reparando unidades usadas para o arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\qcommon\qfiles.pas *
+Hint: * Reparando unidades usadas para o arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_soft\r_local.pas *
+Hint: * Reparando unidades usadas para o arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\win32\q_shwin.pas *
 Hint: * Reparando unidades usadas para o arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\client\ref.pas *
-Hint: * Reparando unidades usadas para o arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_gl\gl_image.pas *
-Hint: * Reparando unidades usadas para o arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_gl\gl_model.pas *
-Hint: * Reparando unidades usadas para o arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_gl\gl_light.pas *
-Hint: * Reparando unidades usadas para o arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_gl\gl_warp.pas *
-Hint: * Reparando unidades usadas para o arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_gl\gl_rmain.pas *
-Hint: * Reparando unidades usadas para o arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_gl\gl_rsurf.pas *
-Hint: * Reparando unidades usadas para o arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_gl\gl_rmisc.pas *
-Hint: * Reparando unidades usadas para o arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_gl\gl_mesh.pas *
-Hint: * Reparando unidades usadas para o arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\win32\qgl_win.pas *
-Hint: * Reparando unidades usadas para o arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_gl\gl_local_add.pas *
+Hint: * Reparando unidades usadas para o arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\qcommon\DelphiTypes.pas *
+Hint: * Reparando unidades usadas para o arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_soft\r_misc.pas *
+Hint: * Reparando unidades usadas para o arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\win32\rw_win.pas *
+Hint: * Reparando unidades usadas para o arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_soft\r_edgea.pas *
+Hint: * Reparando unidades usadas para o arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_soft\qasm_inc.pas *
+Hint: * Reparando unidades usadas para o arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_soft\r_varsa.pas *
+Hint: * Reparando unidades usadas para o arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_soft\d_if_inc.pas *
+Hint: * Reparando unidades usadas para o arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_soft\r_scana.pas *
+Hint: * Reparando unidades usadas para o arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_soft\adivtab_inc.pas *
+Hint: * Reparando unidades usadas para o arquivo C:\Users\ricardo-sl\pascal_projects\quake2delphi\delphi\ref_soft\r_polysa.pas *
 Hint: A conversão levou: 00:00:02
 Hint: Conversão Pronta.

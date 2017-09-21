@@ -1,5 +1,7 @@
 unit r_polysa;
 
+{$MODE Delphi}
+
 interface
 
 {$IFDEF id386}

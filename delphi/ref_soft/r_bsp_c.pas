@@ -47,6 +47,8 @@
 
 unit r_bsp_c;
 
+{$MODE Delphi}
+
 interface
 
 uses

@@ -49,7 +49,7 @@
      - Optimise code : I don't known if I can really optimise a lot if keep
          code in pascal, but some function could be rewritten in asm.
 ==============================================================================*)
-unit CPas;
+unit Cpas;
 
 {$MODE Delphi}
 

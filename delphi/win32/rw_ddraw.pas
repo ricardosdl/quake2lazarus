@@ -37,10 +37,12 @@
 
 unit rw_ddraw;
 
+{$MODE Delphi}
+
 interface
 
 uses
-  Windows,
+  LCLIntf, LCLType, LMessages,
   SysUtils,
   q_shared,
   r_local;
@@ -58,10 +60,10 @@ procedure DDRAW_SetPalette( palette: PByteArray);
 implementation
 
 uses
-  Directdraw,
+  DirectDraw,
   rw_win,
   r_main,
-  rw_imp;
+  rw_Imp;
 
 (*
 ** DDRAW_Init

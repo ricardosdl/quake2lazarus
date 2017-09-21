@@ -36,10 +36,12 @@
 
 unit rw_win;
 
+{$MODE Delphi}
+
 interface
 
 uses
-  Windows,
+  LCLIntf, LCLType, LMessages,
   DirectDraw,
   q_shared;
 

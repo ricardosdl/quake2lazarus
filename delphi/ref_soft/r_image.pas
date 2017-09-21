@@ -39,6 +39,8 @@
 // r_image.c
 unit r_image;
 
+{$MODE Delphi}
+
 interface
 
 uses

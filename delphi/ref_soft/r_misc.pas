@@ -39,6 +39,8 @@
 
 unit r_misc;
 
+{$MODE Delphi}
+
 interface
 
 uses

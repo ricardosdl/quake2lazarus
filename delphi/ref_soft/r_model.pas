@@ -42,11 +42,13 @@
 
 unit r_model;
 
+{$MODE Delphi}
+
 interface
 
 uses
   Qfiles,
-  Windows,
+  LCLIntf, LCLType, LMessages,
   q_shared;
 
 (*

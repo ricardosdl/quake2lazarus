@@ -51,13 +51,15 @@
 
 unit r_part;
 
+{$MODE Delphi}
+
 interface
 
 uses
   q_shared,
   ref,
   r_local,
-  rw_imp; // see the note at R_DrawParticles
+  rw_Imp; // see the note at R_DrawParticles
 
 {$IFDEF id386}
 {$IFNDEF __linux__}
