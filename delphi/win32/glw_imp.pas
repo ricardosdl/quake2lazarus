@@ -59,7 +59,7 @@ uses
 function GLimp_SetMode(var pwidth, pheight: integer;
   mode: integer; fullscreen: qboolean): rserr_t;
 procedure GLimp_Shutdown;
-function GLimp_Init(hinstance: HINST; wndproc: pointer): qboolean; //add info: glw_win.inc: glwstate_t
+function GLimp_Init(hinstance: windows.HINST; wndproc: pointer): qboolean; //add info: glw_win.inc: glwstate_t
 procedure GLimp_BeginFrame(camera_separation: Single);
 
 //NB! cdecl
@@ -125,7 +125,7 @@ begin
   wc.cbWndExtra := 0;
   wc.hInstance := glw_state.hInstance;
   wc.hIcon := 0;
-  wc.hCursor := LoadCursor(0, IDC_ARROW);
+  wc.hCursor := windows.LoadCursor(0, IDC_ARROW);
   wc.hbrBackground := COLOR_GRAYTEXT;
   wc.lpszMenuName := nil;
   wc.lpszClassName := WINDOW_CLASS_NAME;
@@ -253,12 +253,12 @@ begin
     end
     else
     begin
-      dc := GetDC(0);
-      bitspixel_ := GetDeviceCaps(dc, BITSPIXEL);
+      dc := windows.GetDC(0);
+      bitspixel_ := windows.GetDeviceCaps(dc, BITSPIXEL);
 
       ri.Con_Printf(PRINT_ALL, '...using desktop display depth of %d'#10, bitspixel_);
 
-      ReleaseDC(0, dc);
+      windows.ReleaseDC(0, dc);
     end;
 
     ri.Con_Printf(PRINT_ALL, '...calling CDS: ');
