@@ -48,9 +48,8 @@
     <Version Value="11"/>
     <PathDelim Value="\"/>
     <SearchPaths>
-      <IncludeFiles Value="..\jedi;..\qcommon;..\game;..\client;..\server;..\win32;..\ref_gl;..\..\..\dglOpenGL;$(ProjOutDir)"/>
-      <Libraries Value="..\jedi"/>
-      <OtherUnitFiles Value="..\jedi;..\qcommon;..\game;..\client;..\server;..\win32;..\ref_gl;..\..\..\dglOpenGL"/>
+      <IncludeFiles Value="..\qcommon;..\game;..\client;..\server;..\win32;..\ref_gl;..\..\..\dglOpenGL;$(ProjOutDir)"/>
+      <OtherUnitFiles Value="..\qcommon;..\game;..\client;..\server;..\win32;..\ref_gl;..\..\..\dglOpenGL"/>
       <UnitOutputDirectory Value="build"/>
       <ObjectPath Value="..\jedi"/>
     </SearchPaths>
