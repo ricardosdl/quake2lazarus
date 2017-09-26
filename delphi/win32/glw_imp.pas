@@ -180,8 +180,8 @@ begin
   if (glw_state.Wnd = 0) then
     ri.Sys_Error(ERR_FATAL, 'Couldn''t create window');
 
-  ShowWindow(glw_state.Wnd, SW_SHOW);
-  UpdateWindow(glw_state.Wnd);
+  windows.ShowWindow(glw_state.Wnd, SW_SHOW);
+  windows.UpdateWindow(glw_state.Wnd);
 
   // init all the gl stuff for the window
   if (not GLimp_InitGL()) then
@@ -191,8 +191,8 @@ begin
     Exit;
   end;
 
-  SetForegroundWindow(glw_state.Wnd);
-  SetFocus(glw_state.Wnd);
+  windows.SetForegroundWindow(glw_state.Wnd);
+  windows.SetFocus(glw_state.Wnd);
 
   // let the sound and input subsystems know about the new window
   ri.Vid_NewWindow(width, height);
@@ -233,7 +233,8 @@ begin
     GLimp_Shutdown();
 
   // do a CDS if needed
-  if (fullscreen) then
+  if (not fullscreen) then
+  //TODO:if (fullscreen) then //put it back!
   begin
     ri.Con_Printf(PRINT_ALL, '...attempting fullscreen'#10);
 
@@ -549,7 +550,7 @@ begin
     ri.Con_Printf(PRINT_ALL, 'GLimp_Init() - non-NULL DC exists'#10);
 
 //  if ( ( glw_state.hDC = GetDC( glw_state.hWnd ) ) == NULL ) then
-  glw_state. {h} DC := GetDC(glw_state. {h} Wnd);
+  glw_state. {h} DC := windows.GetDC(glw_state. {h} Wnd);
   if (glw_state. {h} DC = 0) then
   begin
     ri.Con_Printf(PRINT_ALL, 'GLimp_Init() - GetDC failed'#10); //Y:
