@@ -61,7 +61,7 @@ var
   curtime: Integer;
   findbase: array[0..MAX_OSPATH - 1] of Char;
   findpath: array[0..MAX_OSPATH - 1] of Char;
-  findhandle: Cardinal;
+  findhandle: HANDLE;
 
 function Hunk_Begin(maxsize: Integer): Pointer;
 function Hunk_Alloc(size: Integer): Pointer;
@@ -261,7 +261,7 @@ begin
   findhandle := 0;
 
   Com_FilePath(path, findbase);
-  findhandle := FindFirstFile(pchar(path), findinfo);
+  findhandle := FindFirstFile(path, findinfo);
   if findhandle = INVALID_HANDLE_VALUE then
     Exit;
   if not CompareAttributes(findinfo.dwFileAttributes, musthave, canthave) then
