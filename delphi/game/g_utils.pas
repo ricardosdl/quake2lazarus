@@ -282,7 +282,7 @@ begin
     t^.think := Think_Delay;
     t^.activator := activator;
     if (activator = nil) then
-      gi.dprintf('Think_Delay with no activator'#10, []);
+      gi.dprintf('Think_Delay with no activator'#10);
     t^._message := ent^._message;
     t^.target := ent^.target;
     t^.killtarget := ent^.killtarget;
@@ -314,7 +314,7 @@ begin
       G_FreeEdict(t);
       if not ent^.inuse then
       begin
-        gi.dprintf('entity was removed while using killtargets'#10, []);
+        gi.dprintf('entity was removed while using killtargets'#10);
         Exit;
       end;
       t := G_Find(t, FOFS_targetname, ent^.killtarget);
@@ -339,7 +339,7 @@ begin
 
       if (t = ent) then
       begin
-        gi.dprintf('WARNING: Entity used itself.'#10, []);
+        gi.dprintf('WARNING: Entity used itself.'#10);
       end else
       begin
         if (@t^.use <> nil) then
@@ -347,7 +347,7 @@ begin
       end;
       if not ent^.inuse then
       begin
-        gi.dprintf('entity was removed while using targets'#10, []);
+        gi.dprintf('entity was removed while using targets'#10);
         Exit;
       end;
     continue_:
@@ -556,7 +556,7 @@ begin
   end;
 
   if (i_hack = game.maxentities) then
-    gi.error('ED_Alloc: no free edicts', []);
+    gi.error('ED_Alloc: no free edicts');
 
   Inc(globals.num_edicts);
   G_InitEdict(e);

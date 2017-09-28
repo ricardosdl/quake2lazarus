@@ -299,14 +299,16 @@
 -dDelphi7
 -dCompiler6_Up
 -dPUREPASCAL
--dWIN32"/>
-      <OtherDefines Count="6">
+-dWIN32
+-dGAMEDLL"/>
+      <OtherDefines Count="7">
         <Define0 Value="Borland"/>
         <Define1 Value="Ver150"/>
         <Define2 Value="Delphi7"/>
         <Define3 Value="Compiler6_Up"/>
         <Define4 Value="PUREPASCAL"/>
         <Define5 Value="WIN32"/>
+        <Define6 Value="GAMEDLL"/>
       </OtherDefines>
     </Other>
   </CompilerOptions>

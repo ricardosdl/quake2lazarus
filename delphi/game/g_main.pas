@@ -429,7 +429,7 @@ begin
   begin
     if (level.time >= timelimit^.value * 60) then
     begin
-      gi.bprintf(PRINT_HIGH, 'Timelimit hit.'#10, []);
+      gi.bprintf(PRINT_HIGH, 'Timelimit hit.'#10);
       EndDMLevel;
       Exit;
     end;
@@ -447,7 +447,7 @@ begin
 
       if (cl^.resp.score >= fraglimit^.value) then
       begin
-        gi.bprintf(PRINT_HIGH, 'Fraglimit hit.'#10, []);
+        gi.bprintf(PRINT_HIGH, 'Fraglimit hit.'#10);
         EndDMLevel;
         Exit;
       end;

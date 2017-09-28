@@ -280,12 +280,13 @@ var
   i: Integer;
   b: array [0..3] of Byte;
 begin
-  gi.cprintf(nil, PRINT_HIGH, 'Filter list:'#10, []);
+  gi.cprintf(nil, PRINT_HIGH, 'Filter list:'#10);
   for i:= 0 to numipfilters - 1 do
   begin
     PCardinal(@b)^ := ipfilters[i].compare;
     { 2003-05-16 (SP):  Might need to be examined, changed i's to d's }
-    gi.cprintf(nil, PRINT_HIGH, '%3d.%3d.%3d.%3d'#10, [b[0], b[1], b[2], b[3]]);
+    //gi.cprintf(nil, PRINT_HIGH, '%3d.%3d.%3d.%3d'#10, [b[0], b[1], b[2], b[3]]);
+    gi.cprintf(nil, PRINT_HIGH, '%3d.%3d.%3d.%3d'#10);
   end;
 end;
 
