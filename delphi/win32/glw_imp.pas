@@ -380,7 +380,7 @@ begin
   end;
   if (glw_state. {h} DC <> 0) then
   begin
-    if (ReleaseDC(glw_state. {h} Wnd, glw_state. {h} DC) = 0) then
+    if (windows.ReleaseDC(glw_state. {h} Wnd, glw_state. {h} DC) = 0) then
       ri.Con_Printf(PRINT_ALL, 'ref_gl::R_Shutdown() - ReleaseDC failed'#10); //Y:
     glw_state. {h} DC := 0;
   end;
@@ -713,12 +713,12 @@ procedure GLimp_AppActivate(active: qboolean);
 begin
   if (active) then
   begin
-    SetForegroundWindow(glw_state. {h} Wnd);
-    ShowWindow(glw_state. {h} Wnd, SW_RESTORE);
+    windows.SetForegroundWindow(glw_state. {h} Wnd);
+    windows.ShowWindow(glw_state. {h} Wnd, SW_RESTORE);
   end
   else
     if (vid_fullscreen^.value <> 0) then
-      ShowWindow(glw_state. {h} Wnd, SW_MINIMIZE);
+      windows.ShowWindow(glw_state. {h} Wnd, SW_MINIMIZE);
 end;
 
 end.
