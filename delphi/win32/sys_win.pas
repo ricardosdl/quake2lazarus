@@ -414,7 +414,8 @@ begin
 
   // Check the current debug directory first, for development purposes.
   GetCurrentDirectory(SizeOf(cwd), @cwd);
-  Com_sprintf(name, SizeOf(name), '%s/%s/%s', [cwd, debugdir, gamename]);
+  //Com_sprintf(name, SizeOf(name), '%s/%s/%s', [cwd, debugdir, gamename]);
+  Com_sprintf(name, SizeOf(name), '%s/%s', [cwd, gamename]);
   game_library := LoadLibrary(name);
   if game_library <> 0 then
     Com_DPrintf('LoadLibrary (%s)'#10, [name])
