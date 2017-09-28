@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CONFIG>
   <ProjectOptions>
-    <Version Value="9"/>
+    <Version Value="10"/>
     <PathDelim Value="\"/>
     <General>
       <Flags>
@@ -167,14 +167,18 @@
 -dDelphi7
 -dCompiler6_Up
 -dPUREPASCAL
--dWIN32"/>
-      <OtherDefines Count="6">
+-dWIN32
+-dREF_GL
+-dRENDERERDLL"/>
+      <OtherDefines Count="8">
         <Define0 Value="Borland"/>
         <Define1 Value="Ver150"/>
         <Define2 Value="Delphi7"/>
         <Define3 Value="Compiler6_Up"/>
         <Define4 Value="PUREPASCAL"/>
         <Define5 Value="WIN32"/>
+        <Define6 Value="REF_GL"/>
+        <Define7 Value="RENDERERDLL"/>
       </OtherDefines>
     </Other>
   </CompilerOptions>
