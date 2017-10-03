@@ -177,7 +177,8 @@ begin
   Com_Printf(#10'------- sound initialization -------'#10, []);
 
   cv := Cvar_Get('s_initsound', '1', 0);
-  if (cv.value = 0) then
+  //if (cv.value = 0) then //TODO:Fix this, this is the original line
+  if cv.value <> 0 then
     Com_Printf('not initializing.'#10, [])
   else
   begin
