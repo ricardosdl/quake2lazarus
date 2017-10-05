@@ -906,16 +906,16 @@ var
 
   procedure FLOODFILL_STEP(off, dx, dy: Integer);
   begin
-    if (PByteArray(pos)^[off] = fillcolor) then
+    if (pos[off] = fillcolor) then
     begin
-      PByteArray(pos)[off] := 255;
+      pos[off] := 255;
       fifo[inpt].x := x + (dx);
       fifo[inpt].y := y + (dy);
       inpt := (inpt + 1) and FLOODFILL_FIFO_MASK;
     end
     else
-      if (PByteArray(pos)^[off] <> 255) then
-        fdc := PByteArray(pos)^[off];
+      if (pos[off] <> 255) then
+        fdc := pos[off];
   end;
 
 begin
