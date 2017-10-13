@@ -146,7 +146,7 @@ type
     {/// }
     { non-gameserver infornamtion }
     { FIXME: move this cinematic stuff into the cin_t structure }
-    cinematic_file: TFileHandle;
+    cinematic_file: THandle;
     cinematictime: Integer;             { cls.realtime for first cinematic frame }
     cinematicframe: Integer;
     cinematicpalette: array[0..768 - 1] of Char;

@@ -345,7 +345,7 @@ SV_ReadLevelFile
 procedure SV_ReadLevelFile;
 var
   name: array[0..MAX_OSPATH - 1] of char;
-  f: integer;
+  f: THandle;
 begin
   Com_DPrintf('SV_ReadLevelFile()'#10, []);
 
@@ -455,7 +455,7 @@ SV_ReadServerFile
 
 procedure SV_ReadServerFile();
 var
-  f: integer;
+  f: THandle;
   name: array[0..MAX_OSPATH - 1] of char;
   string_: array[0..128 - 1] of char;
   comment: array[0..32 - 1] of char;

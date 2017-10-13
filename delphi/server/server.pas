@@ -92,7 +92,7 @@ type
     multicast_buf: array[0..MAX_MSGLEN - 1] of byte;
 
     // demo server information
-    demofile: integer;                  //File handle
+    demofile: THandle;                  //File handle
     timedemo: qBoolean;                 // don't time sync
   end;
 

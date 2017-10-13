@@ -94,7 +94,7 @@ function CM_WriteAreaBits(buffer: PByte; area: Integer): Integer;
 function CM_HeadnodeVisible(nodenum: Integer; visbits: PByteArray): qboolean;
 
 procedure CM_WritePortalState(var file_: integer);
-procedure CM_ReadPortalState(var file_: integer);
+procedure CM_ReadPortalState(var file_: THandle);
 
 var
   numtexinfo: Integer;
@@ -1885,7 +1885,7 @@ and recalculates the area connections
 ===================
 *)
 
-procedure CM_ReadPortalState(var file_: integer);
+procedure CM_ReadPortalState(var file_: THandle);
 begin
   FS_Read(@portalopen, SizeOf(portalopen), file_);
   FloodAreaConnections;

@@ -671,7 +671,7 @@ var
   n: Integer;
   p: PChar;
   sfx: sfx_p;                           //struct sfx_s	*sfx;
-  f: integer;
+  f: THandle;
   model: array[0..MAX_QPATH - 1] of Char;
   sexedFilename: array[0..MAX_QPATH - 1] of Char;
   maleFilename: array[0..MAX_QPATH - 1] of Char;

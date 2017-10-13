@@ -2179,7 +2179,8 @@ var
 
 procedure Create_Savestrings;
 var
-  i, f: Integer;                        // f was FILE *
+  f: THandle;
+  i: Integer;
   name: array[0..MAX_OSPATH - 1] of char;
 begin
   for i := 0 to MAX_SAVEGAMES - 1 do

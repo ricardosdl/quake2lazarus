@@ -86,15 +86,15 @@ function FS_Gamedir: PChar; cdecl;
 function FS_NextPath(prevpath: PChar): PChar; cdecl;
 procedure FS_ExecAutoexec; cdecl;
 
-function FS_FOpenFile(filename: PChar; var file_: integer): Integer; cdecl;
-procedure FS_FCloseFile(var file_: integer); cdecl;
+function FS_FOpenFile(filename: PChar; var file_: Thandle): Integer; cdecl;
+procedure FS_FCloseFile(var file_: THandle); cdecl;
 // note: this can't be called from another DLL, due to MS libc issues
 
 function FS_LoadFile(path: PChar; buffer: PPointer): Integer; cdecl;
 // a null buffer will just return the file length without loading
 // a -1 length is not present
 
-procedure FS_Read(buffer: Pointer; len: Integer; var file_: integer); cdecl;
+procedure FS_Read(buffer: Pointer; len: Integer; var file_: THandle); cdecl;
 // properly handles partial reads
 
 procedure FS_FreeFile(buffer: Pointer); cdecl;
@@ -264,7 +264,7 @@ on files returned by FS_FOpenFile...
 ==============
 *)
 
-procedure FS_FCloseFile(var file_: integer);
+procedure FS_FCloseFile(var file_: THandle);
 begin
   FileClose(file_);
   file_ := 0;
@@ -332,7 +332,7 @@ a seperate file.
 
 {$IFNDEF NO_ADDONS}
 
-function FS_FOpenFile(filename: PChar; var file_: integer): Integer;
+function FS_FOpenFile(filename: PChar; var file_: THandle): Integer;
 var
   search: searchpath_p;
   netpath: array[0..MAX_OSPATH - 1] of Char;
@@ -496,7 +496,7 @@ Properly handles partial reads
 const
   MAX_READ = $10000;                    // read in blocks of 64k
 
-procedure FS_Read(buffer: Pointer; len: Integer; var file_: integer);
+procedure FS_Read(buffer: Pointer; len: Integer; var file_: THandle);
 var
   block, remaining: Integer;
   read: Integer;
@@ -549,7 +549,7 @@ a null buffer will just return the file length without loading
 
 function FS_LoadFile(path: PChar; buffer: PPointer): Integer;
 var
-  h: integer;
+  h: THandle;
   buf: PByte;
   len: Integer;
 begin
