@@ -223,18 +223,18 @@ var
 begin
   Lo := Left;
   Hi := Right;
-  P := Pointer(base) + ((Lo + Hi) div 2) * width;
+  P := Pointer(PtrUInt(base) + ((Lo + Hi) div 2) * width);
   Move(P^, TempBuffer2^, width);
   repeat
-    while compare(Pointer(base) + Lo * width, TempBuffer2) < 0 do
+    while compare(Pointer(PtrUInt(base) + Lo * width), TempBuffer2) < 0 do
       Inc(Lo);
-    while compare(Pointer(base) + Hi * width, TempBuffer2) > 0 do
+    while compare(Pointer(PtrUInt(base) + Hi * width), TempBuffer2) > 0 do
       Dec(Hi);
     if Lo <= Hi then
     begin
-      Move((Pointer(base) + Lo * width)^, TempBuffer^, width);
-      Move((Pointer(base) + Hi * width)^, (Pointer(base) + Lo * width)^, width);
-      Move(TempBuffer^, (Pointer(base) + Hi * width)^, width);
+      Move(Pointer(PtrUInt(base) + Lo * width)^, TempBuffer^, width);
+      Move(Pointer(PtrUInt(base) + Hi * width)^, Pointer(PtrUInt(base) + Lo * width)^, width);
+      Move(TempBuffer^, Pointer(PtrUInt(base) + Hi * width)^, width);
       Inc(Lo);
       Dec(Hi);
     end;
