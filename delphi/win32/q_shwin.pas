@@ -78,7 +78,6 @@ function CompareAttributes(found, musthave, canthave: Cardinal): qboolean;
 implementation
 
 uses
-  MMSystem,
   sysutils{$IFNDEF NODEPEND},
   sys_win{$ENDIF};
 
@@ -154,7 +153,7 @@ begin
   if cursize > hunkmaxsize then
     Sys_Error('Hunk_Alloc overflow', []);
 
-  Result := Pointer(Integer(membase) + cursize - size);
+  Result := Pointer(NativeUInt(membase) + cursize - size);
 end;
 
 function Hunk_End: Integer;

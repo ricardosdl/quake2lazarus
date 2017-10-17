@@ -728,7 +728,7 @@ begin
   end;
   size := Trunc(l^.filelen / 3);
   loadmodel^.lightdata := Hunk_Alloc(size);
-  _in := Pointer(Integer(mod_base) + l^.fileofs);
+  _in := Pointer(NativeUInt(mod_base) + l^.fileofs);
   _out := loadmodel^.lightdata;
   for i := 0 to size - 1 do
   begin
@@ -787,7 +787,7 @@ begin
     Exit;
   end;
   loadmodel^.vis := Hunk_Alloc(l^.filelen);
-  move(Pointer(Integer(mod_base) + l^.fileofs)^, loadmodel^.vis^, l^.filelen);
+  move(Pointer(NativeUInt(mod_base) + l^.fileofs)^, loadmodel^.vis^, l^.filelen);
 
   loadmodel^.vis^.numclusters := LittleLong(loadmodel^.vis^.numclusters);
   for i := 0 to loadmodel^.vis^.numclusters - 1 do
@@ -809,7 +809,7 @@ var
   _out: mvertex_p;
   i, count: Integer;
 begin
-  _in := Pointer(Integer(mod_base) + l^.fileofs);
+  _in := Pointer(NativeUInt(mod_base) + l^.fileofs);
   if (l^.filelen mod SizeOf(_in^)) <> 0 then
     ri.Sys_Error(ERR_DROP, PChar('MOD_LoadBmodel: funny lump size in ' + string(loadmodel^.name)));
   count := Trunc(l^.filelen / SizeOf(_in^));
@@ -839,7 +839,7 @@ var
   _in, _out: dmodel_p;
   i, j, count: Integer;
 begin
-  _in := Pointer(Integer(mod_base) + l^.fileofs);
+  _in := Pointer(NativeUInt(mod_base) + l^.fileofs);
   if (l^.filelen mod SizeOf(_in^)) <> 0 then
     ri.Sys_Error(ERR_DROP, PChar('MOD_LoadBmodel: funny lump size in ' + string(loadmodel^.name)));
   count := Trunc(l^.filelen / SizeOf(_in^));
@@ -878,7 +878,7 @@ var
   i: Integer;
   count: Integer;
 begin
-  _in := Pointer(Integer(mod_base) + l^.fileofs);
+  _in := Pointer(NativeUInt(mod_base) + l^.fileofs);
   if (l^.filelen mod SizeOf(_in^)) <> 0 then
     ri.Sys_Error(ERR_DROP, PChar('MOD_LoadBmodel: funny lump size in ' + string(loadmodel^.name)));
   count := Trunc(l^.filelen / sizeof(_in^));
@@ -911,7 +911,7 @@ var
   name: array[0..MAX_QPATH - 1] of Char;
   next: Integer;
 begin
-  _in := Pointer(Integer(mod_base) + l^.fileofs);
+  _in := Pointer(NativeUInt(mod_base) + l^.fileofs);
   if (l^.filelen mod SizeOf(_in^)) <> 0 then
     ri.Sys_Error(ERR_DROP, PChar('MOD_LoadBmodel: funny lump size in ' + string(loadmodel^.name)));
   count := Trunc(l^.filelen / sizeof(_in^));
@@ -1053,7 +1053,7 @@ var
   planenum: Integer;
   side: Integer;
 begin
-  _in := Pointer(Integer(mod_base) + l^.fileofs);
+  _in := Pointer(NativeUInt(mod_base) + l^.fileofs);
   if (l^.filelen mod SizeOf(_in^)) <> 0 then
     ri.Sys_Error(ERR_DROP, PChar('MOD_LoadBmodel: funny lump size in ' + string(loadmodel^.name)));
   count := Trunc(l^.filelen / sizeof(_in^));
@@ -1089,7 +1089,7 @@ begin
     if i = -1 then
       _out^.samples := nil
     else
-      _out^.samples := Pointer(Integer(loadmodel.lightdata) + (i div 3));
+      _out^.samples := Pointer(NativeUInt(loadmodel.lightdata) + (i div 3));
 
     // set the drawing flags flag
 
@@ -1171,7 +1171,7 @@ var
   _in: dnode_p;
   _out: mnode_p;
 begin
-  _in := Pointer(Integer(mod_base) + l^.fileofs);
+  _in := Pointer(NativeUInt(mod_base) + l^.fileofs);
   if (l^.filelen mod SizeOf(_in^)) <> 0 then
     ri.Sys_Error(ERR_DROP, PChar('MOD_LoadBmodel: funny lump size in ' + string(loadmodel^.name)));
   count := Trunc(l^.filelen / sizeof(_in^));
@@ -1222,7 +1222,7 @@ var
   i, j: Integer;
   count: Integer;
 begin
-  _in := Pointer(Integer(mod_base) + l^.fileofs);
+  _in := Pointer(NativeUInt(mod_base) + l^.fileofs);
   if (l^.filelen mod SizeOf(_in^)) <> 0 then
     ri.Sys_Error(ERR_DROP, PChar('MOD_LoadBmodel: funny lump size in ' + string(loadmodel^.name)));
   count := Trunc(l^.filelen / sizeof(_in^));
@@ -1243,7 +1243,7 @@ begin
     _out^.cluster := LittleShort(_in^.cluster);
     _out^.area := LittleShort(_in^.area);
 
-    _out^.firstmarksurface := Pointer(Integer(loadmodel^.marksurfaces) + (LittleShort(_in^.firstleafface) * Sizeof(msurface_p)));
+    _out^.firstmarksurface := Pointer(NativeUInt(loadmodel^.marksurfaces) + (LittleShort(_in^.firstleafface) * Sizeof(msurface_p)));
     _out^.nummarksurfaces := LittleShort(_in^.numleaffaces);
     inc(Integer(_in), SizeOf(_in^));
     inc(Integer(_out), SizeOf(_out^));
@@ -1263,7 +1263,7 @@ var
   _in: PSmallInt;
   _out: msurface_pp;
 begin
-  _in := Pointer(Integer(mod_base) + l^.fileofs);
+  _in := Pointer(NativeUInt(mod_base) + l^.fileofs);
   if (l^.filelen mod SizeOf(_in^)) <> 0 then
     ri.Sys_Error(ERR_DROP, PChar('MOD_LoadBmodel: funny lump size in ' + string(loadmodel^.name)));
   count := Trunc(l^.filelen / sizeof(_in^));
@@ -1294,7 +1294,7 @@ var
   i, count: Integer;
   _in, _out: PInteger;
 begin
-  _in := Pointer(Integer(mod_base) + l^.fileofs);
+  _in := Pointer(NativeUInt(mod_base) + l^.fileofs);
   if (l^.filelen mod SizeOf(_in^)) <> 0 then
     ri.Sys_Error(ERR_DROP, PChar('MOD_LoadBmodel: funny lump size in ' + string(loadmodel^.name)));
   count := Trunc(l^.filelen / sizeof(_in^));
@@ -1325,7 +1325,7 @@ var
   count: Integer;
   bits: Integer;
 begin
-  _in := Pointer(Integer(mod_base) + l^.fileofs);
+  _in := Pointer(NativeUInt(mod_base) + l^.fileofs);
   if (l^.filelen mod SizeOf(_in^)) <> 0 then
     ri.Sys_Error(ERR_DROP, PChar('MOD_LoadBmodel: funny lump size in ' + string(loadmodel^.name)));
   count := Trunc(l^.filelen / sizeof(_in^));

@@ -547,7 +547,7 @@ begin
   if (palette <> nil) then
   begin
     palette^ := malloc(768);
-    memcpy(palette^, Pointer(Integer(pcx) + len - 768), 768);
+    memcpy(palette^, Pointer(NativeUInt(pcx) + len - 768), 768);
   end;
 
   if (width <> nil) then
@@ -694,7 +694,7 @@ begin
   begin // Uncompressed, RGB images
     for row := rows - 1 downto 0 do
     begin
-      pixbuf := Pointer(Integer(targa_rgba) + row * columns * 4);
+      pixbuf := Pointer(NativeUInt(targa_rgba) + row * columns * 4);
       column := 0;
       while (column < columns) do
       begin
@@ -746,7 +746,7 @@ begin
       row := rows - 1;
       while (row >= 0) do
       begin
-        pixbuf := Pointer(Integer(targa_rgba) + row * columns * 4);
+        pixbuf := Pointer(NativeUInt(targa_rgba) + row * columns * 4);
         column := 0;
         while (column < columns) do
         begin
@@ -803,7 +803,7 @@ begin
                   Dec(row)
                 else
                   goto breakOut;
-                pixbuf := Pointer(Integer(targa_rgba) + row * columns * 4);
+                pixbuf := Pointer(NativeUInt(targa_rgba) + row * columns * 4);
               end;
             end;
           end
@@ -857,7 +857,7 @@ begin
                   dec(row)
                 else
                   goto breakOut;
-                pixbuf := Pointer(Integer(targa_rgba) + row * columns * 4);
+                pixbuf := Pointer(NativeUInt(targa_rgba) + row * columns * 4);
               end;
             end;
           end;
@@ -1001,16 +1001,16 @@ begin
 
   for i := 0 to outheight - 1 do
   begin
-    inrow := Pointer(Cardinal(in_) + (inwidth * Trunc((i + 0.25) * inheight / outheight)) * sizeof(Cardinal));
-    inrow2 := Pointer(Cardinal(in_) + (inwidth * Trunc((i + 0.75) * inheight / outheight)) * sizeof(Cardinal));
+    inrow := Pointer(NativeUInt(in_) + (inwidth * Trunc((i + 0.25) * inheight / outheight)) * sizeof(Cardinal));
+    inrow2 := Pointer(NativeUInt(in_) + (inwidth * Trunc((i + 0.75) * inheight / outheight)) * sizeof(Cardinal));
     frac := fracstep shr 1;
     for j := 0 to outwidth - 1 do
     begin
-      pix1 := Pointer(Cardinal(inrow) + p1[j]);
-      pix2 := Pointer(Cardinal(inrow) + p2[j]);
-      pix3 := Pointer(Cardinal(inrow2) + p1[j]);
-      pix4 := Pointer(Cardinal(inrow2) + p2[j]);
-      tmp := Pointer(Cardinal(out_) + j * sizeof(Cardinal));
+      pix1 := Pointer(NativeUInt(inrow) + p1[j]);
+      pix2 := Pointer(NativeUInt(inrow) + p2[j]);
+      pix3 := Pointer(NativeUInt(inrow2) + p1[j]);
+      pix4 := Pointer(NativeUInt(inrow2) + p2[j]);
+      tmp := Pointer(NativeUInt(out_) + j * sizeof(Cardinal));
       tmp[0] := (pix1[0] + pix2[0] + pix3[0] + pix4[0]) shr 2;
       tmp[1] := (pix1[1] + pix2[1] + pix3[1] + pix4[1]) shr 2;
       tmp[2] := (pix1[2] + pix2[2] + pix3[2] + pix4[2]) shr 2;
@@ -1084,10 +1084,10 @@ begin
       out_[2] := (in_[2] + in_[6] + in_[width + 2] + in_[width + 6]) shr 2;
       out_[3] := (in_[3] + in_[7] + in_[width + 3] + in_[width + 7]) shr 2;
       Inc(j, 8);
-      out_ := Pointer(Cardinal(out_) + 4);
-      in_ := Pointer(Cardinal(in_) + 8);
+      out_ := Pointer(NativeUInt(out_) + 4);
+      in_ := Pointer(NativeUInt(in_) + 8);
     end;
-    in_ := Pointer(Cardinal(in_) + width);
+    in_ := Pointer(NativeUInt(in_) + width);
   end;
 end;
 
@@ -1173,7 +1173,7 @@ begin
 
   // scan the texture for any non-255 alpha
   c := width * height;
-  scan := Pointer(Cardinal(data) + 3);
+  scan := Pointer(NativeUInt(data) + 3);
   samples := gl_solid_format;
   for i := 0 to c - 1 do
   begin
@@ -1506,7 +1506,7 @@ begin
   height := LittleLong(mt^.height);
   ofs := LittleLong(mt^.offsets[0]);
 
-  image := GL_LoadPic(name, Pointer(Cardinal(mt) + ofs), width, height, it_wall, 8);
+  image := GL_LoadPic(name, Pointer(NativeUInt(mt) + ofs), width, height, it_wall, 8);
 
   ri.FS_FreeFile(mt);
 

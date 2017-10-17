@@ -82,7 +82,7 @@ begin
   size:= (size+31) and (not 31); 
   if ((curhunksize + size) > maxhunksize ) then
   Sys_Error('Hunk_Alloc overflow',[]);
-  buf:= PByte(Integer(membase) + sizeof(integer)+ curhunksize);
+  buf:= PByte(NativeUInt(membase) + sizeof(integer)+ curhunksize);
   curhunksize:= curhunksize + (size); 
   result:= buf;
     
@@ -110,7 +110,7 @@ begin
   if base<> nil  then
   begin
     //m:= ({!!!a type cast? =>} {pbyte(}base)-sizeof(int);
-    m := PByte(Integer(base) - sizeof(Integer));
+    m := PByte(NativeUInt(base) - sizeof(Integer));
     //if munmap(m,*({!!!a type cast? =>} {pinteger(}m))
     if munmap (m , Integer(m))<> 0 then
     Sys_Error('Hunk_Free: munmap failed (%d)',[errno]); 

@@ -170,7 +170,7 @@ begin
       inc(_out);
       dec(c);
     end;
-  until (Integer(_out) - Integer(@decompressed)) >= row;
+  until (NativeUInt(_out) - NativeUInt(@decompressed)) >= row;
   Result := @decompressed;
 end;
 
@@ -188,7 +188,7 @@ begin
     Exit;
   end;
 
-  Result := Mod_DecompressVis(PByte(Integer(model^.vis) + model^.vis^.bitofs[cluster][DVIS_PVS]), model);
+  Result := Mod_DecompressVis(PByte(NativeUInt(model^.vis) + model^.vis^.bitofs[cluster][DVIS_PVS]), model);
 end;
 
 {*
@@ -421,7 +421,7 @@ var
   i,
     count: integer;
 begin
-  _in := Pointer(Cardinal(mod_base) + l^.fileofs);
+  _in := Pointer(NativeUInt(mod_base) + l^.fileofs);
   if (l.filelen mod sizeof(_in^)) <> 0 then
     ri.Sys_Error(ERR_DROP, 'MOD_LoadBmodel: funny lump size in %s', loadmodel.name);
   count := l^.filelen div sizeof(_in^);
@@ -473,7 +473,7 @@ var
   i, j,
     count: integer;
 begin
-  _in := Pointer(Cardinal(mod_base) + l^.fileofs);
+  _in := Pointer(NativeUInt(mod_base) + l^.fileofs);
   if (l^.filelen mod sizeof(_in^)) <> 0 then
     ri.Sys_Error(ERR_DROP, 'MOD_LoadBmodel: funny lump size in %s', loadmodel^.name);
   count := l^.filelen div sizeof(_in^);
@@ -513,7 +513,7 @@ var
   i,
     count: integer;
 begin
-  _in := Pointer(Cardinal(mod_base) + l^.fileofs);
+  _in := Pointer(NativeUInt(mod_base) + l^.fileofs);
   if (l^.filelen mod sizeof(_in^)) <> 0 then
     ri.Sys_Error(ERR_DROP, 'MOD_LoadBmodel: funny lump size in %s', loadmodel.name);
   count := l^.filelen div sizeof(_in^);
@@ -547,7 +547,7 @@ var
   name: array[0..MAX_QPATH - 1] of char;
   next: integer;
 begin
-  _in := Pointer(Cardinal(mod_base) + l^.fileofs);
+  _in := Pointer(NativeUInt(mod_base) + l^.fileofs);
   if (l^.filelen mod sizeof(_in^)) <> 0 then
     ri.Sys_Error(ERR_DROP, 'MOD_LoadBmodel: funny lump size in %s', loadmodel.name);
   count := l^.filelen div sizeof(_in^);
@@ -564,7 +564,7 @@ begin
     _out^.flags := LittleLong(_in.flags);
     next := LittleLong(_in.nexttexinfo);
     if (next > 0) then
-      _out.next := Pointer(Cardinal(loadmodel.texinfo) + next * sizeof(mTexInfo_t))
+      _out.next := Pointer(NativeUInt(loadmodel.texinfo) + next * sizeof(mTexInfo_t))
     else
       _out.next := nil;
     Com_sprintf(name, sizeof(name), 'textures/%s.wal', [_in.texture]);
@@ -666,7 +666,7 @@ var
   planenum, side,
   ti: integer;
 begin
-  _in := Pointer(Cardinal(mod_base) + l^.fileofs);
+  _in := Pointer(NativeUInt(mod_base) + l^.fileofs);
   if (l.filelen mod sizeof(_in^)) <> 0 then
     ri.Sys_Error(ERR_DROP, 'MOD_LoadBmodel: funny lump size in %s', loadmodel.name);
   count := l.filelen div sizeof(_in^);
@@ -691,12 +691,12 @@ begin
     if (side <> 0) then
       _out.flags := _out.flags or SURF_PLANEBACK;
 
-    _out.plane := Pointer(Cardinal(loadmodel.planes) + planenum * sizeof(cplane_t));
+    _out.plane := Pointer(NativeUInt(loadmodel.planes) + planenum * sizeof(cplane_t));
 
     ti := LittleShort(_in.texinfo);
     if (ti < 0) or (ti >= loadmodel.numtexinfo) then
       ri.Sys_Error(ERR_DROP, 'MOD_LoadBmodel: bad texinfo number');
-    _out.texinfo := Pointer(Cardinal(loadmodel.texinfo) + ti * sizeof(mTexinfo_t));
+    _out.texinfo := Pointer(NativeUInt(loadmodel.texinfo) + ti * sizeof(mTexinfo_t));
 
     CalcSurfaceExtents(_out);
 
@@ -708,7 +708,7 @@ begin
     if (i = -1) then
       _out.samples := nil
     else
-      _out.samples := Pointer(Cardinal(loadmodel.lightdata) + i);
+      _out.samples := Pointer(NativeUInt(loadmodel.lightdata) + i);
 
   // set the drawing flags
 
@@ -764,7 +764,7 @@ var
   _in: dnode_p;
   _out: mnode_p;
 begin
-  _in := Pointer(Integer(mod_base) + l^.fileofs);
+  _in := Pointer(NativeUInt(mod_base) + l^.fileofs);
   if (l^.filelen mod SizeOf(_in^)) <> 0 then
     ri.Sys_Error(ERR_DROP, PChar('MOD_LoadBmodel: funny lump size in ' + string(loadmodel^.name)));
   count := Trunc(l^.filelen / sizeof(_in^));
@@ -816,7 +816,7 @@ var
     count, p: integer;
 //	glpoly_t	*poly;
 begin
-  _in := Pointer(Cardinal(mod_base) + l^.fileofs);
+  _in := Pointer(NativeUInt(mod_base) + l^.fileofs);
   if (l.filelen mod sizeof(_in^)) <> 0 then
     ri.Sys_Error(ERR_DROP, 'MOD_LoadBmodel: funny lump size in %s', loadmodel.name);
   count := l.filelen div sizeof(_in^);
@@ -837,7 +837,7 @@ begin
     _out^.cluster := LittleShort(_in^.cluster);
     _out^.area := LittleShort(_in^.area);
 
-    _out^.firstmarksurface := Pointer(Integer(loadmodel^.marksurfaces) + (LittleShort(_in^.firstleafface) * Sizeof(msurface_p)));
+    _out^.firstmarksurface := Pointer(NativeUInt(loadmodel^.marksurfaces) + (LittleShort(_in^.firstleafface) * Sizeof(msurface_p)));
     _out^.nummarksurfaces := LittleShort(_in^.numleaffaces);
     inc(_in);
     inc(_out);
@@ -868,7 +868,7 @@ var
   in_: PSmallInt;
   out_: msurface_pp;
 begin
-  in_ := Pointer(Cardinal(mod_base) + l^.fileofs);
+  in_ := Pointer(NativeUInt(mod_base) + l^.fileofs);
   if (l.filelen mod sizeof(in_^)) <> 0 then
     ri.Sys_Error(ERR_DROP, 'MOD_LoadBmodel: funny lump size in %s', loadmodel.name);
   count := l.filelen div sizeof(in_^);
@@ -899,7 +899,7 @@ var
   i, count: integer;
   _in, _out: PInteger;
 begin
-  _in := Pointer(Cardinal(mod_base) + l^.fileofs);
+  _in := Pointer(NativeUInt(mod_base) + l^.fileofs);
   if (l.filelen mod sizeof(_in^)) <> 0 then
     ri.Sys_Error(ERR_DROP, 'MOD_LoadBmodel: funny lump size in %s', loadmodel.name);
   count := l.filelen div sizeof(_in^);
@@ -930,7 +930,7 @@ var
   count,
     bits: integer;
 begin
-  _in := Pointer(Cardinal(mod_base) + l^.fileofs);
+  _in := Pointer(NativeUInt(mod_base) + l^.fileofs);
   if (l.filelen mod sizeof(_in^)) <> 0 then
     ri.Sys_Error(ERR_DROP, 'MOD_LoadBmodel: funny lump size in %s', loadmodel.name);
   count := l.filelen div sizeof(_in^);
@@ -1092,8 +1092,8 @@ begin
 //
 // load base s and t vertices (not used in gl version)
 //
-  pinst := Pointer(Cardinal(pinmodel) + pheader^.ofs_st);
-  poutst := Pointer(Cardinal(pheader) + pheader^.ofs_st);
+  pinst := Pointer(NativeUInt(pinmodel) + pheader^.ofs_st);
+  poutst := Pointer(NativeUInt(pheader) + pheader^.ofs_st);
 
   for i := 0 to pheader.num_st - 1 do
   begin
@@ -1104,8 +1104,8 @@ begin
 //
 // load triangle lists
 //
-  pintri := Pointer(Cardinal(pinmodel) + pheader^.ofs_tris);
-  pouttri := Pointer(Cardinal(pheader) + pheader^.ofs_tris);
+  pintri := Pointer(NativeUInt(pinmodel) + pheader^.ofs_tris);
+  pouttri := Pointer(NativeUInt(pheader) + pheader^.ofs_tris);
 
   for i := 0 to pheader.num_tris - 1 do
     for j := 0 to 2 do
@@ -1119,9 +1119,9 @@ begin
 //
   for i := 0 to pheader.num_frames - 1 do
   begin
-    pinframe := Pointer(Cardinal(pinmodel)
+    pinframe := Pointer(NativeUInt(pinmodel)
       + pheader^.ofs_frames + i * pheader^.framesize);
-    poutframe := Pointer(Cardinal(pheader)
+    poutframe := Pointer(NativeUInt(pheader)
       + pheader^.ofs_frames + i * pheader^.framesize);
 
     memcpy(@poutframe^.name, @pinframe^.name, sizeof(poutframe^.name));
@@ -1140,17 +1140,17 @@ begin
   //
   // load the glcmds
   //
-  pincmd := Pointer(Cardinal(pinmodel) + pheader^.ofs_glcmds);
-  poutcmd := Pointer(Cardinal(pheader) + pheader^.ofs_glcmds);
+  pincmd := Pointer(NativeUInt(pinmodel) + pheader^.ofs_glcmds);
+  poutcmd := Pointer(NativeUInt(pheader) + pheader^.ofs_glcmds);
   for i := 0 to pheader^.num_glcmds - 1 do
     PIntegerArray(poutcmd)^[i] := LittleLong(PIntegerArray(pincmd)^[i]);
 
 
   // register all skins
-  memcpy(Pointer(Cardinal(pheader) + pheader^.ofs_skins), Pointer(Cardinal(pinmodel) + pheader^.ofs_skins),
+  memcpy(Pointer(NativeUInt(pheader) + pheader^.ofs_skins), Pointer(NativeUInt(pinmodel) + pheader^.ofs_skins),
     pheader^.num_skins * MAX_SKINNAME);
   for i := 0 to pheader.num_skins - 1 do
-    _mod.skins[i] := GL_FindImage(Pointer(Cardinal(pheader) + pheader^.ofs_skins + i * MAX_SKINNAME), it_skin);
+    _mod.skins[i] := GL_FindImage(Pointer(NativeUInt(pheader) + pheader^.ofs_skins + i * MAX_SKINNAME), it_skin);
 
   _mod.mins[0] := -32;
   _mod.mins[1] := -32;
@@ -1273,7 +1273,7 @@ begin
       begin
         pheader := {(dmdl_t * )} _mod.extradata;
         for i := 0 to pheader.num_skins - 1 do
-          _mod.skins[i] := GL_FindImage(Pointer(Cardinal(pheader) + pheader^.ofs_skins + i * MAX_SKINNAME), it_skin);
+          _mod.skins[i] := GL_FindImage(Pointer(NativeUInt(pheader) + pheader^.ofs_skins + i * MAX_SKINNAME), it_skin);
 //PGM
         _mod.numframes := pheader.num_frames;
 //PGM

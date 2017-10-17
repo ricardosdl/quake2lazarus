@@ -1667,7 +1667,7 @@ begin
   begin
     next := z.next;
     if (z.tag = tag) then
-      Z_Free(Pointer(Integer(z) + 1 * SizeOf(zhead_t)));
+      Z_Free(Pointer(NativeUInt(z) + 1 * SizeOf(zhead_t)));
     z := next;
   end;
 end;
@@ -1860,7 +1860,7 @@ begin
     Sys_Error('sequence < 0, this shouldn''t happen'#10, []);
 
   // p = chktbl + (sequence % (sizeof(chktbl) - 4));
-  p := Pointer(Integer(@chktbl) + sequence mod (SizeOf(chktbl) - 4));
+  p := Pointer(NativeUInt(@chktbl) + sequence mod (SizeOf(chktbl) - 4));
 
   if (length > 60) then
     length := 60;
