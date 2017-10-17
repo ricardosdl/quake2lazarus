@@ -1465,7 +1465,7 @@ begin
   begin
     nonscrap:
     image.scrap := false;
-    image.texnum := TEXNUM_IMAGES + ((Integer(image) - Integer(@gltextures)) div sizeof(image_t));
+    image.texnum := TEXNUM_IMAGES + ((NativeUInt(image) - NativeUInt(@gltextures)) div sizeof(image_t));
     GL_Bind(image^.texnum);
     if (bits = 8) then
       image.has_alpha := GL_Upload8(PByteArray(pic), width, height, ((image.type_ <> it_pic) and (image.type_ <> it_sky)), (image.type_ = it_sky))

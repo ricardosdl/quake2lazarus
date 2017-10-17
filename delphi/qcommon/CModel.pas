@@ -226,7 +226,7 @@ var
   out_: cmodel_p;
   i, j, count: Integer;
 begin
-  in_ := Pointer(Integer(cmod_base) + l.fileofs);
+  in_ := Pointer(NativeUInt(cmod_base) + l.fileofs);
 
   if (l^.filelen mod SizeOf(in_^)) <> 0 then
     Com_Error(ERR_DROP, 'MOD_LoadBmodel: funny lump size', []);
