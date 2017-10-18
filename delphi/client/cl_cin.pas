@@ -138,7 +138,7 @@ begin
   if (palette <> nil) then
   begin
     palette^ := Z_Malloc(768);
-    Move(palette^, PChar(Integer(pcx) + len - 768)^, 768);
+    Move(palette^, (PChar(pcx) + len - 768)^, 768);
   end;
 
   if (width <> nil) then
@@ -176,7 +176,7 @@ begin
     Inc(pix, pcx^.xmax + 1);
   end;
 
-  if (Integer(raw) - Integer(pcx) > len) then
+  if (Pointer(raw) - Pointer(pcx) > len) then
   begin
     Com_Printf('PCX file %s was malformed', [filename]);
     Z_Free(pic^);
@@ -318,11 +318,11 @@ begin
 
     // build the nodes
     numhnodes := 256;
-    nodebase := Pointer(Cardinal(cin.hnodes1) + ((prev * 256 * 2) * SizeOf(Integer)));
+    nodebase := Pointer(cin.hnodes1) + ((prev * 256 * 2) * SizeOf(Integer));
 
     while (numhnodes <> 511) do
     begin
-      node := Pointer(Cardinal(nodebase) + (((numhnodes - 256) * 2) * SizeOf(Integer)));
+      node := Pointer(nodebase) + (((numhnodes - 256) * 2) * SizeOf(Integer));
 
       // pick two lowest counts
       node[0] := SmallestNode1(numhnodes);
@@ -361,13 +361,13 @@ begin
 
   // get decompressed count
   count := _in.data[0] + (_in.data[1] shl 8) + (_in.data[2] shl 16) + (_in.data[3] shl 24);
-  input := Pointer(Cardinal(_in.data) + 4);
+  input := Pointer(_in.data) + 4;
   _out.data := Z_Malloc(count);
   out_p := PByte(_out.data);
 
   // read bits
 
-  hnodesbase := PInteger(Cardinal(cin.hnodes1) - SizeOf(Integer) * (256 * 2)); // nodes 0-255 aren't stored
+  hnodesbase := cin.hnodes1 - (256 * 2); // nodes 0-255 aren't stored
 
   hnodes := PIntegerArray(hnodesbase);
   nodenum := cin.numhnodes1[0];
@@ -378,7 +378,7 @@ begin
     //-----------
     if (nodenum < 256) then
     begin
-      hnodes := Pointer(Cardinal(hnodesbase) + SizeOf(Integer) * (nodenum shl 9));
+      hnodes := Pointer(hnodesbase) + SizeOf(Integer) * (nodenum shl 9);
       out_p^ := Byte(nodenum);
       Inc(out_p);
       Dec(Count);
@@ -391,7 +391,7 @@ begin
     //-----------
     if (nodenum < 256) then
     begin
-      hnodes := Pointer(Cardinal(hnodesbase) + SizeOf(Integer) * (nodenum shl 9));
+      hnodes := Pointer(hnodesbase) + SizeOf(Integer) * (nodenum shl 9);
       out_p^ := Byte(nodenum);
       Inc(out_p);
       Dec(Count);
@@ -404,7 +404,7 @@ begin
     //-----------
     if (nodenum < 256) then
     begin
-      hnodes := Pointer(cardinal(hnodesbase) + SizeOf(Integer) * (nodenum shl 9));
+      hnodes := Pointer(hnodesbase) + SizeOf(Integer) * (nodenum shl 9);
       out_p^ := Byte(nodenum);
       Inc(out_p);
       Dec(Count);
@@ -417,7 +417,7 @@ begin
     //-----------
     if (nodenum < 256) then
     begin
-      hnodes := Pointer(Cardinal(hnodesbase) + SizeOf(Integer) * (nodenum shl 9));
+      hnodes := Pointer(hnodesbase) + SizeOf(Integer) * (nodenum shl 9);
       out_p^ := Byte(nodenum);
       Inc(out_p);
       Dec(Count);
@@ -430,7 +430,7 @@ begin
     //-----------
     if (nodenum < 256) then
     begin
-      hnodes := Pointer(Cardinal(hnodesbase) + SizeOf(Integer) * (nodenum shl 9));
+      hnodes := Pointer(hnodesbase) + SizeOf(Integer) * (nodenum shl 9);
       out_p^ := Byte(nodenum);
       Inc(out_p);
       Dec(Count);
@@ -443,7 +443,7 @@ begin
     //-----------
     if (nodenum < 256) then
     begin
-      hnodes := Pointer(Cardinal(hnodesbase) + SizeOf(Integer) * (nodenum shl 9));
+      hnodes := Pointer(hnodesbase) + SizeOf(Integer) * (nodenum shl 9);
       out_p^ := Byte(nodenum);
       Inc(out_p);
       Dec(Count);
@@ -456,7 +456,7 @@ begin
     //-----------
     if (nodenum < 256) then
     begin
-      hnodes := Pointer(Cardinal(hnodesbase) + SizeOf(Integer) * (nodenum shl 9));
+      hnodes := Pointer(hnodesbase) + SizeOf(Integer) * (nodenum shl 9);
       out_p^ := Byte(nodenum);
       Inc(out_p);
       Dec(Count);
@@ -469,7 +469,7 @@ begin
     //-----------
     if (nodenum < 256) then
     begin
-      hnodes := Pointer(Cardinal(hnodesbase) + SizeOf(Integer) * (nodenum shl 9));
+      hnodes := Pointer(hnodesbase) + SizeOf(Integer) * (nodenum shl 9);
       out_p^ := Byte(nodenum);
       Inc(out_p);
       Dec(Count);
@@ -481,12 +481,12 @@ begin
     inbyte := inbyte shr 1;
   end;
 
-  if (Cardinal(input) - Cardinal(_in.data) <> _in.count) and
-    (Cardinal(input) - Cardinal(_in.data) <> _in.count + 1) then
+  if (Pointer(input) - Pointer(_in.data) <> _in.count) and
+    (Pointer(input) - Pointer(_in.data) <> _in.count + 1) then
   begin
-    Com_Printf('Decompression overread by %d', [(Cardinal(input) - cardinal(_in.data)) - _in.count]);
+    Com_Printf('Decompression overread by %d', [(Pointer(input) - Pointer(_in.data)) - _in.count]);
   end;
-  _out.count := Cardinal(out_p) - Cardinal(_out.data);
+  _out.count := Pointer(out_p) - Pointer(_out.data);
 
   Result := _out;
 end;
