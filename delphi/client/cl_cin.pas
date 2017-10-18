@@ -378,7 +378,7 @@ begin
     //-----------
     if (nodenum < 256) then
     begin
-      hnodes := Pointer(Cardinal(hnodesbase) + SizeOf(PInteger) * (nodenum shl 9));
+      hnodes := Pointer(Cardinal(hnodesbase) + SizeOf(Integer) * (nodenum shl 9));
       out_p^ := Byte(nodenum);
       Inc(out_p);
       Dec(Count);
@@ -391,7 +391,7 @@ begin
     //-----------
     if (nodenum < 256) then
     begin
-      hnodes := Pointer(Cardinal(hnodesbase) + SizeOf(PInteger) * (nodenum shl 9));
+      hnodes := Pointer(Cardinal(hnodesbase) + SizeOf(Integer) * (nodenum shl 9));
       out_p^ := Byte(nodenum);
       Inc(out_p);
       Dec(Count);
@@ -404,7 +404,7 @@ begin
     //-----------
     if (nodenum < 256) then
     begin
-      hnodes := Pointer(cardinal(hnodesbase) + SizeOf(PInteger) * (nodenum shl 9));
+      hnodes := Pointer(cardinal(hnodesbase) + SizeOf(Integer) * (nodenum shl 9));
       out_p^ := Byte(nodenum);
       Inc(out_p);
       Dec(Count);
@@ -417,7 +417,7 @@ begin
     //-----------
     if (nodenum < 256) then
     begin
-      hnodes := Pointer(Cardinal(hnodesbase) + SizeOf(PInteger) * (nodenum shl 9));
+      hnodes := Pointer(Cardinal(hnodesbase) + SizeOf(Integer) * (nodenum shl 9));
       out_p^ := Byte(nodenum);
       Inc(out_p);
       Dec(Count);
@@ -430,7 +430,7 @@ begin
     //-----------
     if (nodenum < 256) then
     begin
-      hnodes := Pointer(Cardinal(hnodesbase) + SizeOf(PInteger) * (nodenum shl 9));
+      hnodes := Pointer(Cardinal(hnodesbase) + SizeOf(Integer) * (nodenum shl 9));
       out_p^ := Byte(nodenum);
       Inc(out_p);
       Dec(Count);
@@ -443,7 +443,7 @@ begin
     //-----------
     if (nodenum < 256) then
     begin
-      hnodes := Pointer(Cardinal(hnodesbase) + SizeOf(PInteger) * (nodenum shl 9));
+      hnodes := Pointer(Cardinal(hnodesbase) + SizeOf(Integer) * (nodenum shl 9));
       out_p^ := Byte(nodenum);
       Inc(out_p);
       Dec(Count);
@@ -456,7 +456,7 @@ begin
     //-----------
     if (nodenum < 256) then
     begin
-      hnodes := Pointer(Cardinal(hnodesbase) + SizeOf(PInteger) * (nodenum shl 9));
+      hnodes := Pointer(Cardinal(hnodesbase) + SizeOf(Integer) * (nodenum shl 9));
       out_p^ := Byte(nodenum);
       Inc(out_p);
       Dec(Count);
@@ -469,7 +469,7 @@ begin
     //-----------
     if (nodenum < 256) then
     begin
-      hnodes := Pointer(Cardinal(hnodesbase) + SizeOf(PInteger) * (nodenum shl 9));
+      hnodes := Pointer(Cardinal(hnodesbase) + SizeOf(Integer) * (nodenum shl 9));
       out_p^ := Byte(nodenum);
       Inc(out_p);
       Dec(Count);
