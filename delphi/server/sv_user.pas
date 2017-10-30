@@ -623,7 +623,7 @@ begin
 
           { if the checksum fails, ignore the rest of the packet }
           calculatedChecksum := COM_BlockSequenceCRCByte(
-            Pointer(Cardinal(net_message.data) + checksumIndex + 1),
+            Pointer(NativeUInt(net_message.data) + checksumIndex + 1),
             net_message.readcount - checksumIndex - 1,
             cl.netchan.incoming_sequence);
 

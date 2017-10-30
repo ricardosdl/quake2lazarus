@@ -115,7 +115,7 @@ begin
       Inc(i);
       Inc(v);
       Inc(ov);
-      lerp := Pointer(Cardinal(lerp) + 4 * sizeof(Single));
+      lerp := Pointer(NativeUInt(lerp) + 4 * sizeof(Single));
     end;
   end;
 end;
@@ -430,9 +430,9 @@ begin
     e^.oldframe := 0;
   end;
 
-  pframe := Pointer(Cardinal(paliashdr) + paliashdr^.ofs_frames + e^.frame * paliashdr^.framesize);
+  pframe := Pointer(NativeUInt(paliashdr) + paliashdr^.ofs_frames + e^.frame * paliashdr^.framesize);
 
-  poldframe := Pointer(Cardinal(paliashdr) + paliashdr^.ofs_frames + e^.oldframe * paliashdr^.framesize);
+  poldframe := Pointer(NativeUInt(paliashdr) + paliashdr^.ofs_frames + e^.oldframe * paliashdr^.framesize);
 
  (*
  ** compute axially aligned mins and maxs
