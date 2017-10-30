@@ -883,8 +883,8 @@ begin
     if j >= loadmodel^.numsurfaces then
       ri.Sys_Error(ERR_DROP, 'Mod_ParseMarksurfaces: bad surface number');
     out_^ := @(msurface_arrp(loadmodel^.surfaces)^[j]);
-    inc(in_, SizeOf(in_^));
-    inc(out_, SizeOf(out_^));
+    inc(in_);
+    inc(out_);
   end;
 end;
 
