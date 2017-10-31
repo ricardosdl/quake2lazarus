@@ -548,7 +548,7 @@ begin
   if (field^.flags AND FFL_SPAWNTEMP) <> 0 then
     Exit;
     
-  p := Pointer(LongInt(base) + field^.ofs);
+  p := Pointer(NativeUInt(base) + field^.ofs);
   case field^._type of
     F_INT, F_FLOAT, F_ANGLEHACK, F_VECTOR, F_IGNORE: {do nothing};
     F_LSTRING, F_GSTRING: begin
@@ -562,21 +562,21 @@ begin
       if pedict_p(p)^ = Nil then
         index := -1
       else
-        index := (LongInt(pedict_p(p)^) - LongInt(g_edicts)) div sizeof(edict_t);
+        index := (NativeUInt(pedict_p(p)^) - NativeUInt(g_edicts)) div sizeof(edict_t);
       PInteger(p)^ := index;
     end;
     F_CLIENT: begin
       if pgclient_p(p)^ = Nil then
         index := -1
       else
-        index := (LongInt(pgclient_p(p)^) - LongInt(game.clients)) div sizeof(gclient_t);
+        index := (NativeUInt(pgclient_p(p)^) - NativeUInt(game.clients)) div sizeof(gclient_t);
       PInteger(p)^ := index;
     end;
     F_ITEM: begin
       if pedict_p(p)^ = Nil then
         index := -1
       else
-        index := (LongInt(pgitem_p(p)^) - LongInt(@itemlist)) div sizeof(gitem_t);
+        index := (NativeUInt(pgitem_p(p)^) - NativeUInt(@itemlist)) div sizeof(gitem_t);
       PInteger(p)^ := index;
     end;
     //relative to code segment
@@ -584,7 +584,7 @@ begin
       if PPByte(p)^ = Nil then
         index := 0
       else
-        index := LongInt(PPByte(p)^) - LongInt(PByte(@InitGame));
+        index := NativeUInt(PPByte(p)^) - NativeUInt(PByte(@InitGame));
       PInteger(p)^ := index;
     end;
     //relative to data segment
@@ -592,7 +592,7 @@ begin
       if PPByte(p)^ = Nil then
         index := 0
       else
-        index := LongInt(PPByte(p)^) - LongInt(PByte(@mmove_reloc));
+        index := NativeUInt(PPByte(p)^) - NativeUInt(PByte(@mmove_reloc));
       PInteger(p)^ := index;
     end;
     else
@@ -609,7 +609,7 @@ begin
   if (field^.flags AND FFL_SPAWNTEMP) <> 0 then
     Exit;
 
-  p := Pointer(LongInt(base) + field^.ofs);
+  p := Pointer(NativeUInt(base) + field^.ofs);
   case field^._type of
     F_LSTRING:
       if PPChar(p)^ <> Nil then
@@ -632,7 +632,7 @@ begin
   if (field^.flags AND FFL_SPAWNTEMP) <> 0 then
     Exit;
 
-  p := Pointer(LongInt(base) + field^.ofs);
+  p := Pointer(NativeUInt(base) + field^.ofs);
   case field^._type of
     F_INT, F_FLOAT, F_ANGLEHACK, F_VECTOR, F_IGNORE: {do nothing};
     F_LSTRING: begin

@@ -1895,13 +1895,13 @@ begin
   while (s2 <> in_) and (s2^ <> '/') do
     dec(s2);
 
-  if LongInt(s) - LongInt(s2) < 2 then
+  if s - s2 < 2 then
     out_^ := #0
   else
   begin
     dec(s);
-    strncpy(out_, Pointer(NativeUInt(s2) + 1), Cardinal(s) - Cardinal(s2));
-    out_[Cardinal(s) - Cardinal(s2)] := #0;
+    strncpy(out_, Pointer(NativeUInt(s2) + 1), s - s2);
+    out_[s - s2] := #0;
   end;
 end;
 
@@ -1923,8 +1923,8 @@ begin
   while (s <> in_) and (s^ <> '/') do
     dec(s);
 
-  strncpy(out_, in_, LongInt(s) - LongInt(in_));
-  out_[LongInt(s) - LongInt(in_)] := #0;
+  strncpy(out_, in_, s - in_);
+  out_[s - in_] := #0;
 end;
 
 (*

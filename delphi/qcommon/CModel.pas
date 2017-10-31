@@ -267,7 +267,7 @@ var
   out_: mapsurface_p;
   i, count: Integer;
 begin
-  in_ := Pointer(Integer(cmod_base) + l.fileofs);
+  in_ := Pointer(NativeUInt(cmod_base) + l.fileofs);
 
   if (l^.filelen mod SizeOf(in_^)) <> 0 then
     Com_Error(ERR_DROP, 'MOD_LoadBmodel: funny lump size', []);
@@ -305,7 +305,7 @@ var
   out_: cnode_p;
   i, j, count: Integer;
 begin
-  in_ := Pointer(Integer(cmod_base) + l^.fileofs);
+  in_ := Pointer(NativeUInt(cmod_base) + l^.fileofs);
   if (l^.filelen mod SizeOf(in_^)) <> 0 then
     Com_Error(ERR_DROP, 'MOD_LoadBmodel: funny lump size', []);
   count := l^.filelen div SizeOf(in_^);
@@ -345,7 +345,7 @@ var
   out_: cbrush_p;
   i, count: Integer;
 begin
-  in_ := Pointer(Integer(cmod_base) + l^.fileofs);
+  in_ := Pointer(NativeUInt(cmod_base) + l^.fileofs);
   if (l^.filelen mod SizeOf(in_^)) <> 0 then
     Com_Error(ERR_DROP, 'MOD_LoadBmodel: funny lump size', []);
   count := l^.filelen div SizeOf(in_^);
@@ -381,7 +381,7 @@ var
   in_: dleaf_p;
   count: Integer;
 begin
-  in_ := Pointer(Integer(cmod_base) + l^.fileofs);
+  in_ := Pointer(NativeUInt(cmod_base) + l^.fileofs);
   if (l^.filelen mod SizeOf(in_^)) <> 0 then
     Com_Error(ERR_DROP, 'MOD_LoadBmodel: funny lump size', []);
   count := l^.filelen div SizeOf(in_^);
@@ -440,7 +440,7 @@ var
   count: Integer;
   bits: Integer;
 begin
-  in_ := Pointer(Integer(cmod_base) + l^.fileofs);
+  in_ := Pointer(NativeUInt(cmod_base) + l^.fileofs);
   if (l^.filelen mod SizeOf(in_^)) <> 0 then
     Com_Error(ERR_DROP, 'MOD_LoadBmodel: funny lump size', []);
   count := l^.filelen div SizeOf(in_^);
@@ -485,7 +485,7 @@ var
   in_: PWord;
   count: Integer;
 begin
-  in_ := Pointer(Integer(cmod_base) + l^.fileofs);
+  in_ := Pointer(NativeUInt(cmod_base) + l^.fileofs);
   if (l^.filelen mod SizeOf(in_^)) <> 0 then
     Com_Error(ERR_DROP, 'MOD_LoadBmodel: funny lump size', []);
   count := l^.filelen div SizeOf(in_^);
@@ -521,7 +521,7 @@ var
   count: Integer;
   num: Integer;
 begin
-  in_ := Pointer(Integer(cmod_base) + l^.fileofs);
+  in_ := Pointer(NativeUInt(cmod_base) + l^.fileofs);
   if (l^.filelen mod SizeOf(in_^)) <> 0 then
     Com_Error(ERR_DROP, 'MOD_LoadBmodel: funny lump size', []);
   count := l^.filelen div SizeOf(in_^);
@@ -559,7 +559,7 @@ var
   in_: darea_p;
   count: Integer;
 begin
-  in_ := Pointer(Integer(cmod_base) + l^.fileofs);
+  in_ := Pointer(NativeUInt(cmod_base) + l^.fileofs);
   if (l .filelen mod SizeOf(in_^)) <> 0 then
     Com_Error(ERR_DROP, 'MOD_LoadBmodel: funny lump size', []);
   count := l^.filelen div SizeOf(in_^);
@@ -594,7 +594,7 @@ var
   in_: dareaportal_p;
   count: Integer;
 begin
-  in_ := Pointer(Integer(cmod_base) + l^.fileofs);
+  in_ := Pointer(NativeUInt(cmod_base) + l^.fileofs);
   if (l^.filelen mod SizeOf(in_^)) <> 0 then
     Com_Error(ERR_DROP, 'MOD_LoadBmodel: funny lump size', []);
   count := l^.filelen div SizeOf(in_^);
@@ -628,7 +628,7 @@ begin
   if (l^.filelen > MAX_MAP_VISIBILITY) then
     Com_Error(ERR_DROP, 'Map has too large visibility lump', []);
 
-  Move(Pointer(Integer(cmod_base) + l^.fileofs)^, map_visibility, l^.filelen);
+  Move(Pointer(NativeUInt(cmod_base) + l^.fileofs)^, map_visibility, l^.filelen);
 
   map_vis^.numclusters := LittleLong(map_vis^.numclusters);
   for i := 0 to map_vis^.numclusters - 1 do
