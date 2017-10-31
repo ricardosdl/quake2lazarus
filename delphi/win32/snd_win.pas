@@ -598,7 +598,7 @@ begin
   for i := 0 to WAV_BUFFERS - 1 do
   begin
     lpWaveHdr[i].dwBufferLength := WAV_BUFFER_SIZE;
-    lpWaveHdr[i].lpData := Pointer(Cardinal(lpData) + i * WAV_BUFFER_SIZE);
+    lpWaveHdr[i].lpData := Pointer(NativeUInt(lpData) + i * WAV_BUFFER_SIZE);
 
     if waveOutPrepareHeader(hWaveOut_, @lpWaveHdr[i], sizeof(WAVEHDR)) <>
       MMSYSERR_NOERROR then

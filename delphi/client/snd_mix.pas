@@ -167,7 +167,7 @@ begin
     // handle recirculating buffer issues
     lpos := lpaintedtime and ((dma.samples shr 1) - 1);
 
-    snd_out := Pointer(Cardinal(pbuf) + (lpos shl 1) * SizeOf(SmallInt));
+    snd_out := Pointer(NativeUInt(pbuf) + (lpos shl 1) * SizeOf(SmallInt));
 
     snd_linear_count := (dma.samples shr 1) - lpos;
     if (lpaintedtime + snd_linear_count > endtime) then
@@ -178,7 +178,7 @@ begin
     // write a linear blast of samples
     S_WriteLinearBlastStereo16();
 
-    snd_p := Pointer(Cardinal(snd_p) + snd_linear_count * SizeOf(Cardinal));
+    snd_p := Pointer(NativeUInt(snd_p) + snd_linear_count * SizeOf(Cardinal));
     lpaintedtime := lpaintedtime + (snd_linear_count shr 1);
   end;
 end;
@@ -235,7 +235,7 @@ begin
       begin
         Dec(Count);
         val := p[0] shr 8;
-        p := Pointer(Cardinal(p) + step * SizeOf(Integer));
+        p := Pointer(NativeUInt(p) + step * SizeOf(Integer));
         if (val > $7FFF) then
           val := $7FFF
         else if (val < SmallInt($8000)) then
@@ -251,7 +251,7 @@ begin
       begin
         Dec(Count);
         val := p[0] shr 8;
-        p := Pointer(Cardinal(p) + step * SizeOf(Byte));
+        p := Pointer(NativeUInt(p) + step * SizeOf(Byte));
         if (val > $7FFF) then
           val := $7FFF
         else if (val < SmallInt($8000)) then
@@ -424,7 +424,7 @@ begin
   //as it would always be zero.
   lscale := @snd_scaletable[ch^.leftvol shr 3];
   rscale := @snd_scaletable[ch^.rightvol shr 3];
-  sfx := Pointer(Cardinal(@sc^.data) + ch^.pos);
+  sfx := Pointer(NativeUInt(@sc^.data) + ch^.pos);
 
   samp := @paintbuffer[offset];
   for i := 0 to count - 1 do
@@ -521,7 +521,7 @@ var
 begin
   leftvol := ch^.leftvol * snd_vol;
   rightvol := ch^.rightvol * snd_vol;
-  sfx := Pointer(Cardinal(@sc^.data) + ch^.pos * SizeOf(SmallInt));
+  sfx := Pointer(NativeUInt(@sc^.data) + ch^.pos * SizeOf(SmallInt));
 
   samp := @paintbuffer[offset];
   for i := 0 to count - 1 do

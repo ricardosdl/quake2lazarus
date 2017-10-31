@@ -697,7 +697,7 @@ begin
   MSG_WriteDeltaUsercmd(buf, oldcmd^, cmd^);
   // calculate a checksum over the move commands
   buf.data[checksumIndex] :=
-    COM_BlockSequenceCRCByte(Pointer(Cardinal(buf.data) + checksumIndex + 1),
+    COM_BlockSequenceCRCByte(Pointer(NativeUInt(buf.data) + checksumIndex + 1),
     buf.cursize - checksumIndex - 1,
     cls.netchan.outgoing_sequence);
   //

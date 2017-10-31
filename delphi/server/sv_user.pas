@@ -347,7 +347,7 @@ begin
 
   percent := (sv_client^.downloadcount * 100) div size;
   MSG_WriteByte(sv_client^.netchan.message, percent);
-  SZ_Write(sv_client^.netchan.message, Pointer(Cardinal(sv_client^.download) + sv_client^.downloadcount - r), r);
+  SZ_Write(sv_client^.netchan.message, Pointer(NativeUInt(sv_client^.download) + sv_client^.downloadcount - r), r);
 
   if (sv_client^.downloadcount <> sv_client^.downloadsize) then
     Exit;

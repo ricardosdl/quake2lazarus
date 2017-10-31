@@ -1007,7 +1007,7 @@ begin
     k := 0;
     while (k < r_newrefdef.num_dlights) do
     begin
-      R_MarkLights(lt, 1 shl k, Pointer(Cardinal(currentmodel^.nodes) + (currentmodel^.firstnode * sizeof(mnode_t))));
+      R_MarkLights(lt, 1 shl k, Pointer(NativeUInt(currentmodel^.nodes) + (currentmodel^.firstnode * sizeof(mnode_t))));
       Inc(k);
       Inc(lt);
     end;

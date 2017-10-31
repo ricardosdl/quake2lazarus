@@ -1296,7 +1296,7 @@ begin
 
         while (precache_model_skin - 1 < LittleLong(pheader.num_skins)) do
         begin
-          if (not CL_CheckOrDownloadFile(Pointer(Cardinal(precache_model) +
+          if (not CL_CheckOrDownloadFile(Pointer(NativeUInt(precache_model) +
             LittleLong(pheader.ofs_skins) +
             (precache_model_skin - 1) * MAX_SKINNAME))) then
           begin

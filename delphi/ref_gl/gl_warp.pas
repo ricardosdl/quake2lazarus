@@ -548,7 +548,7 @@ begin
   // clip it
   sides[i] := sides[0];
   dists[i] := dists[0];
-  VectorCopy(vecs^, vec3_p(Pointer(Cardinal(vecs)+i*3*sizeof(Single)))^);
+  VectorCopy(vecs^, vec3_p(Pointer(NativeUInt(vecs)+i*3*sizeof(Single)))^);
 
 
   newc[1] := 0;

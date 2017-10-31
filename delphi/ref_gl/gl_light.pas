@@ -190,7 +190,7 @@ begin
     exit;
   end;
 // mark the polygons
-  surf := Pointer(Cardinal(r_worldmodel.surfaces) + node^.firstsurface * sizeof(mSurface_t));
+  surf := Pointer(NativeUInt(r_worldmodel.surfaces) + node^.firstsurface * sizeof(mSurface_t));
   for i := 0 to node^.numsurfaces - 1 do
   begin
     if surf^.dlightframe <> r_dlightframecount then
@@ -304,7 +304,7 @@ begin
   VectorCopy(mid, lightspot);
   lightplane := plane;
 
-  surf := Pointer(Cardinal(r_worldmodel^.surfaces) + node^.firstsurface * sizeof(mSurface_t));
+  surf := Pointer(NativeUInt(r_worldmodel^.surfaces) + node^.firstsurface * sizeof(mSurface_t));
   for ii := 0 to node^.numsurfaces - 1 do
   begin
     if (surf^.flags and (SURF_DRAWTURB or SURF_DRAWSKY)) <> 0 then
@@ -495,7 +495,7 @@ begin
           pfBL[2] := pfBL[2] + (frad - fdist) * dl^.color[2];
         end;
         fsacc := fsacc + 16;
-        pfBL := Pointer(Cardinal(pfBL) + 3 * SizeOf(Single));
+        pfBL := Pointer(NativeUInt(pfBL) + 3 * SizeOf(Single));
       end;
       ftacc := ftacc + 16;
     end;

@@ -650,7 +650,7 @@ begin
   if (l^.filelen > MAX_MAP_ENTSTRING) then
     Com_Error(ERR_DROP, 'Map has too large entity lump', []);
 
-  Move(Pointer(Cardinal(cmod_base) + l^.fileofs)^, map_entitystring, l^.filelen);
+  Move(Pointer(NativeUInt(cmod_base) + l^.fileofs)^, map_entitystring, l^.filelen);
 end;
 
 (*

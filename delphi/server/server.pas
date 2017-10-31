@@ -195,7 +195,7 @@ uses
 
 function EDICT_NUM(n: integer): edict_p;
 begin
-  Result := Pointer(Cardinal(ge.Edicts) + ge.Edict_size * n);
+  Result := Pointer(NativeUInt(ge.Edicts) + ge.Edict_size * n);
 end;
 
 function NUM_FOR_EDICT(e: edict_p): Integer;

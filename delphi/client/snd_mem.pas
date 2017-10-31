@@ -224,7 +224,7 @@ var
 begin
   val := data_p[0];
   val := val + data_p[1] shl 8;
-  data_p := Pointer(Cardinal(data_p) + 2);
+  data_p := Pointer(NativeUInt(data_p) + 2);
   result := val;
 end;
 
@@ -236,7 +236,7 @@ begin
   val := val + data_p[1] shl 8;
   val := val + data_p[2] shl 16;
   val := val + data_p[3] shl 24;
-  data_p := Pointer(Cardinal(data_p) + 4);
+  data_p := Pointer(NativeUInt(data_p) + 4);
   Result := val;
 end;
 
@@ -252,7 +252,7 @@ begin
       exit;
     end;
 
-    data_p := Pointer(Cardinal(data_p) + 4);
+    data_p := Pointer(NativeUInt(data_p) + 4);
     iff_chunk_len := GetLittleLong;
     if (iff_chunk_len < 0) then
     begin
@@ -262,7 +262,7 @@ begin
     //		if (iff_chunk_len > 1024*1024)
     //			Sys_Error ("FindNextChunk: %d length is past the 1 meg sanity limit", iff_chunk_len);
 
-    data_p := Pointer(Cardinal(data_p) - 8);
+    data_p := Pointer(NativeUInt(data_p) - 8);
     last_chunk := Pointer(Integer(data_p) + 8 + Integer((iff_chunk_len + 1) and not 1));
     if (strncmp(Pointer(data_p), name, 4) = 0) then
       exit;
@@ -317,11 +317,11 @@ begin
   end;
 
   iff_data := PByteArray(wav);
-  iff_end := Pointer(Cardinal(wav) + wavlength);
+  iff_end := Pointer(NativeUInt(wav) + wavlength);
 
   // find "RIFF" chunk
   FindChunk('RIFF');
-  if not ((data_p <> nil) and (not strncmp(Pointer(Cardinal(data_p) + 8), 'WAVE', 4) <> 0)) then
+  if not ((data_p <> nil) and (not strncmp(Pointer(NativeUInt(data_p) + 8), 'WAVE', 4) <> 0)) then
   begin
     Com_Printf('Missing RIFF/WAVE chunks'#10, []);
     result := info;
@@ -329,7 +329,7 @@ begin
   end;
 
   // get "fmt " chunk
-  iff_data := Pointer(Cardinal(data_p) + 12);
+  iff_data := Pointer(NativeUInt(data_p) + 12);
   // DumpChunks ();
 
   FindChunk('fmt ');
@@ -339,7 +339,7 @@ begin
     result := info;
     exit;
   end;
-  data_p := Pointer(Cardinal(data_p) + 8);
+  data_p := Pointer(NativeUInt(data_p) + 8);
   format := GetLittleShort();
   if (format <> 1) then
   begin
@@ -350,14 +350,14 @@ begin
 
   info.channels := GetLittleShort();
   info.rate := GetLittleLong();
-  data_p := Pointer(Cardinal(data_p) + 4 + 2);
+  data_p := Pointer(NativeUInt(data_p) + 4 + 2);
   info.width := GetLittleShort() div 8;
 
   // get cue chunk
   FindChunk('cue ');
   if (data_p <> nil) then
   begin
-    data_p := Pointer(Cardinal(data_p) + 32);
+    data_p := Pointer(NativeUInt(data_p) + 32);
     info.loopstart := GetLittleLong();
     //		Com_Printf("loopstart=%d"#10, sfx->loopstart);
 
@@ -365,9 +365,9 @@ begin
     FindNextChunk('LIST');
     if (data_p <> nil) then
     begin
-      if (not strncmp(Pointer(Cardinal(data_p) + 28), 'mark', 4) <> 0) then
+      if (not strncmp(Pointer(NativeUInt(data_p) + 28), 'mark', 4) <> 0) then
       begin                             // this is not a proper parse, but it works with cooledit...
-        data_p := Pointer(Cardinal(data_p) + 24);
+        data_p := Pointer(NativeUInt(data_p) + 24);
         i := GetLittleLong;             // samples in loop
         info.samples := info.loopstart + i;
         //				Com_Printf('looped length: %d'#10, i);
@@ -386,7 +386,7 @@ begin
     exit;
   end;
 
-  data_p := Pointer(Cardinal(data_p) + 4);
+  data_p := Pointer(NativeUInt(data_p) + 4);
   samples := GetLittleLong div info.width;
 
   if (info.samples <> 0) then

@@ -594,7 +594,7 @@ begin
       // move back any entities we already moved
       // go backwards, so if the same entity was pushed
       // twice, it goes back to the original position
-      p := Pointer(Cardinal(_pushed_p) - 1 * SizeOf(pushed_t));
+      p := Pointer(NativeUInt(_pushed_p) - 1 * SizeOf(pushed_t));
       while (Cardinal(p) >= Cardinal(@pushed)) do
       begin
           VectorCopy(p^.origin, p^.ent^.s.origin);
@@ -605,7 +605,7 @@ begin
           end;
           gi.linkentity(p^.ent);
 
-          p := Pointer(Cardinal(p) - 1 * SizeOf(pushed_t));
+          p := Pointer(NativeUInt(p) - 1 * SizeOf(pushed_t));
       end;
       Result := False;
       Exit;
@@ -618,11 +618,11 @@ begin
 
 //FIXME: is there a better way to handle this?
   // see if anything we moved has touched a trigger
-  p := Pointer(Cardinal(_pushed_p) - 1 * SizeOf(pushed_t));
+  p := Pointer(NativeUInt(_pushed_p) - 1 * SizeOf(pushed_t));
   while (Cardinal(p) >= Cardinal(@pushed)) do
   begin
       G_TouchTriggers(p^.ent);
-      p := Pointer(Cardinal(p) - 1 * SizeOf(pushed_t));
+      p := Pointer(NativeUInt(p) - 1 * SizeOf(pushed_t));
   end;
 
   Result := True;

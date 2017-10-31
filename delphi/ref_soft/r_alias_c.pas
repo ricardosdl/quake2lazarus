@@ -413,8 +413,8 @@ begin
 
 // clip and draw all triangles
 //
-	pstverts := Pointer(Cardinal(s_pmdl) + s_pmdl^.ofs_st);
-	ptri := Pointer(Cardinal(s_pmdl) + s_pmdl^.ofs_tris);
+	pstverts := Pointer(NativeUInt(s_pmdl) + s_pmdl^.ofs_st);
+	ptri := Pointer(NativeUInt(s_pmdl) + s_pmdl^.ofs_tris);
 
 	if ((currententity^.flags and RF_WEAPONMODEL) <> 0) and (r_lefthand^.value = 1.0) then
   begin

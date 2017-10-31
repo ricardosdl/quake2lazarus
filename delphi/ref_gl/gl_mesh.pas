@@ -101,7 +101,7 @@ begin
       Inc(i);
       Inc(v);
       Inc(ov);
-      lerp := Pointer(Cardinal(lerp) + 4 * sizeof(Single));
+      lerp := Pointer(NativeUInt(lerp) + 4 * sizeof(Single));
     end;
   end
   else
@@ -346,12 +346,12 @@ var
   frame: daliasframe_p;
 begin
   lheight := currententity^.origin[2] - lightspot[2];
-  frame := Pointer(Cardinal(paliashdr) + paliashdr^.ofs_frames + currententity^.frame * paliashdr^.framesize);
+  frame := Pointer(NativeUInt(paliashdr) + paliashdr^.ofs_frames + currententity^.frame * paliashdr^.framesize);
   verts := @frame.verts;
 
   height := 0;
 
-  order := Pointer(Cardinal(paliashdr) + paliashdr.ofs_glcmds);
+  order := Pointer(NativeUInt(paliashdr) + paliashdr.ofs_glcmds);
 
   height := -lheight + 1.0;
 

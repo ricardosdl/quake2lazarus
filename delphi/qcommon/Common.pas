@@ -1425,7 +1425,7 @@ begin
     if (buf.data[buf.cursize - 1] <> 0) then
       Move(data^, SZ_GetSpace(buf, len)^, len) // no trailing 0
     else
-      Move(data^, Pointer(Cardinal(SZ_GetSpace(buf, len - 1)) - 1)^, len) // write over trailing 0
+      Move(data^, Pointer(NativeUInt(SZ_GetSpace(buf, len - 1)) - 1)^, len) // write over trailing 0
   end
   else
     Move(data^, SZ_GetSpace(buf, len)^, len) // no trailing 0

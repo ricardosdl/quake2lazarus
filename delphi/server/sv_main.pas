@@ -782,9 +782,9 @@ begin
   i := Rcon_Validate();
 
   if (i = 0) then
-    Com_Printf('Bad rcon from %s:'#10'%s'#10, [NET_AdrToString(net_from), PChar(Pointer(Cardinal(net_message.data) + 4))])
+    Com_Printf('Bad rcon from %s:'#10'%s'#10, [NET_AdrToString(net_from), PChar(Pointer(NativeUInt(net_message.data) + 4))])
   else
-    Com_Printf('Rcon from %s:'#10'%s'#10, [NET_AdrToString(net_from), PChar(Pointer(Cardinal(net_message.data) + 4))]);
+    Com_Printf('Rcon from %s:'#10'%s'#10, [NET_AdrToString(net_from), PChar(Pointer(NativeUInt(net_message.data) + 4))]);
 
   Com_BeginRedirect(Integer(RD_PACKET), sv_outputbuf, SV_OUTPUTBUF_LENGTH, SV_FlushRedirect);
 

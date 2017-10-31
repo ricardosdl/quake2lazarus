@@ -1900,7 +1900,7 @@ begin
   else
   begin
     dec(s);
-    strncpy(out_, Pointer(Cardinal(s2) + 1), Cardinal(s) - Cardinal(s2));
+    strncpy(out_, Pointer(NativeUInt(s2) + 1), Cardinal(s) - Cardinal(s2));
     out_[Cardinal(s) - Cardinal(s2)] := #0;
   end;
 end;

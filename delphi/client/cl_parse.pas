@@ -320,7 +320,7 @@ begin
     end;
   end;
 
-  FileWrite(cls.download, Pointer(Cardinal(net_message.data) + net_message.readcount)^, size);
+  FileWrite(cls.download, Pointer(NativeUInt(net_message.data) + net_message.readcount)^, size);
   net_message.readcount := net_message.readcount + size;
 
   if (percent <> 100) then
