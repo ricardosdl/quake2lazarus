@@ -71,6 +71,9 @@ uses
   {$ENDIF}
   CVar {, ref};
 
+const
+  FILE_OPEN_ERROR = THandle(-1);
+
 // From qcommon.h, line 687
 (*
 ==============================================================
