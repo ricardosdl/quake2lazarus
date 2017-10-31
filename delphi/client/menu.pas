@@ -2188,7 +2188,7 @@ begin
     Com_sprintf(name, sizeof(name), '%s/save/save%d/server.ssv', [FS_Gamedir(),
       i]);
     f := FileOpen(name, fmOpenRead);
-    if f < 0 then
+    if f = FILE_OPEN_ERROR then
     begin
       m_savestrings[i] := '<EMPTY>';
       m_savevalid[i] := False;
