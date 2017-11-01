@@ -793,7 +793,7 @@ begin
   gi.FreeTags(TAG_GAME);
 
   f := FileOpen(FileName, fmOpenRead);
-  if f = 0 then
+  if f = 0 then{ TODO : Check for file_open_error code }
     gi.error('Couldn''t open %s', filename);
 
   FileRead(f, str[0], SizeOf(str));
