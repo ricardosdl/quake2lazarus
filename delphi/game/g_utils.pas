@@ -517,7 +517,7 @@ begin
   e^.inuse := True;
   e^.classname := 'noclass';
   e^.gravity := 1.0;
-  e^.s.number := (Integer(e) - Integer(g_edicts)) div SizeOf(edict_t);
+  e^.s.number := (e - @g_edicts[0]) div SizeOf(edict_t);
 end;
 
 (*
