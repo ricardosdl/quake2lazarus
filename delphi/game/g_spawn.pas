@@ -335,6 +335,7 @@ var
   b: pbyte;
   v: single;
   vec: vec3_t;
+  vecValues: array[0..2] of Extended;
 begin
   f := @fields;
   while f^.name <> nil do
@@ -349,25 +350,27 @@ begin
 
       case f^._type of
         F_LSTRING:  begin
-          PPChar(Integer(b) + f^.ofs)^ := ED_NewString(value);
+          PPChar(NativeUInt(b) + f^.ofs)^ := ED_NewString(value);
         end;
         F_VECTOR:  begin
-          sscanf(value, '%f %f %f', [@vec[0], @vec[1], @vec[2]]);
-          PSingleArray(Integer(b) + f^.ofs)[0] := vec[0];
-          PSingleArray(Integer(b) + f^.ofs)[1] := vec[1];
-          PSingleArray(Integer(b) + f^.ofs)[2] := vec[2];
+          //SScanf needs a pointer of extended for the %f format
+          sscanf(value, '%f %f %f', [@vecValues[0], @vecValues[1], @vecValues[2]]);
+          vec[0] := vecValues[0]; vec[1] := vecValues[1]; vec[2] := vecValues[2];
+          PSingleArray(NativeUInt(b) + f^.ofs)[0] := vec[0];
+          PSingleArray(NativeUInt(b) + f^.ofs)[1] := vec[1];
+          PSingleArray(NativeUInt(b) + f^.ofs)[2] := vec[2];
         end;
         F_INT:  begin
-          PInteger(Integer(b) + f^.ofs)^ := atoi(value);
+          PInteger(NativeUInt(b) + f^.ofs)^ := atoi(value);
         end;
         F_FLOAT:  begin
-          PSingle(Integer(b) + f^.ofs)^ := atof(value);
+          PSingle(NativeUInt(b) + f^.ofs)^ := atof(value);
         end;
         F_ANGLEHACK:  begin
           v := atof(value);
-          PSingleArray(Integer(b) + f^.ofs)[0] := 0;
-          PSingleArray(Integer(b) + f^.ofs)[1] := v;
-          PSingleArray(Integer(b) + f^.ofs)[2] := 0;
+          PSingleArray(NativeUInt(b) + f^.ofs)[0] := 0;
+          PSingleArray(NativeUInt(b) + f^.ofs)[1] := v;
+          PSingleArray(NativeUInt(b) + f^.ofs)[2] := 0;
         end;
         F_IGNORE: ;
       end;
