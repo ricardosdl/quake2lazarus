@@ -465,7 +465,7 @@ begin
 
   Com_sprintf(name, sizeof(name), '%s/save/current/server.ssv', [FS_Gamedir()]);
   f := FileOpen(name, fmOpenRead);
-  if (f = -1) then
+  if (f = -1) then{ TODO : Check for FILE_READ_ERROR }
   begin
     Com_Printf('Couldn''t read %s'#10, [name]);
     exit;
@@ -674,7 +674,7 @@ begin
   // make sure the server.ssv file exists
   Com_sprintf(name, sizeof(name), '%s/save/%s/server.ssv', [FS_Gamedir(), Cmd_Argv(1)]);
   f := FileOpen(name, fmOpenRead);
-  if (f = -1) then
+  if (f = -1) then{ TODO : Check for FILE_OPEN_ERROR }
   begin
     Com_Printf('No such savegame: %s'#10, [name]);
     exit;
