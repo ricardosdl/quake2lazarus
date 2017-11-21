@@ -73,7 +73,7 @@ implementation
 
 uses
   Cpas,
-  LCLIntf, LCLType, LMessages,
+  LCLIntf, LCLType,
   ref,
   gl_rmain,
   dglOpenGL,
@@ -114,9 +114,9 @@ var
   r: TRECT;
   vid_xpos,
     vid_ypos: cvar_p;
-  stylebits,
-    x, y, w, h,
+  x, y, w, h,
     exstyle: integer;
+  stylebits: DWORD;
 begin
   // Register the frame class
   wc.style := 0;

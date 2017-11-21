@@ -70,7 +70,7 @@ type
 procedure VID_CheckChanges;
 procedure VID_Init;
 procedure VID_Shutdown;
-function MainWndProc(h_Wnd: HWND; uMsg: Cardinal; wParam: WPARAM; lParam: LPARAM): LongInt; cdecl;
+function MainWndProc(h_Wnd: HWND; uMsg: Cardinal; wParam: WPARAM; lParam: LPARAM): LRESULT; cdecl;
 
 // Juha: These are only exported because our Delphi_cdecl_printf.pas needs to call them back.
 procedure VID_Printf(print_level: Integer; fmt: PChar; args: array of const);
@@ -247,7 +247,7 @@ MapKey
 Map from windows to quake keynums
 ======= *)
 
-function MapKey(key: Integer): Integer;
+function MapKey(key: LPARAM): Integer;
 var
   iResult: Integer;
   modified: Integer;
@@ -354,7 +354,7 @@ MainWndProc
 main window procedure
 ==================== *)
 
-function MainWndProc(h_Wnd: HWND; uMsg: Cardinal; wParam: WPARAM; lParam: LPARAM): LongInt;
+function MainWndProc(h_Wnd: HWND; uMsg: Cardinal; wParam: WPARAM; lParam: LPARAM): LRESULT;
 var
   //  lRet: LongInt;
   fActive, fMinimized: Integer;
