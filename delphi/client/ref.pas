@@ -188,7 +188,7 @@ type
 
     // called when the library is loaded
     // Juha: This needs to return integer, as vid_dll.c(=pas) checks it for "-1".
-    Init: function(hinstance: cardinal; wndproc: pointer): Integer; cdecl;
+    Init: function(hinstance: HINST; wndproc: pointer): Integer; cdecl;
 
     // called before the library is unloaded
     Shutdown: procedure; cdecl;
