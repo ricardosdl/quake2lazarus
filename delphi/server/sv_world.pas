@@ -81,7 +81,7 @@ uses
 
 function EDICT_FROM_AREA(l: pointer): edict_p;
 begin
-  Result := edict_p(Integer(l) - Integer(@edict_p(0)^.area));
+  Result := edict_p(NativeUInt(l) - NativeUInt(@edict_p(0)^.area));
 end;
 
 // ClearLink is used for new headnodes

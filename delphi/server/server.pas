@@ -200,7 +200,7 @@ end;
 
 function NUM_FOR_EDICT(e: edict_p): Integer;
 begin
-  Result := (Cardinal(e) - Cardinal(ge.Edicts)) div ge.Edict_size;
+  Result := (NativeUInt(e) - NativeUInt(ge.Edicts)) div ge.Edict_size;
 end;
 
 end.
