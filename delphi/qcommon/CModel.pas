@@ -540,7 +540,11 @@ begin
     j := LittleShort(in_^.texinfo);
     if (j >= numtexinfo) then
       Com_Error(ERR_DROP, 'Bad brushside texinfo', []);
-    out_^.surface := @map_surfaces[j];
+    //we have to handle the -1 case, thanks to Jake2 Project(quake 2 java implementation)
+    if j = -1 then
+      out_^.surface := @nullsurface
+    else
+      out_^.surface := @map_surfaces[j];
     Inc(in_);
     Inc(out_);
   end;

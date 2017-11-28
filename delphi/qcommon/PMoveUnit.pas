@@ -407,7 +407,6 @@ begin
   drop := 0;
 
   // apply ground friction
-  { TODO : Fix a sigsegv in the line below }
   if ((pm.groundentity <> nil) and (pml.groundsurface <> nil) and (pml.groundsurface.flags and SURF_SLICK = 0)) or
     (pml.ladder) then
   begin
