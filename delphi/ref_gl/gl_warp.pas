@@ -337,7 +337,7 @@ begin
 
       qglTexCoord2f (s, t);
       qglVertex3fv (@v[0]);
-      v := PSingleArray(Cardinal(v) + VERTEXSIZE * SizeOf(Single));
+      v := PSingleArray(Pointer(v) + VERTEXSIZE * SizeOf(Single));
     end;
     qglEnd();
     bp := bp.next;
