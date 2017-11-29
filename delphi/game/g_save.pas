@@ -632,7 +632,7 @@ begin
   if (field^.flags AND FFL_SPAWNTEMP) <> 0 then
     Exit;
 
-  p := Pointer(NativeUInt(base) + field^.ofs);
+  p := Pointer(Pointer(base) + field^.ofs);
   case field^._type of
     F_INT, F_FLOAT, F_ANGLEHACK, F_VECTOR, F_IGNORE: {do nothing};
     F_LSTRING: begin
@@ -671,7 +671,7 @@ begin
       if index = 0 then
         PPByte(p)^ := Nil
       else
-        PPByte(p)^ := PByte(LongInt(@InitGame)+index);
+        PPByte(p)^ := PByte(Pointer(@InitGame)+index);
     end;
     //relative to data segment
     F_MMOVE: begin
@@ -679,7 +679,7 @@ begin
       if index = 0 then
 	PPByte(p)^ := Nil
       else
-	PPByte(p)^ := PByte(LongInt(@mmove_reloc) + index);
+	PPByte(p)^ := PByte(Pointer(@mmove_reloc) + index);
     end;
     else
       gi.error('ReadEdict: unknown field type');
