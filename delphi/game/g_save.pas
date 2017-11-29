@@ -1027,7 +1027,8 @@ begin
     gi.error('ReadLevel: function pointers have moved');
   end;
 {$else}
-  gi_dprintf('Function offsets %d'#10, [LongInt(base) - LongInt(@InitGame)]);
+  //we undefined win32, and the code bellow ins't necessary (I looke into YQuake 2's source code)
+  //gi_dprintf('Function offsets %d'#10, [LongInt(base) - LongInt(@InitGame)]);
 {$endif}
 
   // load the level locals

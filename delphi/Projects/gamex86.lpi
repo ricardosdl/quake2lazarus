@@ -294,13 +294,7 @@
       </Options>
     </Linking>
     <Other>
-      <CustomOptions Value="-dBorland
--dVer150
--dDelphi7
--dCompiler6_Up
--dPUREPASCAL
--dWIN32
--dGAMEDLL"/>
+      <CustomOptions Value="-dGAMEDLL"/>
       <OtherDefines Count="7">
         <Define0 Value="Borland"/>
         <Define1 Value="Ver150"/>
