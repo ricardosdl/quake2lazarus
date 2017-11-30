@@ -174,6 +174,7 @@ begin
       if (coop^.value <> 0) AND (attacker^.client <> nil) then
         Inc(attacker^.client^.resp.score);
       // medics won't heal monsters that they kill themselves
+      { TODO : Fix a segfault here! Seems to manifest when the enemies attack each other }
       if (strcmp(attacker^.classname, 'monster_medic') = 0) then
         targ^.owner := attacker;
     end;
