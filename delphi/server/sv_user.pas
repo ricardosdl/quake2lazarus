@@ -166,7 +166,7 @@ begin
   if (sv.state = ss_cinematic) or (sv.state = ss_pic) then
     playernum := -1
   else
-    playernum := (Cardinal(sv_client) - Cardinal(svs.clients)) div sizeof(client_t);
+    playernum := (Pointer(sv_client) - Pointer(svs.clients)) div sizeof(client_t);
 
   MSG_WriteShort(sv_client^.netchan.message, playernum);
 
