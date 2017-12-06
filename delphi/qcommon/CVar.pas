@@ -47,9 +47,6 @@ unit CVar;
 interface
 
 uses
-  {$IFDEF WIN32}
-  Windows,
-  {$ENDIF}
   SysUtils,
   Q_Shared;
 
