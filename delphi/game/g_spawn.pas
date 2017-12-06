@@ -468,7 +468,7 @@ begin
     e^.teammaster := e;
     inc(c);
     inc(c2);
-    e2 := edict_p(Cardinal(e) + 1 * SizeOf(edict_t));
+    e2 := edict_p(Pointer(e) + 1 * SizeOf(edict_t));
     for j:= i + 1 to globals.num_edicts-1 do
     begin
       if not e2^.inuse then

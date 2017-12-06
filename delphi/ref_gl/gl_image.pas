@@ -577,10 +577,10 @@ begin
         dec(runLength);
       end;
     end;
-    pix := PByte(Cardinal(pix) + pcx^.xmax + 1);
+    pix := PByte(Pointer(pix) + pcx^.xmax + 1);
   end;
 
-  if (Integer(raw) - Integer(pcx) > len) then
+  if (Pointer(raw) - Pointer(pcx) > len) then
   begin
     ri.Con_Printf(PRINT_DEVELOPER, 'PCX file %s was malformed', filename);
     FreeMem(pic^);

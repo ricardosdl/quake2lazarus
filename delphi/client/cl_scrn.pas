@@ -703,11 +703,11 @@ begin
   *)
   if (a.model = b.model) then
   begin
-    Result := Cardinal(a.skin) - Cardinal(b.skin);
+    Result := a.skin - b.skin;
   end
   else
   begin
-    Result := Cardinal(a.model) - Cardinal(b.model);
+    Result := a.model - b.model;
   end;
 end;
 
