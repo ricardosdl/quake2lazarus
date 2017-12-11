@@ -33,12 +33,9 @@ interface
 
 uses
   SysUtils,
-  DelphiTypes,
   dglOpenGL,
-  ref,
   q_shared,
-  gl_local_add,
-  gl_model_h;
+  gl_local_add;
 
 const
   GL_COLOR_INDEX8_EXT = GL_COLOR_INDEX;

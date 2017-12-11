@@ -58,7 +58,6 @@ var
 implementation
 
 uses
-  DelphiTypes,
   SysUtils,
   q_shwin,
   Cpas,
