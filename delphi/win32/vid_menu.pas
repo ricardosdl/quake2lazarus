@@ -170,9 +170,9 @@ begin
   (*
   ** make values consistent
   *)
-  s_fs_box[not s_current_menu_index].curvalue := s_fs_box[s_current_menu_index].curvalue;
-  s_brightness_slider[not s_current_menu_index].curvalue := s_brightness_slider[s_current_menu_index].curvalue;
-  s_ref_list[not s_current_menu_index].curvalue := s_ref_list[s_current_menu_index].curvalue;
+  s_fs_box[Integer(not Boolean(s_current_menu_index))].curvalue := s_fs_box[s_current_menu_index].curvalue;
+  s_brightness_slider[Integer(not Boolean(s_current_menu_index))].curvalue := s_brightness_slider[s_current_menu_index].curvalue;
+  s_ref_list[Integer(not Boolean(s_current_menu_index))].curvalue := s_ref_list[s_current_menu_index].curvalue;
 
   (*
   ** invert sense so greater:= brighter, and scale to a range of 0.5 to 1.3
