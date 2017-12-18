@@ -13,3 +13,24 @@ at line 243, doing the right thing? A: Apparently yes!
 for dropping the client for timeouts (happens a lot when debugging the code!)
 
 Take a look into cl_ents.pas:CL_AddPacketEntities, what is going on here?
+
+==on gl_rsurf:995:R_DrawInlineBModel the problematic surface index i is 1200, 1214,1216,1232, 1234.
+Image details below:
+record IMAGE_T {
+  NAME = 'textures/e1u1/bluwter.wal', 
+  #0 <repeats 38 times>, 
+  TYPE_ = IT_WALL, 
+  WIDTH = 64, 
+  HEIGHT = 64, 
+  UPLOAD_WIDTH = 64, 
+  UPLOAD_HEIGHT = 64, 
+  REGISTRATION_SEQUENCE = 2, 
+  TEXTURECHAIN = $0, 
+  TEXNUM = 1260, 
+  SL = 0, 
+  TL = 0, 
+  SH = 1, 
+  TH = 1, 
+  SCRAP = false, 
+  HAS_ALPHA = false, 
+  PALETTED = false}
