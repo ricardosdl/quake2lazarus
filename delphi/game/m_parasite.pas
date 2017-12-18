@@ -686,7 +686,7 @@ begin
 
   gi.WriteByte (svc_temp_entity);
   gi.WriteByte (Ord(TE_PARASITE_ATTACK));
-  gi.WriteShort ((Cardinal(Self)-Cardinal(g_edicts)) div SizeOf(edict_t));
+  gi.WriteShort (Self - edict_p(g_edicts));
   gi.WritePosition (start);
   gi.WritePosition (_end);
   gi.multicast (@self^.s.origin, MULTICAST_PVS);
