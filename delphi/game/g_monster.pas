@@ -146,7 +146,7 @@ begin
   fire_bullet(self, start, dir, damage, kick, hspread, vspread, MOD_UNKNOWN);
 
   gi.WriteByte(svc_muzzleflash2);
-  gi.WriteShort((Cardinal(self) - Cardinal(g_edicts)) div sizeof(edict_t));
+  gi.WriteShort(self - edict_p(g_edicts));
   gi.WriteByte(flashtype);
   gi.multicast(@start, MULTICAST_PVS);
 end;
@@ -157,7 +157,7 @@ begin
   fire_shotgun(self, start, aimdir, damage, kick, hspread, vspread, count, MOD_UNKNOWN);
 
   gi.WriteByte(svc_muzzleflash2);
-  gi.WriteShort((Cardinal(self) - Cardinal(g_edicts)) div sizeof(edict_t));
+  gi.WriteShort(self - edict_p(g_edicts));
   gi.WriteByte(flashtype);
   gi.multicast(@start, MULTICAST_PVS);
 end;
@@ -168,7 +168,7 @@ begin
   fire_blaster(self, start, dir, damage, speed, effect, false);
 
   gi.WriteByte(svc_muzzleflash2);
-  gi.WriteShort((Cardinal(self) - Cardinal(g_edicts)) div sizeof(edict_t));
+  gi.WriteShort(self - edict_p(g_edicts));
   gi.WriteByte(flashtype);
   gi.multicast(@start, MULTICAST_PVS);
 end;
@@ -179,7 +179,7 @@ begin
   fire_grenade(self, start, aimdir, damage, speed, 2.5, damage+40);
 
   gi.WriteByte(svc_muzzleflash2);
-  gi.WriteShort((Cardinal(self) - Cardinal(g_edicts)) div sizeof(edict_t));
+  gi.WriteShort(self - edict_p(g_edicts));
   gi.WriteByte(flashtype);
   gi.multicast(@start, MULTICAST_PVS);
 end;
@@ -190,7 +190,7 @@ begin
   fire_rocket(self, start, dir, damage, speed, damage+20, damage);
 
   gi.WriteByte(svc_muzzleflash2);
-  gi.WriteShort((Cardinal(self) - Cardinal(g_edicts)) div sizeof(edict_t));
+  gi.WriteShort(self - edict_p(g_edicts));
   gi.WriteByte(flashtype);
   gi.multicast(@start, MULTICAST_PVS);
 end;
@@ -201,7 +201,7 @@ begin
   fire_rail(self, start, aimdir, damage, kick);
 
   gi.WriteByte(svc_muzzleflash2);
-  gi.WriteShort((Cardinal(self) - Cardinal(g_edicts)) div sizeof(edict_t));
+  gi.WriteShort(self - edict_p(g_edicts));
   gi.WriteByte(flashtype);
   gi.multicast(@start, MULTICAST_PVS);
 end;
@@ -212,7 +212,7 @@ begin
   fire_bfg(self, start, aimdir, damage, speed, damage_radius);
 
   gi.WriteByte(svc_muzzleflash2);
-  gi.WriteShort((Cardinal(self) - Cardinal(g_edicts)) div sizeof(edict_t));
+  gi.WriteShort(self - edict_p(g_edicts));
   gi.WriteByte(flashtype);
   gi.multicast(@start, MULTICAST_PVS);
 end;
