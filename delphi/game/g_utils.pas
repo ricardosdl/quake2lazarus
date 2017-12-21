@@ -45,7 +45,7 @@ unit g_utils;
 interface
 
 uses
-  q_shared, g_local, g_main{$IFNDEF COMPILER6_UP}, Windows{$ENDIF};
+  q_shared, g_local, g_main;
 
 // g_utils.c -- misc utility functions for game module
 
@@ -121,12 +121,12 @@ begin
   else
     Inc(from); //Clootie: Shift to next element in pointer to array of "edict_t"
 
-  while Integer(from) < Integer(@g_edicts^[globals.num_edicts]) do
+  while from < @g_edicts^[globals.num_edicts] do
   begin
     if (not from^.inuse) then
       goto Continue__;
 
-    s := PPChar(Integer(from) + fieldofs)^;
+    s := PPChar(Pointer(from) + fieldofs)^;
     if (s = nil) then
       goto Continue__;
 
@@ -165,7 +165,7 @@ begin
   else
     Inc(from); //Clootie: Shift to next element in pointer to array of "edict_t"
 
-  while Integer(from) < Integer(@g_edicts^[globals.num_edicts]) do // FAB ..Check This ..
+  while from < @g_edicts^[globals.num_edicts] do // FAB ..Check This ..
   begin
     if (not from^.inuse) then
       goto Continue__;
@@ -517,7 +517,7 @@ begin
   e^.inuse := True;
   e^.classname := 'noclass';
   e^.gravity := 1.0;
-  e^.s.number := (e - edict_p(@g_edicts[0])) div SizeOf(edict_t);
+  e^.s.number := e - edict_p(@g_edicts[0]);
 end;
 
 (*
@@ -574,8 +574,7 @@ procedure G_FreeEdict(ed: edict_p);
 begin
   gi.unlinkentity(ed);		// unlink from world
 
-  if ((Integer(ed) - Integer(g_edicts)) div SizeOf(edict_t) <=
-     (maxclients^.value + BODY_QUEUE_SIZE)) then
+  if (ed - edict_p(@g_edicts[0])) <= (maxclients^.value + BODY_QUEUE_SIZE) then
   begin
 //  gi.dprintf("tried to free special edict\n");
     Exit;
