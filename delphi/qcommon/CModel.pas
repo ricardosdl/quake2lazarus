@@ -1697,9 +1697,9 @@ begin
     Inc(in_);
     c := in_^;
     Inc(in_);
-    if ((Integer(out_p) - Integer(out_)) + c > row) then
+    if ((NativeUInt(out_p) - NativeUInt(out_)) + c > row) then
     begin
-      c := row - (Integer(out_p) - Integer(out_));
+      c := row - (NativeUInt(out_p) - NativeUInt(out_));
       Com_DPrintf('warning: Vis decompression overrun'#10, []);
     end;
 
@@ -1709,7 +1709,7 @@ begin
       Inc(out_p);
       Dec(c);
     end;
-  until (Integer(out_p) - Integer(out_) >= row);
+  until (NativeUInt(out_p) - NativeUInt(out_) >= row);
 end;
 
 var
