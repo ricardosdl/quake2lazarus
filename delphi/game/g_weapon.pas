@@ -169,7 +169,7 @@ begin
   VectorSubtract (point, self.enemy^.s.origin, dir);
 
   // do the damage
-  T_Damage (tr.ent, @self, @self, dir, point, vec3_origin, damage, kick div 2, DAMAGE_NO_KNOCKBACK, MOD_HIT);
+  T_Damage (tr.ent, self, self, dir, point, vec3_origin, damage, kick div 2, DAMAGE_NO_KNOCKBACK, MOD_HIT);
 
   { if (!(tr.ent.svflags & SVF_MONSTER) and (!tr.ent.client)) then }
   if ( ((edict_p(tr.ent).svflags AND SVF_MONSTER) = 0) AND (edict_p(tr.ent).client = nil) ) then
