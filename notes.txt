@@ -54,3 +54,15 @@ g_spawn.pas:SP_worldspawn:927
 #11 QCOMMON_FRAME(15) at ..\qcommon\Common.pas:2112
 #12 WINMAIN(4294967296, 0, 0x1001714a0 '', 0) at ..\win32\sys_win.pas:585
 #13 main at quake2d.lpr:164
+
+==Code indicating the x, y, width and height calculations? (procedure R_SetupGL; inside gl_rmain)
+x := Floor(r_newrefdef.x * vid.width / vid.width);
+x2 := Ceil((r_newrefdef.x + r_newrefdef.width) * vid.width / vid.width);
+y := Floor(vid.height - r_newrefdef.y * vid.height / vid.height);
+y2 := Ceil(vid.height - (r_newrefdef.y + r_newrefdef.height) * vid.height / vid.height);
+
+w := x2 - x;
+h := y - y2;
+
+==we need to fix some pointers in "procedure ClientDisconnect (ent : edict_p)":p_client
+the code is using cardinal in some pointers calculations.
