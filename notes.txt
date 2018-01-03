@@ -66,3 +66,5 @@ h := y - y2;
 
 ==we need to fix some pointers in "procedure ClientDisconnect (ent : edict_p)":p_client
 the code is using cardinal in some pointers calculations.
+
+==take a look at "procedure CL_AddPacketEntities(frame: frame_p);", something about the entities!
