@@ -68,3 +68,16 @@ h := y - y2;
 the code is using cardinal in some pointers calculations.
 
 ==take a look at "procedure CL_AddPacketEntities(frame: frame_p);", something about the entities!
+
+
+==Another interesting piece of code stack trace:
+#0 CL_CLIPMOVETOENTITIES({261.75, -237.125, -488.875}, {-16, -16, -24}, {16, 16, 32}, {261.75, -237.125, -489.125}, 0x13ff870) at ..\client\cl_pred.pas:126
+#1 CL_PMTRACE({261.75, -237.125, -488.875}, {-16, -16, -24}, {16, 16, 32}, {261.75, -237.125, -489.125}) at ..\client\cl_pred.pas:209
+#2 PM_CATAGORIZEPOSITION at ..\qcommon\PMoveUnit.pas:742
+#3 PMOVE(0x13ffa60) at ..\qcommon\PMoveUnit.pas:1364
+#4 CL_PREDICTMOVEMENT at ..\client\cl_pred.pas:308
+#5 CL_FRAME(31) at ..\client\cl_main.pas:1885
+#6 QCOMMON_FRAME(31) at ..\qcommon\Common.pas:2126
+#7 WINMAIN(4294967296, 0, 0x100172490 '', 0) at ..\win32\sys_win.pas:585
+#8 main at quake2d.lpr:164
+
