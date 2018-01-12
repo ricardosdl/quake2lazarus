@@ -81,3 +81,13 @@ the code is using cardinal in some pointers calculations.
 #7 WINMAIN(4294967296, 0, 0x100172490 '', 0) at ..\win32\sys_win.pas:585
 #8 main at quake2d.lpr:164
 
+==More interesting stack traces:
+#0 CL_DELTAENTITY(0x1007c3466, 1, 0x10084b530, 25198736) at ..\client\cl_ents.pas:227
+#1 CL_PARSEPACKETENTITIES(0x1007c3642, 0x1007c3466) at ..\client\cl_ents.pas:354
+#2 CL_PARSEFRAME at ..\client\cl_ents.pas:623
+#3 CL_PARSESERVERMESSAGE at ..\client\cl_parse.pas:852
+#4 CL_READPACKETS at ..\client\cl_main.pas:1120
+#5 CL_FRAME(125) at ..\client\cl_main.pas:1879
+#6 QCOMMON_FRAME(125) at ..\qcommon\Common.pas:2126
+#7 WINMAIN(4294967296, 0, 0x100172490 '', 0) at ..\win32\sys_win.pas:585
+#8 main at quake2d.lpr:164
