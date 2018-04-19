@@ -12,6 +12,12 @@ at line 243, doing the right thing? A: Apparently yes!
 "procedure SV_CheckTimeouts();" in sv_main:1014 is the proable responsible
 for dropping the client for timeouts (happens a lot when debugging the code!)
 
+==where we can add some code to avoid the dropping of the client
+file:server\sv_main.pas line 1036
+add this code:
+cl^.lastmessage := droppoint;
+
+
 Take a look into cl_ents.pas:CL_AddPacketEntities, what is going on here?
 
 ==on gl_rsurf:995:R_DrawInlineBModel the problematic surface index i is 1200, 1214,1216,1232, 1234.
