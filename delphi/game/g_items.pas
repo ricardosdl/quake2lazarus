@@ -2387,7 +2387,7 @@ end;}
 
 function ITEM_INDEX(x:GItem_p):integer;
 begin
-  result:=(integer(x)-integer(@itemlist)) div SizeOf(gitem_t);
+  result := x - GItem_p(itemlist);
 end;
 
 
