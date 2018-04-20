@@ -1236,7 +1236,7 @@ begin
   // ranging doesn't count this client
   SelectSpawnPoint (ent, spawn_origin, spawn_angles);
 
-  index := (Cardinal(ent) - Cardinal(g_edicts)) div SizeOf(edict_t) - 1;
+  index := ent - edict_p(g_edicts) - 1;
   client := ent^.client;
 
   // deathmatch wipes most client data every spawn
@@ -1347,7 +1347,7 @@ begin
   ent^.s.modelindex2 := 255;		// custom gun model
   // sknum is player num and weapon number
   // weapon number will be added in changeweapon
-  ent^.s.skinnum := (Cardinal(ent) - Cardinal(g_edicts)) div SizeOf(edict_t) - 1;
+  ent^.s.skinnum := ent - edict_p(g_edicts) - 1;
 
   ent^.s.frame := 0;
   VectorCopy (spawn_origin, ent^.s.origin);
@@ -1450,7 +1450,7 @@ procedure ClientBegin (ent : edict_p); //g_main
 var
   i : integer;
 begin
-  ent^.client := @gclient_a(game.clients)[((Cardinal(ent) - Cardinal(g_edicts)) div sizeof(edict_t)- 1)];
+  ent^.client := @gclient_a(game.clients)[ent - edict_p(g_edicts) - 1];
 
   if (deathmatch^.value <> 0) then
   begin
