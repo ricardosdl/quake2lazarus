@@ -1656,7 +1656,7 @@ begin
 
 
   // they can connect
-  ent^.client := @gclient_a(game.clients)[((Cardinal(ent) - Cardinal(g_edicts)) div SizeOf(edict_t)) - 1];
+  ent^.client := @gclient_a(game.clients)[ent - edict_p(g_edicts) - 1];
 
   // if there is already a body waiting for us (a loadgame), just
   // take it, otherwise spawn one from scratch
