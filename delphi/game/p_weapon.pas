@@ -1136,7 +1136,7 @@ begin
   // send muzzle flash
   gi.WriteByte (svc_muzzleflash);
   { According with last Juha help on convert it }
-  gi.WriteShort((Cardinal(ent) - Cardinal(g_edicts))div sizeof(edict_t));
+  gi.WriteShort(ent - edict_p(g_edicts));
   if (hyper) then
     gi.WriteByte (MZ_HYPERBLASTER OR is_silenced)
   else
