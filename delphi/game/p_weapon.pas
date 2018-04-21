@@ -271,7 +271,7 @@ begin
     else
       i := 0;
 
-    ent^.s.skinnum := (Cardinal(ent) - Cardinal(g_edicts) - 1 * SizeOf(edict_t)) OR i;
+    ent^.s.skinnum := (ent - edict_p(g_edicts) - 1) OR i;
   end;
 
   if (ent^.client^.pers.weapon <> Nil) AND (ent^.client^.pers.weapon^.ammo <> '') then
