@@ -1541,7 +1541,7 @@ begin
   // set skin
   s := Info_ValueForKey (userinfo, 'skin');
 
-  playernum := ((Cardinal(ent) - Cardinal(g_edicts)) div SizeOf(edict_t)) - 1;
+  playernum := (ent - edict_p(g_edicts)) - 1;
 
   // combine name and skin into a configstring
 {$IFDEF CTF}  //onlyCTF
