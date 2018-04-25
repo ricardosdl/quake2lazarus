@@ -351,7 +351,7 @@ begin
 
   Com_sprintf(name, sizeof(name), '%s/save/current/%s.sv2', [FS_Gamedir(), sv.name]);
   f := FileOpen(name, fmOpenRead);
-  if (f = -1) then
+  if (f = FILE_OPEN_ERROR) then
   begin
     Com_Printf('Failed to open %s'#10, [name]);
     exit;
