@@ -355,7 +355,7 @@ begin
     begin
       Com_sprintf(netpath, SizeOf(netpath), '%s%s', [link.to_, filename + link.fromlength]);
       file_ := FileOpen(netpath, fmOpenRead);
-      if (file_ <> -1) then
+      if (file_ <> FILE_OPEN_ERROR) then
       begin
         Com_DPrintf('link file: %s'#10, [netpath]);
         Result := FS_filelength(file_);
@@ -388,7 +388,7 @@ begin
           Com_DPrintf('PackFile: %s : %s'#10, [pak.filename, filename]);
           // open a new file on the pakfile
           file_ := FileOpen(pak.filename, fmOpenRead or fmShareDenyNone);
-          if (file_ = -1) then
+          if (file_ = FILE_OPEN_ERROR) then
             Com_Error(ERR_FATAL, 'Couldn''t reopen %s', [pak.filename]);
           FileSeek(file_, pak.files[i].filepos, 0);
           Result := pak.files[i].filelen;
@@ -403,7 +403,7 @@ begin
       Com_sprintf(netpath, SizeOf(netpath), '%s/%s', [search.filename, filename]);
 
       file_ := FileOpen(netpath, fmOpenRead);
-      if (file_ <> -1) then
+      if (file_ <> FILE_OPEN_ERROR) then
       begin
         Com_DPrintf('FindFile: %s'#10, [netpath]);
 
