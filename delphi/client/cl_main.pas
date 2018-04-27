@@ -265,7 +265,7 @@ begin
   FS_CreatePath(name);
 
   cls.demofile := FileOpen(name, fmOpenReadWrite);
-  if (cls.demofile = 0) then
+  if (cls.demofile = FILE_OPEN_ERROR) then
   begin
     Com_Printf('ERROR: couldn''t open.'#10, []);
     exit;

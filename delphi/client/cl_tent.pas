@@ -592,7 +592,7 @@ CL_ParseLaser
 =========
 }
 
-procedure CL_ParseLaser(Colors: Integer);
+procedure CL_ParseLaser(Colors: Cardinal);
 var
   Start, End_: vec3_t;
   l: laser_p;

@@ -168,7 +168,7 @@ type
     modelindex: Integer;
     modelindex2, modelindex3, modelindex4: Integer; // weapons, CTF flags, etc
     frame: Integer;
-    skinnum: Integer;
+    skinnum: Cardinal;
     effects: Cardinal;                  // PGM - we're filling it, so it needs to be unsigned
     renderfx: Integer;
     solid: Integer;                     // for client side prediction, 8*(bits 0-4) is x/y radius

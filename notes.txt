@@ -20,6 +20,12 @@ cl^.lastmessage := droppoint;
 
 Take a look into cl_ents.pas:CL_AddPacketEntities, what is going on here?
 
+==Common units (compiled) between quake2d.lpi and gamex86.lpi:
+CPas.pas
+GameUnit.pas
+q_shared.pas
+q_shared_add.pas
+
 ==on gl_rsurf:995:R_DrawInlineBModel the problematic surface index i is 1200, 1214,1216,1232, 1234.
 Image details below:
 record IMAGE_T {

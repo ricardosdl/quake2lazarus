@@ -713,7 +713,7 @@ begin
   // this is the only place a client_t is ever initialized
   newcl^ := temp;
   sv_client := newcl;
-  edictnum := (Cardinal(newcl) - Cardinal(svs.clients)) div sizeof(client_s) + 1;
+  edictnum := newcl - client_p(svs.clients) + 1;
   ent := EDICT_NUM(edictnum);
   newcl^.edict := ent;
   newcl^.challenge := challenge;        // save challenge for checksumming
