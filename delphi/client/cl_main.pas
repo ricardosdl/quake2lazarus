@@ -264,7 +264,7 @@ begin
   Com_Printf('recording to %s.'#10, [name]);
   FS_CreatePath(name);
 
-  cls.demofile := FileOpen(name, fmOpenReadWrite);
+  cls.demofile := FileCreate(name);
   if (cls.demofile = FILE_OPEN_ERROR) then
   begin
     Com_Printf('ERROR: couldn''t open.'#10, []);
