@@ -310,7 +310,7 @@ begin
     FS_CreatePath(name);
 
     cls.download := FileOpen(name, fmOpenReadWrite);
-    if (cls.download = -1) then
+    if (cls.download = FILE_OPEN_ERROR) then
     begin
       net_message.readcount := net_message.readcount + size;
       Com_Printf('Failed to open %s'#10, [cls.downloadtempname]);
