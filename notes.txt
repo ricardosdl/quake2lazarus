@@ -1,3 +1,7 @@
+==Video initialization
+The procedure VID_Init in vid_dll initializes the video. The default is full screen.
+But the change in function GLimp_SetMode line 236 puts it in windowed mode.
+
 ==suspect procedure about the problem with the level rendering in the second level:
 R_DrawAlphaSurfaces in gl_rsurf line 655
 ==It can be! When the glich happens at the:
