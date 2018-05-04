@@ -30,6 +30,11 @@ GameUnit.pas
 q_shared.pas
 q_shared_add.pas
 
+==Common units (compiled with Shift-F9) between gamex86.lpi and ref_gl.lpi:
+CPas.pas
+q_shared.pas
+q_shared_add.pas
+
 ==on gl_rsurf:995:R_DrawInlineBModel the problematic surface index i is 1200, 1214,1216,1232, 1234.
 Image details below:
 record IMAGE_T {
