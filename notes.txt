@@ -115,3 +115,12 @@ the code is using cardinal in some pointers calculations.
 #6 QCOMMON_FRAME(125) at ..\qcommon\Common.pas:2126
 #7 WINMAIN(4294967296, 0, 0x100172490 '', 0) at ..\win32\sys_win.pas:585
 #8 main at quake2d.lpr:164
+
+==The unofficial DM2 format description (gold)
+https://www.quakewiki.net/archives/demospecs/dm2/dm2.pdf
+
+==Demo files from a guy from a quake2 reddit
+https://drive.google.com/drive/folders/0ByJc_EZ6U7G8NlBfLXQ1RDZzX1k
+
+==LMPC is the Little Movie Processing Centre. LMPC helps you to handle LMP, DMO, DEM, QWD and DM2 files.
+https://github.com/Doom-Utils/lmpc
