@@ -189,7 +189,7 @@ begin
   swlen := LittleLong(len);
 
   FileWrite(cls.demofile, swlen, 4);
-  buf := PChar(Integer(net_message.data) + 8);
+  buf := PChar(Pointer(net_message.data) + 8);
   FileWrite(cls.demofile, buf^, len);
 end;
 
@@ -300,7 +300,7 @@ begin
         // write it out
         len := LittleLong(buf.cursize);
         FileWrite(cls.demofile, len, 4);
-        FileWrite(cls.demofile, buf.data, buf.cursize);
+        FileWrite(cls.demofile, buf.data^, buf.cursize);
         buf.cursize := 0;
       end;
       MSG_WriteByte(buf, Byte(svc_configstring));
@@ -322,7 +322,7 @@ begin
       // write it out
       len := LittleLong(buf.cursize);
       FileWrite(cls.demofile, len, 4);
-      FileWrite(cls.demofile, buf.data, buf.cursize);
+      FileWrite(cls.demofile, buf.data^, buf.cursize);
       buf.cursize := 0;
     end;
 
@@ -338,7 +338,7 @@ begin
   len := LittleLong(buf.cursize);
 
   FileWrite(cls.demofile, len, 4);
-  FileWrite(cls.demofile, buf.data, buf.cursize);
+  FileWrite(cls.demofile, buf.data^, buf.cursize);
 
   // the rest of the demo file will be individual frames
 end;
