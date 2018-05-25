@@ -233,8 +233,7 @@ begin
     GLimp_Shutdown();
 
   // do a CDS if needed
-  if (not fullscreen) then
-  //TODO:if (fullscreen) then //put it back!
+  if (fullscreen) then
   begin
     ri.Con_Printf(PRINT_ALL, '...attempting fullscreen'#10);
 

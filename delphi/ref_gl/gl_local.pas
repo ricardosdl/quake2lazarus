@@ -151,7 +151,7 @@ const
 
 type
   glconfig_t = record
-    renderer : integer;
+    renderer : LongWord;
 {	const char *renderer_string;
 	const char *vendor_string;
 	const char *version_string;

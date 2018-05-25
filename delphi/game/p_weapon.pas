@@ -271,7 +271,7 @@ begin
     else
       i := 0;
 
-    ent^.s.skinnum := (Cardinal(ent) - Cardinal(g_edicts) - 1 * SizeOf(edict_t)) OR i;
+    ent^.s.skinnum := (ent - edict_p(g_edicts) - 1) OR i;
   end;
 
   if (ent^.client^.pers.weapon <> Nil) AND (ent^.client^.pers.weapon^.ammo <> '') then
@@ -1027,7 +1027,7 @@ begin
   gi.WriteByte (svc_muzzleflash);
   { According with last Juha help on convert it }
   //gi.WriteShort (ent-g_edicts);  ...by FAB
-  gi.WriteShort((Cardinal(ent) - Cardinal(g_edicts))div sizeof(edict_t));
+  gi.WriteShort(ent - edict_p(g_edicts));
   gi.WriteByte (MZ_GRENADE OR is_silenced);
   gi.multicast (@ent^.s.origin, MULTICAST_PVS); // Added @ ..by FAB
 
@@ -1085,7 +1085,7 @@ begin
   // send muzzle flash
   gi.WriteByte (svc_muzzleflash);
   { According with last Juha help on convert it }
-  gi.WriteShort ((Cardinal(ent)-Cardinal(g_edicts)) div SizeOf(edict_p));
+  gi.WriteShort (ent - edict_p(g_edicts));
   gi.WriteByte (MZ_ROCKET OR is_silenced);
   gi.multicast (@ent^.s.origin, MULTICAST_PVS);
 
@@ -1136,7 +1136,7 @@ begin
   // send muzzle flash
   gi.WriteByte (svc_muzzleflash);
   { According with last Juha help on convert it }
-  gi.WriteShort((Cardinal(ent) - Cardinal(g_edicts))div sizeof(edict_t));
+  gi.WriteShort(ent - edict_p(g_edicts));
   if (hyper) then
     gi.WriteByte (MZ_HYPERBLASTER OR is_silenced)
   else
@@ -1316,7 +1316,7 @@ begin
 
   gi.WriteByte (svc_muzzleflash);
   { According with last Juha help on convert it }
-  gi.WriteShort((Cardinal(ent) - Cardinal(g_edicts))div sizeof(edict_t));
+  gi.WriteShort(ent - edict_p(g_edicts));
   gi.WriteByte (MZ_MACHINEGUN OR is_silenced);
   gi.multicast (@ent^.s.origin, MULTICAST_PVS);
 
@@ -1451,7 +1451,7 @@ begin
   // send muzzle flash
   gi.WriteByte (svc_muzzleflash);
   { According with last Juha help on convert it }
-  gi.WriteShort((Cardinal(ent) - Cardinal(g_edicts))div sizeof(edict_t));
+  gi.WriteShort(ent - edict_p(g_edicts));
   gi.WriteByte ((MZ_CHAINGUN1 + shots - 1) OR is_silenced);
   gi.multicast (@ent^.s.origin, MULTICAST_PVS); //added @ ..by FAB
 
@@ -1516,7 +1516,7 @@ begin
   // send muzzle flash
   gi.WriteByte (svc_muzzleflash);
   { According with last Juha help on convert it }
-  gi.WriteShort((Cardinal(ent) - Cardinal(g_edicts))div sizeof(edict_t));
+  gi.WriteShort(ent - edict_p(g_edicts));
   gi.WriteByte (MZ_SHOTGUN or is_silenced);
   gi.multicast (@ent^.s.origin, MULTICAST_PVS);
 
@@ -1574,7 +1574,7 @@ begin
   // send muzzle flash
   gi.WriteByte (svc_muzzleflash);
   { According with last Juha help on convert it }
-  gi.WriteShort((Cardinal(ent) - Cardinal(g_edicts))div sizeof(edict_t));
+  gi.WriteShort(ent - edict_p(g_edicts));
   gi.WriteByte (MZ_SSHOTGUN or is_silenced);
   gi.multicast (@ent^.s.origin, MULTICAST_PVS);
 
@@ -1640,7 +1640,7 @@ begin
   // send muzzle flash
   gi.WriteByte (svc_muzzleflash);
   { According with last Juha help on convert it }
-  gi.WriteShort((Cardinal(ent) - Cardinal(g_edicts))div sizeof(edict_t));
+  gi.WriteShort(ent - edict_p(g_edicts));
   gi.WriteByte (MZ_RAILGUN or is_silenced);
   gi.multicast (@ent^.s.origin, MULTICAST_PVS); //added @ ..by FAB
 
@@ -1688,7 +1688,7 @@ begin
     // send muzzle flash
     gi.WriteByte (svc_muzzleflash);
     { According with last Juha help on convert it }
-    gi.WriteShort((Cardinal(ent) - Cardinal(g_edicts))div sizeof(edict_t));
+    gi.WriteShort(ent - edict_p(g_edicts));
     gi.WriteByte (MZ_BFG or is_silenced);
     gi.multicast (@ent^.s.origin, MULTICAST_PVS); //added @ ..by FAB
 

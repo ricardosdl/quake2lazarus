@@ -1,3 +1,10 @@
+==Video initialization
+The procedure VID_Init in vid_dll initializes the video. The default is full screen.
+But the change in function GLimp_SetMode line 236 puts it in windowed mode.
+
+==Take a look when trying to fix the controls
+sys_win:343:procedure Sys_SendKeyEvents;
+
 ==suspect procedure about the problem with the level rendering in the second level:
 R_DrawAlphaSurfaces in gl_rsurf line 655
 ==It can be! When the glich happens at the:
@@ -19,6 +26,17 @@ cl^.lastmessage := droppoint;
 
 
 Take a look into cl_ents.pas:CL_AddPacketEntities, what is going on here?
+
+==Common units (compiled) between quake2d.lpi and gamex86.lpi:
+CPas.pas
+GameUnit.pas
+q_shared.pas
+q_shared_add.pas
+
+==Common units (compiled with Shift-F9) between gamex86.lpi and ref_gl.lpi:
+CPas.pas
+q_shared.pas
+q_shared_add.pas
 
 ==on gl_rsurf:995:R_DrawInlineBModel the problematic surface index i is 1200, 1214,1216,1232, 1234.
 Image details below:
@@ -97,3 +115,12 @@ the code is using cardinal in some pointers calculations.
 #6 QCOMMON_FRAME(125) at ..\qcommon\Common.pas:2126
 #7 WINMAIN(4294967296, 0, 0x100172490 '', 0) at ..\win32\sys_win.pas:585
 #8 main at quake2d.lpr:164
+
+==The unofficial DM2 format description (gold)
+https://www.quakewiki.net/archives/demospecs/dm2/dm2.pdf
+
+==Demo files from a guy from a quake2 reddit
+https://drive.google.com/drive/folders/0ByJc_EZ6U7G8NlBfLXQ1RDZzX1k
+
+==LMPC is the Little Movie Processing Centre. LMPC helps you to handle LMP, DMO, DEM, QWD and DM2 files.
+https://github.com/Doom-Utils/lmpc

@@ -61,7 +61,7 @@ const
 type
   { Juha: Added this type to make it a bit more clear that this is file
     handle, not just "integer" }
-  TFileHandle = Integer;
+  TFileHandle = THandle;
 
   image_p = pointer;
   model_p = pointer;

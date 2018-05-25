@@ -120,7 +120,7 @@ begin
   cdValid := false;
 
   mciStatusParms.dwItem := MCI_STATUS_READY;
-  dwReturn := mciSendCommand(wDeviceID, MCI_STATUS, MCI_STATUS_ITEM or MCI_WAIT, DWORD(@mciStatusParms));
+  dwReturn := mciSendCommand(wDeviceID, MCI_STATUS, MCI_STATUS_ITEM or MCI_WAIT, DWORD_PTR(@mciStatusParms));
   if (dwReturn <> 0) then
   begin
     Com_DPrintf('CDAudio: drive ready test - get status failed'#10, []);
@@ -133,7 +133,7 @@ begin
   end;
 
   mciStatusParms.dwItem := MCI_STATUS_NUMBER_OF_TRACKS;
-  dwReturn := mciSendCommand(wDeviceID, MCI_STATUS, MCI_STATUS_ITEM or MCI_WAIT, dword(@mciStatusParms));
+  dwReturn := mciSendCommand(wDeviceID, MCI_STATUS, MCI_STATUS_ITEM or MCI_WAIT, DWORD_PTR(@mciStatusParms));
   if (dwReturn <> 0) then
   begin
     Com_DPrintf('CDAudio: get tracks - status failed'#10, []);
@@ -178,7 +178,7 @@ begin
   { don't try to play a non-audio track }
   mciStatusParms.dwItem := MCI_CDA_STATUS_TYPE_TRACK;
   mciStatusParms.dwTrack := track;
-  dwReturn := mciSendCommand(wDeviceID, MCI_STATUS, MCI_STATUS_ITEM or MCI_TRACK or MCI_WAIT, dword(@mciStatusParms));
+  dwReturn := mciSendCommand(wDeviceID, MCI_STATUS, MCI_STATUS_ITEM or MCI_TRACK or MCI_WAIT, DWORD_PTR(@mciStatusParms));
   if (dwReturn <> 0) then
   begin
     Com_DPrintf('MCI_STATUS failed (%d)'#10, [dwReturn]);
@@ -193,7 +193,7 @@ begin
   { get the length of the track to be played }
   mciStatusParms.dwItem := MCI_STATUS_LENGTH;
   mciStatusParms.dwTrack := track;
-  dwReturn := mciSendCommand(wDeviceID, MCI_STATUS, MCI_STATUS_ITEM or MCI_TRACK or MCI_WAIT, dword(@mciStatusParms));
+  dwReturn := mciSendCommand(wDeviceID, MCI_STATUS, MCI_STATUS_ITEM or MCI_TRACK or MCI_WAIT, DWORD_PTR(@mciStatusParms));
   if (dwReturn <> 0) then
   begin
     Com_DPrintf('MCI_STATUS failed (%d)'#10, [dwReturn]);
@@ -212,7 +212,7 @@ begin
   mciPlayParms.dwTo := (mciStatusParms.dwReturn shl 8) or Cardinal(track);
   mciPlayParms.dwCallback := cl_hwnd;
 
-  dwReturn := mciSendCommand(wDeviceID, MCI_PLAY, MCI_NOTIFY or MCI_FROM or MCI_TO, dword(@mciPlayParms));
+  dwReturn := mciSendCommand(wDeviceID, MCI_PLAY, MCI_NOTIFY or MCI_FROM or MCI_TO, DWORD_PTR(@mciPlayParms));
   if (dwReturn <> 0) then
   begin
     Com_DPrintf('CDAudio: MCI_PLAY failed (%d)', [dwReturn]);
@@ -264,7 +264,7 @@ begin
     Exit;
 
   mciGenericParms.dwCallback := cl_hwnd;
-  dwReturn := mciSendCommand(wDeviceID, MCI_PAUSE, 0, dword(@mciGenericParms));
+  dwReturn := mciSendCommand(wDeviceID, MCI_PAUSE, 0, DWORD_PTR(@mciGenericParms));
   if (dwReturn <> 0) then
     Com_DPrintf('MCI_PAUSE failed (%d)', [dwReturn]);
 
@@ -289,7 +289,7 @@ begin
   mciPlayParms.dwFrom := MCI_MAKE_TMSF(playTrack, 0, 0, 0);
   mciPlayParms.dwTo := MCI_MAKE_TMSF(playTrack + 1, 0, 0, 0);
   mciPlayParms.dwCallback := cl_hwnd;
-  dwReturn := mciSendCommand(wDeviceID, MCI_PLAY, MCI_TO or MCI_NOTIFY, dword(@mciPlayParms));
+  dwReturn := mciSendCommand(wDeviceID, MCI_PLAY, MCI_TO or MCI_NOTIFY, DWORD_PTR(@mciPlayParms));
 
   if (dwReturn <> 0) then
   begin
@@ -527,7 +527,7 @@ begin
     Exit;
 
   mciOpenParms.lpstrDeviceType := 'cdaudio';
-  dwReturn := mciSendCommand(0, MCI_OPEN, MCI_OPEN_TYPE or MCI_OPEN_SHAREABLE, dword(@mciOpenParms));
+  dwReturn := mciSendCommand(0, MCI_OPEN, MCI_OPEN_TYPE or MCI_OPEN_SHAREABLE, DWORD_PTR(@mciOpenParms));
   if (dwReturn <> 0) then
   begin
     Com_Printf('CDAudio_Init: MCI_OPEN failed (%d)'#10, [dwReturn]);
@@ -538,7 +538,7 @@ begin
 
   { Set the time format to track/minute/second/frame (TMSF). }
   mciSetParms.dwTimeFormat := MCI_FORMAT_TMSF;
-  dwReturn := mciSendCommand(wDeviceID, MCI_SET, MCI_SET_TIME_FORMAT, dword(@mciSetParms));
+  dwReturn := mciSendCommand(wDeviceID, MCI_SET, MCI_SET_TIME_FORMAT, DWORD_PTR(@mciSetParms));
   if (dwReturn <> 0) then
   begin
     Com_Printf('MCI_SET_TIME_FORMAT failed (%d)'#10, [dwReturn]);
