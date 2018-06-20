@@ -116,6 +116,17 @@ the code is using cardinal in some pointers calculations.
 #7 WINMAIN(4294967296, 0, 0x100172490 '', 0) at ..\win32\sys_win.pas:585
 #8 main at quake2d.lpr:164
 
+==take a look at this stack trace (why? well this is where the entities are being put in the frame):
+#0 SV_EMITPACKETENTITIES(0x16cd9064, 0x16cd9148, {ALLOWOVERFLOW = true (-1), OVERFLOWED = false, DATA = 0x13ff098, MAXSIZE = 1400, CURSIZE = 20, READCOUNT = 0}) at ..\server\sv_ents.pas:191
+#1 SV_WRITEFRAMETOCLIENT(0x16cd8008, 0x13ff078) at ..\server\sv_ents.pas:516
+#2 SV_SENDCLIENTDATAGRAM(0x16cd8008) at ..\server\sv_send.pas:503
+#3 SV_SENDCLIENTMESSAGES at ..\server\sv_send.pas:662
+#4 SV_FRAME(15) at ..\server\sv_main.pas:1157
+#5 QCOMMON_FRAME(15) at ..\qcommon\Common.pas:2121
+#6 WINMAIN(4294967296, 0, 0x100174490 '', 0) at ..\win32\sys_win.pas:585
+#7 main at quake2d.lpr:164
+
+
 ==The unofficial DM2 format description (gold)
 https://www.quakewiki.net/archives/demospecs/dm2/dm2.pdf
 
