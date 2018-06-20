@@ -126,6 +126,9 @@ the code is using cardinal in some pointers calculations.
 #6 WINMAIN(4294967296, 0, 0x100174490 '', 0) at ..\win32\sys_win.pas:585
 #7 main at quake2d.lpr:164
 
+==interesing procedure (why? to help fix the level rendering problem)
+SV_BuildClientFrame
+
 
 ==The unofficial DM2 format description (gold)
 https://www.quakewiki.net/archives/demospecs/dm2/dm2.pdf
