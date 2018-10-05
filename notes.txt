@@ -2,6 +2,9 @@
 The procedure VID_Init in vid_dll initializes the video. The default is full screen.
 But the change in function GLimp_SetMode line 236 puts it in windowed mode.
 
+==Function that handles inputs
+MainWndProc: Apparently set in Vid_LoadRefresh.
+
 ==Take a look when trying to fix the controls
 sys_win:343:procedure Sys_SendKeyEvents;
 
