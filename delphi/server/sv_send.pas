@@ -58,6 +58,8 @@ procedure SV_BroadcastPrintf(level: integer; fmt: PChar; args: array of const);
 
 var
   sv_outputbuf: array[0..SV_OUTPUTBUF_LENGTH - 1] of char;
+  { TODO : remove this later, used for debugging purposes only }
+  FileReadsCounter: Integer = 0;
 
 implementation
 
@@ -605,6 +607,7 @@ begin
     begin
       // get the next message
       r := FileRead(sv.demofile, msglen, 4);
+      Inc(FileReadsCounter);
       if (r <> 4) then
       begin
         SV_DemoCompleted;
